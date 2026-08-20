@@ -1519,7 +1519,12 @@ export const testConnection = (provider: string) =>
 
 export const openProviderLogin = (provider: string) =>
   post<{ ok: boolean; command: string; message: string }>(
-    `/api/connections/${encodeURIComponent(provider)}/login`
+    // Phải gọi THẲNG backend local. Nếu dùng đường dẫn tương đối, request đi
+    // qua proxy Next.js 6868 và mang x-forwarded-*; backend cố ý coi request
+    // proxy là từ xa nên chặn thao tác mở terminal bằng LOCAL_ONLY. Trên máy
+    // khác/tunnel, serverOrigin() vẫn không biến request thành loopback nên
+    // lớp bảo vệ local-only tiếp tục có hiệu lực.
+    `${serverOrigin()}/api/connections/${encodeURIComponent(provider)}/login`
   );
 
 export const uploadBriefReference = (id: string, file: File) => {
