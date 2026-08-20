@@ -1,0 +1,68 @@
+name: Bug report / Báo lỗi
+description: Báo một lỗi cụ thể - Report something that is broken
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Cảm ơn bạn đã báo lỗi. Điền được mục nào hay mục đó, không cần đủ hết.
+        Thanks for the report. Fill in what you can; you do not need every field.
+
+        **Đừng dán khóa API, đường dẫn chứa tên thật, hay nội dung video riêng tư vào đây.**
+        **Do not paste API keys, personal paths, or private video content here.**
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Chuyện gì xảy ra? / What happened?
+      description: Mô tả lỗi và điều bạn mong đợi thay vì thế.
+      placeholder: |
+        Ví dụ: bấm "Bắt đầu edit bằng AI" thì job dừng ở bước lắp ráp, log báo thiếu asset.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Các bước tái hiện / Steps to reproduce
+      placeholder: |
+        1. Tạo project 9:16
+        2. Upload clip, bật Ảnh minh họa AI
+        3. Bấm Bắt đầu edit bằng AI
+        4. Lỗi hiện ở ...
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log / thông báo lỗi
+      description: Chép log của job trong Render queue, hoặc log terminal. Đã tự động format sẵn.
+      render: shell
+
+  - type: input
+    id: os
+    attributes:
+      label: Hệ điều hành / OS
+      placeholder: Windows 11 / macOS 15 / Ubuntu 24.04
+
+  - type: input
+    id: node
+    attributes:
+      label: Node.js version
+      description: Chạy `node -v`
+      placeholder: v22.14.0
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Khu vực / Area
+      options:
+        - Không rõ / Not sure
+        - Web dashboard
+        - Backend / render queue
+        - HyperFrames scenes
+        - Remotion assembly
+        - Text to video / TTS
+        - Auto cut
+        - Ảnh Gemini / illustrations
+        - Skills / prompts
+        - Cài đặt, khởi động / setup

@@ -1,0 +1,95 @@
+node_modules/
+.tmp/
+.env
+.next/
+dist/
+
+# Project video/ảnh của người dùng — không đẩy lên repo
+video-projects/*
+!video-projects/.gitkeep
+image-projects/
+/auto-cut/
+# Dấu / đầu là BẮT BUỘC: không có nó thì mẫu này khớp luôn
+# apps/web/src/app/text-to-video/ và nuốt mất trang web (đã dính với auto-cut)
+/text-to-video/
+/translate-video/
+engines/remotion/public/staging/*
+!engines/remotion/public/staging/.gitkeep
+outputs/
+imports/
+*.log
+# Artifact build tăng dần của TypeScript - mỗi lần typecheck lại đổi, không commit
+*.tsbuildinfo
+
+# Nhạc nền: bản quyền nhạc rắc rối hơn code nhiều, mà repo này công khai - file
+# nhạc của mỗi người ở lại máy người đó. Chỉ giữ library.json + README.
+assets/music/*
+!assets/music/library.json
+!assets/music/README.md
+
+# Sound effect: thư viện đi kèm repo, nhưng KHÔNG kèm 18 file dưới đây.
+#
+# Cả thư viện là đồ sưu tầm nhiều năm từ nhiều nguồn, không ghi lại giấy phép -
+# README nói rõ chuyện đó và khuyến cáo không dùng cho video thương mại. Với
+# file không rõ nguồn thì khuyến cáo là cách xử lý được.
+#
+# Nhưng 18 file này thì KHÔNG phải "không rõ nguồn", mà là BIẾT RÕ CỦA AI:
+# trích đoạn từ Netflix (jingle này còn là nhãn hiệu âm thanh đã đăng ký),
+# Nintendo, Sega, Nickelodeon, Fox, Microsoft, Supercell, clip Vine, cộng hai
+# file còn nguyên tên do trang tải video YouTube đặt. Khuyến cáo không đổi được
+# việc phát tán tác phẩm của một chủ sở hữu đã xác định, nên chúng ở lại máy.
+assets/sound-effects/anime-wow-1.mp3
+assets/sound-effects/anime-wow-2.mp3
+assets/sound-effects/clash-royale-startup.mp3
+assets/sound-effects/hava-nagila.mp3
+assets/sound-effects/jontron-what.mp3
+assets/sound-effects/mario-coin.mp3
+assets/sound-effects/mii-channel-music.mp3
+assets/sound-effects/netflix-jingle.mp3
+assets/sound-effects/run-vine.mp3
+assets/sound-effects/sonic-ring.mp3
+assets/sound-effects/spongebob-a-few-moments-later.mp3
+assets/sound-effects/spongebob-two-hours-later.mp3
+assets/sound-effects/video0_k03U0Iy.mp3
+assets/sound-effects/vine-boom.mp3
+assets/sound-effects/windows-xp-startup.mp3
+assets/sound-effects/x-files-theme-1.mp3
+assets/sound-effects/x-files-theme-2.mp3
+assets/sound-effects/y2mate_VKI8qDn.mp3
+
+# Style Design là DỮ LIỆU NHẬN DIỆN CỦA NGƯỜI DÙNG, cùng loại với nhạc, giọng
+# và project - nên ở lại máy chứ không đi theo repo:
+# - styles.json: màu, font, tone, guidelines của riêng một thương hiệu. Ship
+#   kèm thì ai clone về cũng nhận nguyên bộ nhận diện của chủ dự án, và nếu style
+#   có logo thì video của họ bị đóng dấu logo người khác.
+# - files/: file font (giấy phép riêng, SIL OFL bắt buộc kèm bản giấy phép khi
+#   phát tán lại) và file logo. Gõ tên font trong Style Design là server tự tải
+#   từ Google Fonts về đây, nên không cần repo mang theo font nào.
+# Thiếu cả hai thì server trả danh sách rỗng, UI hiện màn hình trống có nút tạo,
+# và style đầu tiên người dùng tạo tự thành mặc định (routes/stylesRoute.ts).
+assets/styles/styles.json
+assets/styles/files/
+
+# Giọng nhân bản: file mẫu là BẢN GHI ÂM GIỌNG THẬT của người dùng. Repo này
+# công khai, mà đẩy giọng một người lên mạng là chuyện không lấy lại được -
+# nên giữ ở máy. Muốn mang sang máy khác thì copy tay cả thư mục assets/voices/.
+assets/voices/*
+!assets/voices/.gitkeep
+
+# DB + cấu hình máy local
+apps/server/data/
+
+# Dữ liệu tạm lúc chạy: thư mục tạm của tiến trình con, model whisper, venv
+# Python, binary tải riêng, cache pip. Sinh lại được hết - xóa lúc nào cũng
+# được, và loại trừ MỘT thư mục này là đủ khi sao lưu. Xem docs/API.md.
+/.runtime/
+
+start/bin/
+start/backup-*/
+# Server ghi mốc cập nhật (tag release hoặc origin/main) cho script update đọc
+start/update-target.txt
+
+# Trạng thái cục bộ của script khởi động: dấu vân tay mã nguồn của bản build
+# gần nhất (build.json) và của lần chạy hiện tại (run.json). Riêng từng máy.
+/.aiev/
+/release/

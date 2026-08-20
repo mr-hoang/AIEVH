@@ -1,0 +1,2546 @@
+/**
+ * English dictionary - keys mirror vi.ts; missing keys fall back to Vietnamese.
+ * Product terms (render, draft, final, skill, brief…) are kept as-is.
+ */
+export const en: Record<string, string> = {
+  // ===== Common =====
+  "common.cancel": "Cancel",
+  "common.done": "Done",
+  "common.close": "Close",
+  "common.delete": "Delete",
+  "common.deleting": "Deleting…",
+  "common.details": "Details",
+  "common.retry": "Retry",
+  "common.open-file": "Open file",
+  "common.loading": "Loading…",
+  "common.save": "Save",
+  "common.saving": "Saving…",
+  "common.saved": "Saved.",
+  "common.edit": "Edit",
+  "common.new": "new",
+  "common.actions": "Actions",
+  "common.name": "Name",
+  "common.tags": "Tags",
+  "common.copy": "Copy",
+  "common.copied": "Copied",
+  "common.clear": "Clear",
+  "common.selected": "selected",
+  "common.search": "Search",
+
+  // ===== Navigation (Shell) =====
+  "nav.dashboard": "Dashboard",
+  "nav.projects": "Videos Project",
+  "nav.images": "Images Project",
+  "nav.omni-video": "Gemini Omni Video",
+  "nav.styles": "Style Design",
+  "nav.video-styles": "Edit styles",
+  "nav.queue": "Render Queue",
+  "nav.assets": "Assets",
+  "nav.sfx": "Sound Effects",
+  "nav.prompts": "Prompts",
+  "nav.skills": "Skills",
+  "nav.source": "Source on GitHub",
+  "nav.config": "Settings",
+  "nav.connections": "Connections",
+  "shell.backend-checking": "Checking backend…",
+  "shell.backend-ok": "Backend online",
+  "shell.backend-partial": "Backend missing components",
+  "shell.backend-unreachable": "Cannot reach backend",
+
+  // ===== Theme =====
+  "theme.to-light": "Switch to light theme",
+  "theme.to-dark": "Switch to dark theme",
+  "theme.light": "Light theme",
+  "theme.dark": "Dark theme",
+
+  // ===== Status badges =====
+  "badge.job.queued": "Queued",
+  "badge.job.running": "Running",
+  "badge.job.done": "Done",
+  "badge.job.failed": "Failed",
+  "badge.job.canceled": "Canceled",
+  "badge.project.draft": "Draft",
+  "badge.project.rendering": "Rendering",
+  "badge.project.done": "Done",
+  "badge.session.idle": "Idle",
+  "badge.session.running": "Working",
+  "badge.session.done": "Done",
+  "badge.session.error": "Error",
+  "badge.session.interrupted": "Paused",
+
+  // ===== Confirm delete modal =====
+  "confirm.title": "Confirm deletion",
+  "confirm.type-before": "Type",
+  "confirm.type-after": "to confirm",
+  "confirm.type-aria": "Type {text} to confirm deletion",
+
+  // ===== TagInput =====
+  "taginput.placeholder": "Type a tag and press Enter…",
+  "taginput.remove-aria": "Remove tag {tag}",
+
+  // ===== Media preview / reveal =====
+  "media.reveal-error": "Could not reveal the file in Explorer: {error}",
+  "media.reveal-title": "Reveal in file manager",
+  "media.reveal-aria": "Reveal {path} in the file manager",
+  "media.open-tab": "Open in new tab",
+  "media.no-preview": "This file type cannot be previewed.",
+  "media.open-direct": "Open directly",
+  "media.zoom-title": "Click to view in detail",
+
+  // ===== Clone project =====
+  "clone.title": "Clone project",
+  "clone.copy-suffix": "(copy)",
+  "clone.cloning": "Cloning…",
+  "clone.action": "Clone",
+  "clone.error": "Could not clone the project.",
+  "clone.description": "The copy includes compositions, assets (with descriptions), brief, tags and scenes - not renders or the output video. The new project starts as a draft.",
+  "clone.image-description":
+    "The copy keeps the background image, prompt, kind, aspect, Style Design and all the text - but not the finished image. Hit Compose on the copy and you get a new image without regenerating the background.",
+  "clone.new-name": "New project name",
+  "clone.id-hint": "The ID (folder name) is generated from this name.",
+
+  // ===== Pipeline timeline =====
+  "pipeline.analyze": "Analyze",
+  "pipeline.build-scenes": "Build scenes",
+  "pipeline.render-draft": "Render draft",
+  "pipeline.assemble-draft": "Assemble draft",
+  "pipeline.render-final": "Render final",
+  "pipeline.done": "Done",
+  "pipeline.aria": "Pipeline progress - stage {stage}/6: {label}",
+
+  // ===== Update badge =====
+  "update.confirm": "The system will stop, pull the new version and restart (~1-3 minutes). Continue?",
+  "update.job-running": "A render job is running - wait for it to finish, then update.",
+  "update.send-failed": "Could not send the update command.",
+  "update.updating": "Updating…",
+  "update.will-reload": "The page will reload automatically",
+  "update.maybe-failed": "The update may have failed - check start/update.log",
+  "update.check-failed": "Could not check for updates",
+  "update.check-now": "Check again now",
+  "update.click-check": "Click to check now",
+  "update.up-to-date": "Up to date",
+  "update.available": "Update available",
+  // Short forms for the narrow sidebar badge - the long ones above are for the modal
+  "update.badge-available": "New version",
+  "update.badge-check-failed": "Check failed",
+  "update.behind": "{n} changes",
+  "update.apply": "Update",
+
+  // ===== Update modal =====
+  "update.title": "System update",
+  "update.current-label": "Running",
+  "update.latest-label": "New",
+  "update.whats-new": "What's new",
+  "update.no-commits": "Could not load the list of changes.",
+  "update.commits-more": "and {n} more older changes",
+  "update.warn-restart":
+    "The system will shut down and restart by itself, which takes about 1-3 minutes. Do not turn off the machine and keep this window open until it finishes.",
+  "update.apply-now": "Update now",
+  "update.later": "Later",
+  "update.starting": "Sending the update command…",
+  "update.step.pull": "Download update",
+  "update.step.stop": "Stop the system",
+  "update.step.install": "Install packages",
+  "update.step.restart": "Restart",
+  "update.step-of": "Step {n}/4",
+  "update.running-title": "Updating",
+  "update.waiting-log": "Waiting for the update script log…",
+  "update.server-down":
+    "The system is shutting down to install - this is a normal step, not an error. Do not close this window.",
+  "update.elapsed": "Elapsed {time}",
+  "update.log-title": "Update log",
+  "update.view-log": "View log",
+  "update.hide-log": "Hide log",
+  "update.success-title": "Update successful",
+  "update.new-version": "New version: {hash}",
+  "update.reloading": "The page will reload in a few seconds.",
+  "update.reload-now": "Reload now",
+  "update.failed-title": "The update did not finish",
+  "update.failed-timeout":
+    "Waited too long and the system did not come back up.",
+  "update.failed-script": "The update script reported an error and stopped.",
+  "update.failed-safe":
+    "The old system is still running normally - the script pulls the code before stopping anything, so a failure at this step does not break the version you are using.",
+  "update.log-hint": "The full log is in start/update.log.",
+  "update.badge-open": "Click to see the update details",
+  "update.updated-to": "Now on version {version}",
+
+  // ===== Update channel (used in both the popup and the Config page) =====
+  "update.channel-stable": "Stable (release)",
+  "update.channel-latest": "Latest (main)",
+  "update.no-releases-note":
+    "This repo has no published release yet, so the system is comparing against the latest code on main.",
+  "update.channel-latest-note":
+    "You are on the Latest (main) channel - every commit just pushed, fixes arrive sooner but it can be unstable.",
+
+  // ===== Model picker =====
+  "model.performer": "AI engine",
+  "model.connected-api-key": "Connected via API key",
+  "model.connected-subscription": "Connected via subscription",
+  "model.not-connected": "Not connected",
+  "model.claude-warning": "Claude is not connected - sign in to Claude Code (subscription) or add ANTHROPIC_API_KEY to .env, then restart the server.",
+  "model.claude-warning-short": "Sign in to Claude Code (subscription) or add ANTHROPIC_API_KEY to .env.",
+  "model.claude-not-connected": "Claude not connected",
+  "model.codex-warning": "ChatGPT/Codex is not connected. Install Codex CLI and run `codex login`, or add a fallback OPENAI_API_KEY on Connections.",
+  "model.codex-warning-short": "Run `codex login` or add a fallback OPENAI_API_KEY.",
+  "model.codex-not-connected": "Codex not connected",
+  "model.model": "Model",
+  "model.effort": "Mode",
+  "model.gemini-tooltip": "Gemini creates images and Omni videos",
+  "model.gemini-connected": "Gemini connected - ready for image and Omni video generation.",
+  "model.gemini-not-connected": "Gemini not connected - add an API key for image/video generation.",
+  "model.gemini-images-only": "Gemini: images only",
+  "model.gemini-media-only": "Gemini: images + Omni video",
+  "model.cost-tip":
+    "For videos that follow a familiar template (TikTok, YouTube - a skill already covers them) Sonnet 5 is enough and about 40% cheaper; for lighter work Haiku 4.5 is about 80% cheaper. Save Opus 5 for hard videos with fiddly requirements. Almost the whole cost of building a video is what the AI reads in, so the input token price is what decides it.",
+  "model.aria-model": "AI model for the new session",
+  "model.aria-effort": "AI mode for the new session",
+  "effort.low": "Fast",
+  "effort.low-hint": "fast, economical",
+  "effort.medium": "Standard",
+  "effort.medium-hint": "balanced",
+  "effort.high": "Deep",
+  "effort.high-hint": "thorough, slower",
+
+  // ===== Style select =====
+  "styles.default": "Default",
+
+  // ===== Common (tables) =====
+  "common.status": "Status",
+  "common.updated": "Updated",
+  "common.created": "Created",
+  "common.size": "Size",
+  "common.modified": "Modified",
+  "common.uploading": "Uploading…",
+
+  // ===== Dashboard =====
+  "dash.subtitle": "Overview of the video editing system",
+  "dash.job.scene-draft": "Render scene (draft)",
+  "dash.job.scene-final": "Render scene (final)",
+  "dash.job.assemble-draft": "Assemble (draft)",
+  "dash.job.assemble-final": "Assemble (final)",
+  "dash.job.image-gen": "Image generation",
+  "dash.job.auto-cut": "Auto cut",
+  "dash.job.auto-trim": "Auto-trim",
+  "dash.job.text-to-video": "Text to video",
+  "dash.job.translate-video": "Translate video",
+  "dash.health.ffmpeg": "FFmpeg is not on PATH - renders will fail.",
+  "dash.health.claude": "No Claude authentication - sign in to Claude Code on this machine (VSCode) or set ANTHROPIC_API_KEY in .env.",
+  "dash.health.hyperframes": "HyperFrames is not installed - scenes cannot be rendered.",
+  "dash.scope.all": "All",
+  "dash.scope.video": "Video",
+  "dash.scope.image": "Images",
+  "dash.scope-aria": "Project type",
+  "dash.days": "{n} days",
+  "dash.days-aria": "Time range",
+  "dash.load-error": "Could not load overview data.",
+  "dash.health-title": "The system is missing required components:",
+  "dash.total-projects": "Total projects",
+  "dash.done-count": "{n} done",
+  "dash.exported": "Exported videos",
+  "dash.has-output": "projects with output",
+  "dash.tokens-30d": "Tokens, 30 days",
+  "dash.jobs-today": "Jobs today",
+  "dash.jobs-today-sub": "{done} done · {failed} failed",
+  "dash.tokens-by-day": "AI tokens by day",
+  "dash.total-days": "Total {days} days: {tokens} tokens · {cost}",
+  "dash.no-usage": "No data yet - tokens are recorded as the AI works.",
+  "dash.ai-working": "AI working",
+  "dash.ai-working-n": "AI working · {n} sessions",
+  "dash.using-tool": "Using {tool}…",
+  "dash.tool-fallback": "tool",
+  "dash.composing": "Writing content…",
+  "dash.step": "step {n}",
+  "dash.open-project": "Open project →",
+  "dash.running-job": "Running job",
+  "dash.running-job-n": "Running jobs · {n}",
+  "dash.no-running-job": "No job is currently running.",
+  "dash.queue": "Queue",
+  "dash.jobs-waiting": "jobs waiting",
+  "dash.view-queue": "View queue",
+  "dash.recent-projects": "Recent projects",
+  "dash.view-all": "View all →",
+  "dash.col-token": "Tokens",
+  "dash.recent-sessions": "Recent AI sessions",
+  "dash.chat-session": "Chat session",
+  "dash.no-sessions": "No AI sessions yet - start editing from a project page.",
+
+  // ===== Token chart =====
+  "chart.total-tokens": "Total {n} tokens",
+  "chart.aria": "AI tokens by day, last {days} days - bars are totals, lines per AI",
+  "chart.total-per-day": "Total/day",
+
+  // ===== Render Queue =====
+  "queue.subtitle": "Sequential queue - one job runs at a time",
+  "queue.type.scene-draft": "Scene draft",
+  "queue.type.scene-final": "Scene final",
+  "queue.type.assemble-draft": "Assemble draft",
+  "queue.type.assemble-final": "Assemble final",
+  "queue.type.image-gen": "Image generation",
+  "queue.type.auto-cut": "Auto cut",
+  "queue.type.auto-trim": "Auto-trim",
+  "queue.type.text-to-video": "Text to video",
+  "queue.type.translate-video": "Translate video",
+  "queue.log-title": "Log - {id}",
+  "queue.close-log": "Close log",
+  "queue.log-error": "Could not load the job log.",
+  "queue.no-log": "(no log yet)",
+  "queue.load-error": "Could not load the job list.",
+  "queue.cancel-error": "Could not cancel the job.",
+  "queue.col-type": "Type",
+  "queue.col-progress": "Progress",
+  "queue.col-time": "Time",
+  "queue.canceling": "Canceling…",
+  "queue.empty": "No jobs in the queue yet. Create a render job from a project page.",
+
+  // ===== Assets =====
+  "assetsPage.subtitle": "Footage, images, audio in imports/ and final videos in outputs/",
+  "assetsPage.upload": "Upload files",
+  "assetsPage.load-error": "Could not load the file list.",
+  "assetsPage.upload-error": "File upload failed.",
+  "assetsPage.empty-imports": "No files in imports/ yet. Drag files here or click Upload files.",
+  "assetsPage.empty-outputs": "No final videos in outputs/ yet. Final-render a project to see files here.",
+
+  // ===== Common (selection/delete/create) =====
+  "common.all": "All",
+  "common.deselect": "Deselect",
+  "common.delete-selected": "Delete selected",
+  "common.creating": "Creating…",
+  "common.select-aria": "Select {name}",
+  "common.preview-aria": "Preview {name}",
+  "common.yes": "Yes",
+  "common.no": "No",
+  "common.off": "Off",
+  "common.zoom": "Zoom",
+  "junk.clean": "Clean junk files",
+  "junk.cleaning": "Cleaning junk files…",
+  "junk.none": "No junk files to delete.",
+
+  // ===== Videos Project (list) =====
+  "projects.subtitle": "Each project is one video in video-projects/",
+  "projects.create": "Create project",
+  "projects.create-title": "Create project",
+  "projects.empty": "No projects yet. Create your first project to start building videos.",
+  "projects.load-error": "Could not load the project list.",
+  "projects.preset.tiktok": "TikTok/Reels vertical",
+  "projects.preset.youtube": "YouTube landscape",
+  "projects.preset.square": "Square",
+  "projects.preset.portrait45": "Portrait 4:5",
+  "projects.preset.landscape4k": "Landscape 4K",
+  "projects.preset.portrait4k": "Portrait 4K",
+  "projects.bulk-started": "Started editing {n} projects - open each project to follow along.",
+  "projects.junk-confirm": "Delete {items} junk items across {projects} projects, freeing {size}?\nProject source files and final videos are kept.",
+  "projects.junk-freed": "Freed {size} ({items} junk items, {projects} projects).",
+  "projects.render-queued": "Queued {n} final render jobs - track them in the Render Queue.",
+  "projects.bulk-action-errors": "Failed to process {n} projects.",
+  "projects.cloned-to": "Cloned to",
+  "projects.open-new": "open the new project",
+  "projects.selected": "{n} projects selected",
+  "projects.creating-jobs": "Creating jobs…",
+  "projects.render-final-n": "Render final ({n})",
+  "projects.make-video-n": "Create video ({n})",
+  "projects.filter-by-tag": "Filter by tag",
+  "projects.select-all": "Select all projects",
+  "projects.col-tokens": "AI tokens",
+  "projects.clone-aria": "Clone {name}",
+  "projects.rename": "Rename",
+  "projects.rename-aria": "Rename {name}",
+  "projects.rename-title": "Rename project",
+  "projects.rename-hint": "Only the display name changes. The ID (folder name) stays {id}.",
+  "imagesPage.rename-hint": "Only the display name changes. The ID (folder name) stays {id}.",
+  "projects.name-required": "The name cannot be empty.",
+  "projects.no-tag-match": "No projects match the selected tags.",
+  "projects.delete-selected-title": "Delete selected projects",
+  "projects.delete-desc-1": "The following projects will be deleted. The entire folder",
+  "projects.delete-desc-2": "will be permanently deleted and cannot be recovered.",
+  "projects.none-selected": "No projects are selected anymore.",
+  "projects.deleting-progress": "Deleting {done}/{total}…",
+  "projects.delete-n": "Delete {n} projects",
+  "projects.delete-errors": "Failed to delete {n} projects:",
+  "projects.bulk-title": "Create videos with AI",
+  "projects.bulk-starting": "Starting {done}/{total}…",
+  "projects.bulk-start": "Start editing {n} projects",
+  "projects.bulk-errors": "Failed to start {n} projects.",
+  "projects.bulk-desc": "The AI will build the videos IN PARALLEL following each project's saved brief (heavy renders run at most 2 at a time). Projects:",
+  "projects.bulk-notes": "Extra notes (applied to all)",
+  "projects.notes-placeholder": "e.g. Prefer a cut under 60 seconds, open with a strong hook…",
+  "projects.name-placeholder": "e.g. GPT-5 paper breakdown",
+  "projects.id-label": "ID (folder name)",
+  "projects.id-placeholder": "generated from the name…",
+  "projects.id-hint": "Generated from the name; editable.",
+  "projects.id-invalid": "The ID must be kebab-case: lowercase letters, numbers, hyphens (e.g. my-video-1).",
+  "projects.format": "Video format",
+  "projects.custom": "Custom",
+  "projects.custom-hint": "enter a custom size",
+  "projects.width": "Width (px)",
+  "projects.height": "Height (px)",
+  "projects.other": "Other",
+  "projects.custom-fps": "Custom FPS",
+
+  // ===== Project detail =====
+  "project.no-files": "No files yet.",
+  "project.actions-aria": "Actions",
+  "project.video-output": "Video output",
+  "project.ai-making": "AI is creating the video",
+  "project.ai-making-ellipsis": "AI is creating the video…",
+  "project.no-output": "No output video yet.",
+  "project.create-thumb": "Create thumbnail",
+  "project.view-thumb": "View thumbnail",
+  "project.thumb-alt": "Video thumbnail",
+  "project.no-thumb": "No thumbnail yet.",
+  "project.thumb-creating": "Creating (~1 minute)…",
+  "project.thumb-title": "Thumbnail title",
+  "project.thumb-title-placeholder": "A catchy 4–8 word phrase",
+  "project.thumb-frame": "Grab frame at second",
+  "project.thumb-bg-prompt": "Background prompt (optional)",
+  "project.thumb-bg-placeholder": "Leave empty = generated from the title; background drawn by Gemini following the Style Design",
+  "project.thumb-desc": "The system grabs a frame from the final video, Gemini draws the background following the Style Design, then Remotion composes the title - takes about 1 minute.",
+  "project.thumb-error": "Could not create the thumbnail: {error}",
+  "project.job-queued": "Job {id} ({type}) added to the queue.",
+  "project.job-error": "Could not create the job: {error}",
+  "project.junk-confirm": "Delete {items} junk items, freeing {size}?\nProject source files and the final video are kept.",
+  "project.junk-freed": "Freed {size} ({items} junk items).",
+  "project.junk-error": "Could not clean junk files: {error}",
+  "project.updated": "updated {time}",
+  "project.new-tag-placeholder": "New tag…",
+  "project.add-tag-aria": "Add tag",
+  "project.tags-error": "Could not save tags: {error}",
+  "project.rename": "Rename project",
+  "project.rename-error": "Could not rename the project.",
+  "imageDetail.rename": "Rename image project",
+  "imageDetail.rename-error": "Could not rename the image project.",
+  "imageDetail.clone-title": "Create a new project from this one - keeps the background, drops the finished image",
+  "project.name-required": "The name cannot be empty.",
+  "project.start-edit-new-session": "Start AI edit in a new session",
+  "project.load-error": "Could not load the project.",
+  "project.sfx-title": "Sound Effects",
+  "project.other-title": "Other",
+  "project.start-edit": "Start editing with AI",
+  "project.start-edit-short": "Start editing",
+  "project.starting": "Starting…",
+  "project.start-error": "Could not start the edit session.",
+  "project.no-sessions": "No AI sessions yet - click Start editing with AI.",
+  "project.col-source": "Source",
+  "project.col-rendered": "Rendered",
+  "project.draft-this-scene": "Draft this scene",
+  "project.no-scenes": "meta.json has no scenes declared yet. Use the chat to ask Claude to build scenes for this project.",
+  "project.ai-panel": "Project AI",
+  "project.ai-panel-aria": "Project AI",
+  "project.render-final": "Render final",
+  "project.more": "More",
+  "project.menu-scene-draft": "Render scene draft",
+  "project.menu-assemble-draft": "Assemble draft",
+  "project.close-panel": "Close AI panel",
+  "project.select-session": "Select AI session",
+  "project.delete-title": "Delete project",
+  "project.delete-desc-1": "Delete project",
+  "project.delete-desc-2": "The entire folder",
+  "project.delete-desc-3": "will be permanently deleted and cannot be recovered.",
+  "project.edit-modal-desc": "The AI reads the project's brief, asset descriptions and sound effects, then edits on its own. Review the summary below:",
+  "project.sum-source": "Source video",
+  "project.sum-autocut": "Auto-cut",
+  "project.sum-keywords": "plus keywords:",
+  "project.sum-main-key": "Main key:",
+  "project.sum-related-keys": "Related keys:",
+  "project.extra-notes": "Extra notes for this run",
+  // ----- Three-column workspace on the project detail page -----
+  "project.card-action": "Start & actions",
+  "project.session-count": "{n} AI sessions",
+  "project.scene-count": "{n} scenes",
+  "project.render-count": "{n} render files",
+  "project.no-scenes-short": "No scenes yet",
+  "project.brief-autosave": "The edit brief saves itself once you stop typing.",
+  "project.brief-save-error": "Could not save the edit brief.",
+
+  // ===== Brief (shared) =====
+  "brief.edit-request": "Edit request",
+  "brief.not-described": "Not described",
+  "brief.none": "None",
+  "brief.subtitles": "Subtitles",
+  "brief.highlight": "Highlight main keys",
+  "brief.key-layout": "Key layout",
+  "brief.illustrations": "AI illustrations",
+  "brief.ai-choose": "AI decides",
+  "brief.ai-pick-skill": "Let the AI choose",
+
+  // ===== Brief card =====
+  "brief.title": "Edit script (Brief)",
+  "brief.expand": "Show details",
+  "brief.collapse": "Collapse",
+  "brief.save": "Save brief",
+  "brief.saved": "Brief saved.",
+  "brief.save-error": "Could not save the brief.",
+  "brief.sum-source": "Source description",
+  "brief.sum-options": "Options",
+  "brief.badge-cut": "Cut",
+  "brief.badge-illustrations": "AI illustrations",
+  "brief.sfx.recommended": "Use the recommended set",
+  "brief.sfx.library": "AI searches the library",
+  "brief.sfx.none": "None",
+  "brief.music.auto": "AI picks by mood",
+  "brief.music.none": "None",
+  "brief.apply-prompt-confirm": "Replace the current \"Edit request\" content with the template \"{name}\"?",
+  "brief.source-label": "Describe the source video",
+  "brief.source-hint": "Give the AI context: what was filmed, who speaks, what it is about.",
+  "brief.source-placeholder": "e.g. A talking-head clip of me covering 3 ad-campaign mistakes, ~90 seconds, shot vertical",
+  "brief.notes-label": "Edit request (prompt)",
+  "brief.notes-hint": "The main content sent to the AI - describe how you want the video edited.",
+  "brief.notes-placeholder": "e.g. Professional TikTok edit - kinetic key text, karaoke subtitles, insert b-roll when the product is mentioned…",
+  "brief.use-prompt-aria": "Use a prompt template",
+  "brief.use-prompt": "Use a prompt template…",
+  "brief.no-prompts": "No prompt templates yet",
+  "brief.manage-prompts": "Manage prompts",
+  "brief.autocut-label": "Auto-trim the video",
+  "brief.autocut-hint": "The AI removes silences and filler",
+  "brief.autocut-level": "How aggressive the trim is",
+  "brief.autocut-level-recommended": "(recommended)",
+  "brief.autocut-level-natural": "Natural",
+  "brief.autocut-level-natural-hint":
+    "Only cuts silences from 0.90s up, keeps 0.18s padding each edge - good for interviews and storytelling.",
+  "brief.autocut-level-default": "Default",
+  "brief.autocut-level-default-hint":
+    "Cuts silences from 0.45s, keeps 0.12s padding each edge - tight pacing that still breathes.",
+  "brief.autocut-level-tight": "Tight",
+  "brief.autocut-level-tight-hint":
+    "Cuts silences from 0.30s, keeps 0.08s padding each edge - TikTok/Shorts pacing, almost no pauses left.",
+  "brief.subtitles-label": "Generate subtitles",
+  "brief.subtitles-hint": "Karaoke subtitles following the voice",
+  "brief.highlight-hint": "The AI analyzes the content and picks keywords to highlight",
+  "brief.add-keywords": "Specify extra keywords (optional)",
+  "brief.keywords-label": "Extra specified keywords (optional) - the AI still adds its own",
+  "brief.remove-keyword-aria": "Remove keyword {keyword}",
+  "brief.keyword-placeholder": "Type a keyword and press Enter…",
+  "brief.key-layout-label": "Main key / related keys layout",
+  "brief.key-layout-hint": "The main key shows in the TOP area of the video, related keys in the BOTTOM area following what is being said",
+  "brief.key-mode-aria": "How keys are chosen",
+  "brief.key-auto": "AI proposes & uses keys",
+  "brief.key-manual": "Specify keys manually",
+  "brief.key-auto-desc": "Nothing to fill in - the AI analyzes the video, proposes a main key + 3–6 related keys and uses them at the right moments.",
+  "brief.main-key": "Main key",
+  "brief.main-key-placeholder": "e.g. TikTok's official MCP",
+  "brief.main-key-hint": "The AI uses this key VERBATIM. Leave empty and the AI still picks one.",
+  "brief.related-keys": "Related keys",
+  "brief.related-keys-placeholder": "Type a key and press Enter…",
+  "brief.related-keys-hint": "The AI must use all of these keys, right when the content mentions them. Leave empty and the AI picks 3–6.",
+  "brief.illustrations-label": "AI illustrations (Gemini)",
+  "brief.illustrations-hint": "Claude picks the key moments, Gemini draws illustrations matching the Style Design and composites them in (~$0.05/image)",
+  "brief.illustration-model": "Drawing model",
+  "brief.illustration-density": "Image density (per minute of video)",
+  "brief.illustration-density-auto-short": "Auto",
+  "brief.illustration-density-unit": "images / minute (1-20, empty = AI decides)",
+  "brief.illustration-density-hint":
+    "Set a number to rotate backgrounds with each idea so the video stays lively - great for long Text to video. Note the ~$0.05/image cost scales with duration.",
+  "brief.illustration-position": "Subject position in the image",
+  "brief.illustration-position-auto-hint":
+    "Auto: subject centered in the frame, keeping the top (key cards) and bottom (captions) clear - safest for video.",
+  "brief.illustration-position-hint":
+    "The image subject will be drawn in this area. Note: placing it near the top/bottom edge may get partially covered by key cards or captions.",
+  "brief.illustration-text": "Text in images (Gemini draws the text itself)",
+  "brief.illustration-text-hint": "Off = clean background, text placed by the system (no spelling errors). On = text inside the image, closer to the content - the AI proof-checks spelling.",
+  "brief.gemini-warning": "GEMINI_API_KEY required (Connections tab) - without it, the AI skips illustrations.",
+  "brief.style-hint": "The output must follow this style 100% - overriding any color/font rules in skills/prompts.",
+  "brief.skill-label": "Skill used for editing",
+  "brief.skill-hint": "A saved editing workflow/style - leave empty and the AI picks a suitable skill.",
+  "brief.sfx-hint": "Effect sounds (whoosh, pop…) the AI inserts on the video's beats.",
+  "brief.music-label": "Background music",
+  "brief.music-hint": "The AI picks a track from the music library matching the content's mood, auto-ducking under speech.",
+
+  // ===== Images (shared) =====
+  "images.model-default": "Default (Nano Banana 2)",
+  "images.loading-models": "Loading models…",
+
+  // ===== Asset card =====
+  "assets.title": "Sources & Assets",
+  "assets.ph.image": "e.g. Book cover image, insert when the book is mentioned",
+  "assets.ph.video": "e.g. Main video, talking-head introducing the book",
+  "assets.ph.audio": "e.g. Background music, plays start to finish",
+  "assets.ph.other": "Describe this file so the AI knows when to use it…",
+  "assets.group.video": "Video",
+  "assets.group.image": "Images",
+  "assets.group.audio": "Audio",
+  "assets.group.other": "Other",
+  "assets.delete-title": "Delete asset",
+  "assets.delete-desc-1": "Delete asset",
+  "assets.delete-desc-2": "The file will be removed from the project; this cannot be undone.",
+  "assets.delete-aria": "Delete {name}",
+  "assets.empty": "No assets yet. Upload source videos, images, music… for the AI to use while editing.",
+  "assets.upload": "Upload",
+  "assets.drop-here": "Drop files here to upload…",
+  "assets.drag-hint": "Drag video, image or audio files here - or",
+  "assets.choose-files": "Choose files to upload",
+  "assets.desc-label": "Description for the AI",
+  "assets.saved": "Saved",
+  "assets.save-desc-aria": "Save description for {name}",
+
+  // ===== Phone connect (QR upload) =====
+  "phone.connect": "Connect phone",
+  "phone.title": "Connect phone",
+  "phone.desc":
+    "Scan the QR code with your phone camera to open this project's upload page - videos/photos go straight into Sources & Assets.",
+  "phone.loading": "Getting network address…",
+  "phone.ip-label": "Network (server IP)",
+  "phone.qr-alt": "QR code opening the upload page on your phone",
+  "phone.no-ip":
+    "No LAN IP address found - check that this machine is connected to WiFi/Ethernet.",
+  "phone.note":
+    "Your phone must be on the same WiFi as this machine. The first time, Windows will ask about the firewall - choose Allow.",
+  "phone.keep-awake":
+    "Keep the phone's screen on while uploading large files - once the screen turns off, the browser stops sending.",
+  "phone.tunnel-missing":
+    "cloudflared isn't installed on the server - open the Connections tab to install it.",
+  "phone.tunnel-start": "Turn on Internet (Cloudflare Tunnel)",
+  "phone.tunnel-starting": "Starting…",
+  "phone.tunnel-timeout": "Could not start the tunnel - check the Connections tab.",
+  "phone.tunnel-ready":
+    "Cloudflare Tunnel is running - the QR also works when the phone is on 4G/5G.",
+  "phone.tunnel-use": "Use the Internet link",
+  "phone.tunnel-stop": "Turn off Internet",
+  "phone.tunnel-warn":
+    "Anyone with the Internet link can open this project's upload page - turn it off when you're done.",
+  "phone.tunnel-active":
+    "Internet route via Cloudflare Tunnel - works over 4G/5G. Remember to keep cloudflared running on this machine.",
+  "phone.session-note":
+    "The link only works while this window is open - closing it locks the link.",
+  // Replaces the line above when the Internet route was turned on from this modal
+  "phone.session-note-tunnel":
+    "Closing this window locks the link AND turns off the Internet route you just started.",
+
+  // ===== Incoming upload (SSE "upload" channel) =====
+  "upload.receiving": "Receiving file… {percent}%",
+  "upload.receiving-unknown": "Receiving file…",
+  "upload.error": "Receiving the file failed - try uploading again.",
+
+  // ===== Mobile upload page (/m/<id>) =====
+  "m.title": "Upload files to project",
+  "m.choose": "Choose videos / photos",
+  "m.capture": "Record video / take photo",
+  "m.hint": "Uploaded files go straight into the project's Sources & Assets.",
+  "m.empty": "No files uploaded from this phone yet.",
+  "m.uploading": "Uploading - keep this screen open until it finishes.",
+  "m.keep-awake":
+    "Keep the phone's screen on while uploading large files - once the screen turns off, the browser stops sending.",
+  "m.error": "Error",
+  "m.not-found": "Project not found - check the link/QR code.",
+  "m.expired": "The link has expired - reopen the QR code on the computer.",
+
+  // ===== Color grading =====
+  "grade.aria": "Color-grade {name}",
+  "grade.action": "Color grade",
+  "grade.color-prefix": "Color:",
+  "grade.title": "Color grade - {name}",
+  "grade.original": "Original",
+  "grade.original-comparing": "Original (comparing)",
+  "grade.footer-note": "The AI applies exactly the color you choose here to the whole video while editing.",
+  "grade.save": "Save selection",
+  "grade.creating-previews-aria": "Generating color previews",
+  "grade.creating-previews": "Generating previews… (takes a few seconds)",
+  "grade.rendering": "Rendering…",
+  "grade.compare-title": "Hold to see the original, release to return",
+  "grade.compare": "Compare with original",
+  "grade.hdr-note": "HDR/log footage - the system will normalize (delog) it before applying color.",
+  "grade.templates": "Color templates",
+  "grade.adjust": "Adjust",
+  "grade.reset-all": "Reset all",
+  "grade.reset-aria": "Reset {label}",
+  "grade.preview-note": "The exact preview updates after you release the slider.",
+  "grade.brightness": "Brightness",
+  "grade.contrast": "Contrast",
+  "grade.saturation": "Saturation",
+  "grade.gamma": "Gamma",
+  "grade.temperature": "Color temperature (K)",
+  "grade.vibrance": "Vibrance",
+
+  // ===== Chat thread =====
+  "chat.tool.bash-desc": "Running: {desc}",
+  "chat.tool.bash": "Running a command…",
+  "chat.tool.read-file": "Reading {file}",
+  "chat.tool.read": "Reading a file…",
+  "chat.tool.write-file": "Creating {file}",
+  "chat.tool.write": "Creating a file…",
+  "chat.tool.edit-file": "Editing {file}",
+  "chat.tool.edit": "Editing a file…",
+  "chat.tool.search": "Searching the project…",
+  "chat.tool.skill-name": "Using skill {skill}",
+  "chat.tool.skill": "Using a skill…",
+  "chat.tool.todo": "Updating the work plan",
+  "chat.tool.web": "Searching the web…",
+  "chat.tool.generic": "Using {name}…",
+  "chat.thinking": "Thinking…",
+  "chat.working": "Working…",
+  "chat.done": "Completed",
+  "chat.ended-error": "The session ended with an error",
+  "chat.interrupted": "Session paused - send a message for the AI to continue.",
+  "chat.unknown-error": "The agent hit an unknown error.",
+  "chat.done-in": "Completed in {time}",
+  "chat.stopped-after": "Stopped after {time}",
+  "chat.session": "AI session",
+  "chat.auto-resume": "Auto-resume",
+  "chat.auto-resume-aria": "Auto-resume when interrupted",
+  "chat.auto-resume-title": "Failed/interrupted sessions resume automatically (up to 3 times without progress; edit sessions: 12 - progress resets the count)",
+  "chat.history-error": "Could not load the chat history.",
+  "chat.empty": "Message Claude to get started, e.g. \"Build a TikTok video from the clip in imports/\".",
+  "chat.claude-working": "Claude is working…",
+  "chat.agent-error": "The agent hit an error.",
+  "chat.will-resume": "Will auto-resume…",
+  "chat.step-n": "Step {n}",
+  "chat.placeholder-compact": "Extra notes for the AI…",
+  "chat.placeholder": "Message Claude… (Enter to send, Shift+Enter for a new line)",
+  "chat.stop": "Stop",
+  "chat.send": "Send",
+
+  // ===== SFX (shared preview buttons) =====
+  "sfx.play": "Preview",
+  "sfx.stop": "Stop",
+  "sfx.play-error": "Could not play {name}.",
+
+  // ===== Common (save error) =====
+  "common.save-error": "Could not save.",
+
+  // ===== Images Project (list) =====
+  "imagesPage.subtitle": "Gemini draws the background · Remotion sets text synced to the Style Design",
+  "imagesPage.create": "Create image",
+  "imagesPage.create-short": "Create image",
+  "imagesPage.load-error": "Could not load the image project list.",
+  "imagesPage.junk-confirm": "Delete {items} junk items across {projects} image projects, freeing {size}?\nBackgrounds, final images and project meta are kept.",
+  "imagesPage.junk-freed": "Freed {size} ({items} junk items, {projects} image projects).",
+  "imagesPage.bulk-delete-errors": "Failed to delete {n} image projects.",
+  "imagesPage.bulk-action-errors": "Failed to process {n} image projects.",
+  "imagesPage.selected": "{n} image projects selected",
+  "imagesPage.select-all": "Select all image projects",
+  "imagesPage.col-image": "Image",
+  "imagesPage.col-aspect": "Aspect",
+  "imagesPage.generating": "Generating",
+  "imagesPage.empty": "No image projects yet. Create your first image - Gemini draws the background, Remotion sets text per the Style Design.",
+  "imagesPage.delete-selected-title": "Delete selected image projects",
+  "imagesPage.delete-desc": "All images of the following {n} projects will be permanently deleted and cannot be recovered.",
+  "imagesPage.delete-n": "Delete {n} image projects",
+  "imagesPage.style-note": "Generated images follow the selected Style Design - manage it in the",
+  "imagesPage.name-placeholder": "e.g. Automation campaign background",
+
+  // ===== Image detail =====
+  "imageDetail.job.queued": "Queued",
+  "imageDetail.job.running": "Running",
+  "imageDetail.job.done": "Done",
+  "imageDetail.job.failed": "Failed",
+  "imageDetail.job.canceled": "Canceled",
+  "imageDetail.gemini-tooltip": "Gemini not connected - add GEMINI_API_KEY (or GOOGLE_API_KEY) to .env and restart the server, or use the Upload background button.",
+  "imageDetail.back": "Image projects",
+  "imageDetail.name-required": "The name cannot be empty.",
+  "imageDetail.load-error": "Could not load the image project.",
+  "imageDetail.last-gen-error": "The most recent generation failed.",
+  "imageDetail.final-card": "Final image",
+  "imageDetail.download": "Download",
+  "imageDetail.progress": "Generation progress",
+  "imageDetail.generating-aria": "Generating image",
+  "imageDetail.gen-failed": "Image generation failed.",
+  "imageDetail.view-log": "View log ({n} lines)",
+  "imageDetail.final-alt-name": "Final image - {name}",
+  "imageDetail.no-final": "No final image yet. Generate a background then click Compose - or Generate all.",
+  "imageDetail.steps": "Steps",
+  "imageDetail.step-bg": "Background (Gemini / uploaded)",
+  "imageDetail.bg-alt": "Background image",
+  "imageDetail.final-alt": "Composed image",
+  "imageDetail.generate-card": "Generate",
+  "imageDetail.run-error": "Could not run.",
+  "imageDetail.generate-all": "Generate all",
+  "imageDetail.bg-model": "Background model",
+  "imageDetail.gen-bg": "Background (Gemini)",
+  "imageDetail.need-bg": "A background is required first - generate it with Gemini or upload one.",
+  "imageDetail.compose": "Compose (Remotion)",
+  "imageDetail.gemini-hint": "Gemini is not connected - add GEMINI_API_KEY to .env, or upload a background manually and then Compose.",
+  "imageDetail.upload-bg-title": "Upload a background manually - no Gemini needed",
+  "imageDetail.uploading-bg": "Uploading background…",
+  "imageDetail.upload-bg": "Upload background…",
+  "imageDetail.delete-project": "Delete project",
+  "imageDetail.settings": "Settings",
+  "imageDetail.content": "Content",
+  "imageDetail.save-changes": "Save changes",
+  "imageDetail.delete-title": "Delete image project",
+  "imageDetail.delete-desc-1": "Delete image project",
+
+  // ===== Image form =====
+  "imageForm.kind.background": "Background",
+  "imageForm.kind.3d": "3D illustration",
+  "imageForm.kind.character": "Character",
+  "imageForm.kind.texture": "Liquid Glass texture",
+  "imageForm.kind.product": "Product shot",
+  "imageForm.kind.concept": "Ad concept",
+  "imageForm.aspect.portrait": "Portrait",
+  "imageForm.aspect.landscape": "Landscape",
+  "imageForm.aspect.square": "Square",
+  "imageForm.aspect.feed": "Feed",
+  "imageForm.status.draft": "Draft",
+  "imageForm.status.generating": "Generating",
+  "imageForm.status.done": "Done",
+  "imageForm.status.error": "Error",
+  "imageForm.style-hint": "Generated images must follow this style's colors, fonts, logo and tone.",
+  "imageForm.prompt-label": "Image prompt",
+  "imageForm.prompt-placeholder": "e.g. Digital-marketing background with floating automation icons, modern 3D style...",
+  "imageForm.kind-label": "Image type",
+  "imageForm.model-label": "Background model (Gemini)",
+  "imageForm.model-hint": "List fetched directly from Google · Lite is cheaper/faster · Pro is highest quality",
+  "imageForm.format": "Format",
+  "imageForm.aspect-label": "Aspect ratio",
+  "imageForm.position-label": "Text position",
+  "imageForm.pos-auto": "Automatic",
+  "imageForm.pos-top": "top",
+  "imageForm.pos-middle": "middle",
+  "imageForm.pos-bottom": "bottom",
+  "imageForm.pos-left": "left",
+  "imageForm.pos-center": "center",
+  "imageForm.pos-right": "right",
+  "imageForm.pos-combo": "Align {vert} - {horiz}",
+  "imageForm.position-auto-hint":
+    "Chosen from the aspect ratio: landscape goes middle-left, square bottom-center, portrait bottom-left.",
+  "imageForm.position-hint":
+    "The dark scrim and glow follow the text so it stays readable; the logo moves to the opposite corner.",
+
+  "imageForm.overlay-heading": "Text on image (set by Remotion)",
+  "imageForm.overlay-title": "Text content on the image",
+  "imageForm.overlay-sub": "(set by Remotion - synced to the Design System)",
+  "imageForm.title-label": "Title",
+  "imageForm.title-placeholder": "e.g. Marketing automation",
+  "imageForm.subtitle-label": "Subtitle",
+  "imageForm.subtitle-placeholder": "e.g. Save 10 hours every week",
+  "imageForm.stats-label": "Stats",
+  "imageForm.stat-label-aria": "Stat label {n}",
+  "imageForm.stat-label-placeholder": "Label - e.g. Customers",
+  "imageForm.stat-value-aria": "Stat value {n}",
+  "imageForm.stat-value-placeholder": "e.g. 10K+",
+  "imageForm.stat-remove-aria": "Remove stat {n}",
+  "imageForm.add-stat": "Add stat",
+  "imageForm.cta-placeholder": "e.g. Try it free",
+  "imageForm.show-logo": "Show brand logo",
+  "imageForm.no-text-note": "Gemini-generated backgrounds contain no text - all text is placed by the system to keep brand fonts and colors correct.",
+
+  // ===== Style Design (list) =====
+  "stylesPage.subtitle": "Brand identity (colors, fonts, logo, tone) - every generated product must follow the selected style",
+  "stylesPage.create": "Create style",
+  "stylesPage.load-error": "Could not load the style list.",
+  "stylesPage.delete-errors": "Failed to delete {n} styles.",
+  "stylesPage.selected": "{n} styles selected",
+  "stylesPage.logo-alt": "Logo {name}",
+  "stylesPage.empty": "No styles yet. Create your first style - every generated image and video will follow this identity.",
+  "stylesPage.delete-selected-title": "Delete selected styles",
+  "stylesPage.delete-desc": "Delete these {n} styles? Products pointing at them will fall back to the default style.",
+  "stylesPage.delete-n": "Delete {n} styles",
+  "stylesPage.create-error": "Could not create the style.",
+  "stylesPage.name-label": "Style name",
+  "stylesPage.name-placeholder": "e.g. AIEV dark fintech",
+  "stylesPage.clone-from": "Copy from",
+  "stylesPage.blank": "Blank",
+  "stylesPage.clone-hint": "Pick an existing style to copy all of its colors, fonts, logo, tone and guidelines.",
+
+  // ===== Style detail =====
+  "styleDetail.color.primary": "Primary color",
+  "styleDetail.color.secondary": "Secondary color",
+  "styleDetail.color.background": "Background color",
+  "styleDetail.color.text": "Text color",
+  "styleDetail.color.accent": "Accent color",
+  "styleDetail.palette-aria": "(color picker)",
+  "styleDetail.font.heading": "Heading font",
+  "styleDetail.font.body": "Body font",
+  "styleDetail.font-name-required": "Enter a font name before downloading.",
+  "styleDetail.updated": "Updated {time}",
+  "styleDetail.load-error": "Could not load the style.",
+  "styleDetail.not-found": "Style \"{id}\" not found.",
+  "styleDetail.not-found-detail": "The style may have been deleted - go back to the Style Design list.",
+  "styleDetail.delete-error": "Could not delete the style.",
+  "styleDetail.identity": "Identity",
+  "styleDetail.palette": "Color palette",
+  "styleDetail.effects": "Effects",
+  "styleDetail.gradient-hint": "Highlight text + surfaces use a primary→secondary gradient",
+  "styleDetail.liquid-hint": "Frosted-glass material: stat chips, 3D elements in backgrounds",
+  "styleDetail.type-logo": "Type & Logo",
+  "styleDetail.downloading": "Downloading…",
+  "styleDetail.download-font": "Download this font",
+  "styleDetail.font-ready": "Font file present:",
+  "styleDetail.font-missing": "No file yet - click “Download this font” so renders use the correct font.",
+  "styleDetail.font-browse":
+    "No fonts ship with the system. Type a font name above and it downloads itself; to see the whole catalogue, browse",
+  "styleDetail.font-license-note":
+    "- pick one that covers the characters your language needs. Every font keeps its own license (most of Google Fonts is SIL OFL: free for commercial use, but redistributing the font file means shipping the license with it).",
+  "styleDetail.manual-upload": "or upload a font file manually",
+  "styleDetail.no-font-file": "None - using the system font",
+  "styleDetail.upload-file": "Upload file",
+  "styleDetail.remove-font-aria": "Remove {label} font",
+  "styleDetail.upload-logo": "Upload logo",
+  "styleDetail.tone-placeholder": "e.g. \"modern, trustworthy\"",
+  "styleDetail.guidelines-placeholder": "Extra rules for the AI when generating - e.g. avoid plain white backgrounds, prefer 3D depth…",
+  "styleDetail.setting-default": "Setting…",
+  "styleDetail.set-default": "Set as default",
+  "styleDetail.delete": "Delete style",
+  "styleDetail.note": "Every product (image, video) using this style will follow these colors, fonts, effects, logo and tone 100%.",
+  "styleDetail.delete-desc-1": "Delete style",
+  "styleDetail.delete-desc-2": "Products pointing at this style will fall back to the default style.",
+
+  // ===== Common (misc) =====
+  "common.back-to-list": "List",
+  "common.no-undo": "This action cannot be undone.",
+
+  // ===== Sound Effects =====
+  "sfx.subtitle": "Shared library at assets/sound-effects/",
+  "sfx.add": "Add sound effect",
+  "sfx.load-error": "Could not load the sound effect library.",
+  "sfx.search-placeholder": "Search by name, tag, description…",
+  "sfx.search-aria": "Search sound effects",
+  "sfx.col-file": "File name",
+  "sfx.col-duration": "Duration",
+  "sfx.col-desc": "Description",
+  "sfx.recommend": "Mark as recommended",
+  "sfx.unrecommend": "Remove from recommended",
+  "sfx.edit-aria": "Edit {name}",
+  "sfx.edit-title": "Edit description & tags",
+  "sfx.empty": "The library is empty. Add sound effects (whoosh, pop, click…) to use during video assembly.",
+  "sfx.no-match": "No sound effects match \"{q}\".",
+  "sfx.recommended-title": "Recommended ({n})",
+  "sfx.rec-empty": "No recommended sounds yet. Click the star on a sound below to add it to the recommended set - the AI will prefer these.",
+  "sfx.library-title": "Library ({n})",
+  "sfx.all-in-rec": "All sound effects matching the filter are in the recommended section.",
+  "sfx.file-label": "Audio file",
+  "sfx.tags-label": "Tags (comma-separated)",
+  "sfx.tags-placeholder": "e.g. whoosh, transition, fast",
+  "sfx.desc-placeholder": "When to use it, how it feels…",
+  "sfx.edit-modal-title": "Edit: {name}",
+  "sfx.edit-fallback": "Edit sound effect",
+  "sfx.rec-tag-hint": "The \"hay-dung\" tag marks a sound as part of the recommended set - use the star button to toggle it quickly.",
+  "sfx.delete-title": "Delete sound effect",
+  "sfx.delete-desc-1": "Delete sound effect",
+  "sfx.delete-desc-2": "The file will be removed from the library; this cannot be undone.",
+
+  // ===== Background music =====
+  "music.title": "Background music ({n})",
+  "music.add": "Add background music",
+  "music.add-short": "Add music",
+  "music.load-error": "Could not load the music library.",
+  "music.empty": "No tracks yet. Add INSTRUMENTAL music (tags = mood: nang-luong, chill, cam-hung…) - the AI picks a fitting track and auto-ducks under speech.",
+  "music.col-mood": "Mood (tags)",
+  "music.file-label": "Audio file (INSTRUMENTAL music)",
+  "music.tags-label": "Mood - tags (comma-separated)",
+  "music.tags-placeholder": "e.g. nang-luong, cam-hung, vui-ve",
+  "music.desc-placeholder": "What kind of video it suits, fast or slow tempo…",
+  "music.edit-fallback": "Edit track",
+  "music.delete-title": "Delete track",
+  "music.delete-desc-1": "Delete track",
+
+  // ===== Prompts =====
+  "prompts.subtitle": "Reusable prompt templates - drop one into a project's Edit request with a single pick.",
+  "prompts.create": "Create prompt template",
+  "prompts.edit-title": "Edit prompt template",
+  "prompts.editor-subtitle": "Templates can be dropped into the Edit request field of a project's brief.",
+  "prompts.save-error": "Could not save the prompt template.",
+  "prompts.name-label": "Template name",
+  "prompts.name-placeholder": "e.g. Professional TikTok, gentle sound",
+  "prompts.content-label": "Prompt content",
+  "prompts.content-placeholder": "Describe in detail how you want the AI to edit - style, cut pacing, kinetic text, sound effects…",
+  "prompts.load-error": "Could not load the prompt template list.",
+  "prompts.edited": "Edited {time}",
+  "prompts.delete-aria": "Delete prompt template {name}",
+  "prompts.empty": "No prompt templates yet. Create one to reuse across projects.",
+  "prompts.delete-title": "Delete prompt template",
+  "prompts.delete-desc-1": "Delete prompt template",
+
+  // ===== Skills =====
+  "skills.subtitle": "Claude's production know-how - markdown files in .claude/skills/",
+  "skills.create": "Create skill",
+  "skills.create-short": "Create skill",
+  "skills.create-ai": "Create skill with AI",
+  "skills.next-session-note": "Claude picks up new skills in its next working session.",
+  "skills.load-error": "Could not load the skill list.",
+  "skills.empty": "No skills yet. Create skills to build up Claude's video-production know-how.",
+  "skills.name-label": "Skill name (kebab-case)",
+  "skills.kebab-error": "The name must be kebab-case: lowercase letters, numbers, hyphens.",
+  "skills.template-note": "The skill is initialized with a frontmatter template (name + description) for you to keep editing.",
+  "skills.detail-subtitle": ".claude/skills - new/edited skills are picked up by Claude in its next session.",
+  "skills.action-error": "Skill operation failed.",
+  "skills.delete-title": "Delete skill",
+  "skills.delete-desc-1": "Delete skill",
+
+  // ===== Create skill with AI =====
+  "skillGen.review-title": "Review skill draft",
+  "skillGen.edit-answers": "Edit answers",
+  "skillGen.regenerate": "Regenerate",
+  "skillGen.regenerating": "Regenerating…",
+  "skillGen.save": "Save skill",
+  "skillGen.gen-error": "Could not generate the skill.",
+  "skillGen.goal-label": "Purpose & video type *",
+  "skillGen.goal-placeholder": "e.g. TikTok tech product review, talking-head + b-roll, fast pacing",
+  "skillGen.platform": "Platform",
+  "skillGen.duration": "Target length",
+  "skillGen.aspect": "Frame format",
+  "skillGen.style": "Style & pacing",
+  "skillGen.style-placeholder": "e.g. youthful, fast cuts, lots of kinetic typography",
+  "skillGen.caption.karaoke": "Word-by-word karaoke",
+  "skillGen.caption.sentence": "By sentence",
+  "skillGen.caption.none": "None",
+  "skillGen.base": "Reference skill template",
+  "skillGen.no-base": "No template",
+  "skillGen.name-label": "Skill name (optional)",
+  "skillGen.name-hint": "Leave empty and the AI names it.",
+  "skillGen.sfx-sync": "Timestamp-synced sound effects",
+  "skillGen.notes": "Extra notes",
+  "skillGen.notes-placeholder": "Specific requirements, branding rules, things to avoid…",
+  "skillGen.generating-aria": "Generating skill",
+  "skillGen.generating": "Claude is drafting the skill - this may take 1–3 minutes…",
+  "skillGen.bad-format": "The AI returned a malformed skill - fix it manually and save.",
+  "skillGen.save-error": "Could not save the skill.",
+  "skillGen.draft-name": "Skill name",
+  "skillGen.name-conflict": "A skill with this name already exists - pick another name and save again.",
+  "skillGen.content-label": "SKILL.md content",
+  "skillGen.tokens-used": "Used {n} tokens.",
+  "skillGen.regenerating-aria": "Regenerating skill",
+  "skillGen.regenerating-note": "Claude is redrafting the skill - this may take 1–3 minutes…",
+  "skillGen.regen-error": "Could not regenerate the skill.",
+
+  // ===== Settings =====
+  "config.subtitle": "Hardware acceleration and render settings",
+  "config.keep": "Keep as-is",
+  "config.recommended-title": "Recommended for this machine",
+  "config.recommended-aria": "recommended",
+  "config.not-detected": "Not detected",
+  "config.no-gpu-encode": "No encode acceleration",
+  "config.hardware": "Detected hardware",
+  "config.os": "Operating system:",
+  "config.nvenc-badge": "NVENC (NVIDIA GPU encode)",
+  "config.cpu-only": "CPU only",
+  "config.portable-note": "Move the project to another machine (e.g. a MacBook) - this tab auto-detects and shows the right options for it.",
+  "config.worker-hint": "This machine: {threads} CPU threads, {ram}GB RAM - recommended {n}",
+  "config.recommend-n": "Recommended {n}",
+  "config.gpu-note": "This machine has no GPU encoder (NVENC/VideoToolbox) - using libx264 on the CPU.",
+  "config.load-error": "Could not load the render settings.",
+  "config.save-error": "Could not save the settings.",
+  "config.render-settings": "Render settings",
+  "config.applied": "Applied - effective immediately, no restart needed",
+  "config.restore-defaults": "Restore defaults",
+  "config.workers": "Chrome workers (HyperFrames)",
+  "config.workers-aria": "Number of Chrome workers",
+  "config.browser-gpu": "GPU for capture (browser)",
+  "config.browser-gpu-hint": "Chrome uses the GPU for rendering; turn off if renders fail",
+  "config.gpu-draft": "GPU encode for drafts",
+  "config.gpu-draft-hint": "NVENC/VideoToolbox - fast; drafts don't need maximum quality",
+  "config.gpu-final": "GPU encode for FINAL",
+  "config.gpu-final-hint": "Much faster but slightly below libx264 at the same file size - usually indistinguishable for TikTok uploads",
+  "config.fast-capture-hint": "~2x capture speed; only truly works on macOS + GPU, harmless fallback elsewhere",
+  "config.remotion-hint": "Parallel render tabs when Remotion assembles the timeline - recommended {n}",
+  "config.queue-concurrency": "Concurrent render jobs (queue)",
+  "config.queue-hint": "Parallel across different projects; keep 1 on weak machines",
+  "config.queue-aria": "Number of concurrent render jobs",
+  "config.draft-fps-hint": "15fps drafts are nearly twice as fast, just for pacing review; finals always use the project fps",
+  "config.draft-fps-aria": "Draft FPS",
+  "config.update-channel": "Update channel",
+  "config.update-channel-hint": "Stable only offers published releases - recommended. Latest takes every commit pushed to main, so fixes land sooner but it can be unstable.",
+  "config.update-channel-aria": "System update channel",
+  "config.ai-max-attempts": "How many times the AI may redo a video",
+  "config.ai-max-attempts-hint":
+    "If a run ends without a final video, the system lets the AI start over, up to this many times. Each redo costs nearly as much as a brand new video, so 3-4 is the sweet spot.",
+  "config.ai-max-attempts-aria": "How many times the AI may redo a video",
+  "config.ai-max-turns": "Step limit for a single run",
+  "config.ai-max-turns-hint":
+    "One step is the AI calling a tool and reading the result. Hitting the limit stops the run even mid-task - lower it to cut off runs that wander, but under 50 a hard video never finishes.",
+  "config.ai-max-turns-aria": "Step limit for a single AI run",
+
+  // ===== Connections =====
+  "conn.subtitle": "Manage AI providers and API keys",
+  "conn.role.edit": "Video editing",
+  "conn.role.chat": "Chat",
+  "conn.role.image": "Image generation",
+  "conn.role.video": "AI video generation",
+  "conn.role.stt": "Transcription",
+  "conn.connected-sub": "Connected · Subscription",
+  "conn.connected-key": "Connected · API key",
+  "conn.get-key": "Get a key here",
+  "conn.key-aria": "API key for {name}",
+  "conn.show-key": "Show key",
+  "conn.hide-key": "Hide key",
+  "conn.save-key": "Save key",
+  "conn.change-key": "Change key",
+  "conn.delete-key": "Delete key",
+  "conn.saved": "Saved - effective immediately, no restart needed.",
+  "conn.testing": "Testing…",
+  "conn.test": "Test connection",
+  "conn.claude-note": "Recommended: sign in to Claude Code (VSCode) to use your subscription - no API fees. An API key is only needed when signing in is not possible.",
+  "conn.delete-key-title": "Delete API key",
+  "conn.delete-desc-1": "Delete the API key for",
+  "conn.delete-desc-2": "The provider loses its connection if no other auth source remains.",
+  "conn.load-error": "Could not load the connection list.",
+  "conn.save-key-error": "Could not save the API key.",
+  "conn.delete-key-error": "Could not delete the API key.",
+  "conn.empty": "The server has no providers configured - check the backend.",
+
+  // ===== Cloudflare Tunnel (Connections page) =====
+  "tunnel.title": "Cloudflare Tunnel",
+  "tunnel.desc":
+    "Expose the dashboard to the Internet - use it remotely over 4G/5G, no shared WiFi needed.",
+  "tunnel.not-installed": "cloudflared is not installed on the server machine.",
+  "tunnel.install-cmd": "Install with:",
+  "tunnel.install-link": "Or download cloudflared here",
+  "tunnel.domain-label": "Custom domain (TUNNEL_DOMAIN)",
+  "tunnel.domain-hint":
+    "Leave empty → Quick Tunnel with a random *.trycloudflare.com URL. A custom domain requires a one-time setup: cloudflared tunnel login / create / route dns.",
+  "tunnel.domain-saved": "Domain saved - effective immediately.",
+  "tunnel.start": "Start tunnel",
+  "tunnel.stop": "Stop tunnel",
+  "tunnel.starting": "Starting…",
+  "tunnel.stopping": "Stopping…",
+  "tunnel.running": "Running",
+  "tunnel.stopped": "Not running",
+  "tunnel.mode-named": "Custom domain",
+  "tunnel.mode-quick": "Quick Tunnel",
+  "tunnel.url-label": "Active URL",
+  "tunnel.url-pending": "Waiting for the URL from Cloudflare…",
+  "tunnel.qr-note": "The phone-connect QR will use this address automatically.",
+  "tunnel.copy": "Copy",
+  "tunnel.copied": "Copied",
+  "tunnel.log": "cloudflared log",
+  "tunnel.warn-public":
+    "The dashboard has no login yet - when going public, wrap it with Cloudflare Access.",
+  "tunnel.load-error": "Could not load the tunnel status.",
+  "tunnel.domain-error": "Could not save the tunnel domain.",
+  "tunnel.start-error": "Could not start the tunnel.",
+  "tunnel.stop-error": "Could not stop the tunnel.",
+
+  // ===== QC tự động + Gói xuất bản =====
+  "qc.safe-area-hint": "Frames with the platform UI zones outlined in red - click to enlarge and check whether any text or key band falls inside the red zone (the machine cannot tell text from footage).",
+  "qc.safe-area-open": "Open covered-zone frame",
+
+  // Automatic QC (card on the video project detail page)
+  "qc.title": "Automatic QC",
+  "qc.status-pass": "Pass",
+  "qc.status-warn": "Warning",
+  "qc.status-fail": "Fail",
+  "qc.run": "Run QC",
+  "qc.rerun": "Re-run",
+  "qc.running": "Measuring…",
+  "qc.slow-note": "Measuring with ffmpeg, this can take 1-2 minutes.",
+  "qc.empty":
+    "QC measures loudness, looks for black frames and frozen sections, and checks whether text falls into the area covered by the platform UI.",
+  "qc.checked-at": "Measured {time}",
+  "qc.file-title": "Measured file: {file}",
+  "qc.platform": "Safe area: {platform}",
+  "qc.stale":
+    "These results are outdated - the file was re-rendered after the last run. Run QC again for accurate numbers.",
+  "qc.fail-blocks-final":
+    "Some checks failed: the final render stays blocked until they are fixed and QC is run again.",
+  "qc.load-error": "Could not load the QC results.",
+  "qc.run-error": "Running QC failed.",
+  "qc.err-no-video": "No video to check yet - render a draft first.",
+  "qc.err-file-not-found": "Could not find the video file to measure.",
+  "qc.err-timeout": "QC ran for too long and was stopped. Try again or shorten the video.",
+  "qc.gate-label": "Block the final render while QC has not passed",
+  "qc.gate-hint":
+    "On (default): final render jobs are rejected while any QC check fails. Turn it off and the AI can export a final even with measurable problems such as off loudness, black frames or text hidden behind the platform UI.",
+
+  // Publish pack (subtitles + posting metadata)
+  "publish.title": "Publish pack",
+  "publish.generate": "Create publish pack",
+  "publish.regenerate": "Rewrite",
+  "publish.generating": "AI is writing…",
+  "publish.empty":
+    "Generates .srt/.vtt subtitles and writes a title, description and hashtags for TikTok, YouTube and Facebook following the project Style Design.",
+  "publish.no-transcript":
+    "This project has no transcript yet - run the AI edit first to create one, then come back to build the publish pack.",
+  "publish.load-error": "Could not load the publish pack.",
+  "publish.error": "Building the publish pack failed.",
+  "publish.generated-at": "Written {time}",
+  "publish.from-transcript": "Source: {file}",
+  "publish.copy-title": "Copy title",
+  "publish.copy-desc": "Copy description",
+  "publish.copy-tags": "Copy hashtags",
+  "publish.copied": "Copied",
+  "publish.subtitles": "Subtitles",
+  "publish.download-srt": "Download .srt",
+  "publish.download-vtt": "Download .vtt",
+  "publish.cues": "{n} subtitle lines",
+
+  // ===== Cắt tự động (card báo cáo auto-trim) =====
+  "autotrim.title": "Auto-trim",
+  "autotrim.verdict-pass": "Passed",
+  "autotrim.verdict-fail": "Not there yet",
+  "autotrim.trimmed-at": "Trimmed {time}",
+  "autotrim.duration": "Duration",
+  "autotrim.duration-value": "{before} → {after}",
+  "autotrim.removed": "Removed",
+  "autotrim.removed-value": "{total} across {ranges} ranges",
+  "autotrim.removed-split": "Of which",
+  "autotrim.removed-split-value": "silence {silence} + approved dead weight {approved}",
+  "autotrim.level": "Level / threshold",
+  "autotrim.level-value": "{level} · {db}dB",
+  "autotrim.residual": "Dead air left",
+  "autotrim.residual-value": "{total}, longest {longest}",
+  "autotrim.fail-no-reason":
+    "Below the level you picked, but the report gives no reason - check the auto-trim job log.",
+
+  // ===== Duyệt draft + Cắt short + Tái chế tỉ lệ =====
+  "review.title": "Review draft",
+  "review.no-draft": "No draft to review yet - run a draft render first",
+  "review.watching-final":
+    "No draft yet, so you are watching the final cut - notes still pin to these timestamps.",
+  "review.pin-at": "Pin at {time}",
+  "review.pin-hint": "Click a note timestamp to jump the video to that spot.",
+  "review.note-placeholder": "What needs fixing here?",
+  "review.add": "Add",
+  "review.chars-left": "{n} characters left",
+  "review.status-open": "Open",
+  "review.status-sent": "Sent",
+  "review.status-resolved": "Done",
+  "review.mark-resolved": "Mark as done",
+  "review.edit-note": "Edit note",
+  "review.delete-note": "Delete note",
+  "review.delete-confirm": "Delete this note?",
+  "review.seek-aria": "Jump the video to {time}",
+  "review.no-notes":
+    "No notes yet - watch the draft and pin a note wherever something needs fixing.",
+  "review.extra-notes": "Extra notes (optional)",
+  "review.extra-placeholder": "Anything else the AI should know…",
+  "review.send": "Send to AI ({n})",
+  "review.sending": "Sending…",
+  "review.sent-ok":
+    "Sent {n} notes to the AI - follow the progress in the project AI panel.",
+  "review.need-open": "Pin at least one note before sending.",
+  "review.busy":
+    "The project AI session is running - wait for it to finish before sending notes.",
+  "review.load-error": "Could not load the notes.",
+  "review.action-error": "Could not save the change to this note.",
+  "review.send-error": "Could not send the notes to the AI.",
+
+  "clips.title": "Cut shorts from a long video",
+  "clips.count": "Clips",
+  "clips.min-sec": "Min length (sec)",
+  "clips.max-sec": "Max length (sec)",
+  "clips.suggest": "Suggest clips",
+  "clips.suggesting": "Analyzing…",
+  "clips.suggest-hint":
+    "The AI is reading the transcript to find segments that stand on their own - this can take a few minutes.",
+  "clips.none":
+    "No clips yet - hit \"Suggest clips\" and the AI will pick the best segments from the transcript.",
+  "clips.select-all": "Select all",
+  "clips.select-aria": "Select clip {title}",
+  "clips.suggested-at": "Suggested {time}",
+  "clips.score": "Score {score}/10",
+  "clips.create": "Create projects ({n})",
+  "clips.creating": "Creating…",
+  "clips.auto-edit": "Start AI edit right away",
+  "clips.auto-edit-hint":
+    "At most 3 projects start right away - the rest are created and wait for you to hit edit.",
+  "clips.created": "Created {n} child projects:",
+  "clips.load-error": "Could not load the clip list.",
+  "clips.suggest-error": "Could not suggest clips.",
+  "clips.create-error": "Could not create the child projects.",
+
+  "clips.repurpose-title": "Repurpose aspect ratio",
+  "clips.repurpose-desc":
+    "A repurposed copy carries every scene and asset into the new frame, and the AI rebuilds the layout to fit it.",
+  "clips.same-aspect": "The project is already in this aspect ratio",
+  "clips.new-name": "New project name (optional)",
+  "clips.new-name-placeholder": "Leave empty to let the system name it",
+  "clips.repurpose-create": "Create repurposed copy",
+  "clips.repurpose-creating": "Creating…",
+  "clips.repurpose-done": "Repurposed copy created:",
+  "clips.repurpose-error": "Could not create the repurposed copy.",
+
+  // ===== Auto cut videos =====
+  // Tab name chosen by the user - kept in English in both languages, the same
+  // way "Videos Project" is handled.
+  "nav.auto-cut": "Auto cut videos",
+
+  "autocut.subtitle":
+    "Cut one long video into several short ones - every segment becomes a ready-made Videos Project.",
+  "autocut.new": "Create cutting session",
+  "autocut.empty":
+    "No cutting session yet. Drop in a long video, pick how to cut it, and the system slices it into short videos with a Videos Project ready for each one.",
+  "autocut.load-error": "Could not load the cutting sessions.",
+  "autocut.col-mode": "Cut by",
+  "autocut.col-aspect": "Aspect",
+  "autocut.col-segments": "Segments / Projects",
+  "autocut.delete-aria": "Delete cutting session {name}",
+  "autocut.delete-title": "Delete cutting session",
+  "autocut.delete-desc":
+    "Deleting this session only removes its cutting plan and temporary files. The Videos Projects already created from it are NOT deleted.",
+
+  "autocut.status.draft": "Draft",
+  "autocut.status.planning": "Analyzing",
+  "autocut.status.planned": "Planned",
+  "autocut.status.cutting": "Cutting",
+  "autocut.status.done": "Done",
+  "autocut.status.failed": "Failed",
+
+  "autocut.mode.time": "By duration",
+  "autocut.mode.time-desc": "Split the video into segments of equal length.",
+  "autocut.mode.ai": "Let AI cut",
+  "autocut.mode.ai-desc":
+    "The AI reads the transcript and picks the best segments itself.",
+  "autocut.mode.prompt": "Cut on request",
+  "autocut.mode.prompt-desc":
+    "Describe what you want and the AI finds those parts in the transcript.",
+
+  "autocut.layout.auto": "Automatic",
+  "autocut.layout.auto-desc":
+    "The system looks at the frame: a person gets cropped in tight, a screen or text is scaled down so the whole frame stays.",
+  "autocut.layout.crop": "Crop to the subject",
+  "autocut.layout.crop-desc":
+    "The subject is large and fills the frame - the edges are lost.",
+  "autocut.layout.fit": "Keep the whole frame",
+  "autocut.layout.fit-desc":
+    "Nothing is lost, the empty space is filled with a background - the subject ends up small.",
+
+  "autocut.bg.gemini": "AI background",
+  "autocut.bg.gemini-desc":
+    "Gemini paints a background following the selected Style Design.",
+  "autocut.bg.blur": "Blurred background",
+  "autocut.bg.blur-desc": "The video frame itself, scaled up and blurred.",
+  "autocut.bg.style": "Style color",
+  "autocut.bg.style-desc": "A flat background using the Style Design color.",
+
+  "autocut.aspect.keep": "Keep source",
+  "autocut.aspect.keep-size": "Source frame",
+
+  "autocut.create-title": "Create cutting session",
+  "autocut.source": "Source video",
+  "autocut.source-pick": "Pick a video from imports/",
+  "autocut.source-none": "No video in imports/ yet",
+  "autocut.sources-error": "Could not load the source videos.",
+  "autocut.upload": "Upload a video",
+  "autocut.uploading": "Uploading…",
+  "autocut.upload-error": "Could not upload the video.",
+  "autocut.name": "Session name (optional)",
+  "autocut.name-placeholder": "Leave empty to use the file name",
+  "autocut.how": "How to cut",
+  "autocut.minutes": "Minutes per segment",
+  "autocut.overlap": "Overlap (seconds)",
+  "autocut.count": "Segments",
+  "autocut.min-sec": "Shortest (seconds)",
+  "autocut.max-sec": "Longest (seconds)",
+  "autocut.request": "Your request",
+  "autocut.request-placeholder":
+    "e.g. take the parts about pricing and promotions",
+  "autocut.request-required": "Type a request before creating the session.",
+  "autocut.time-hint": "Each segment runs {minutes}.",
+  "autocut.aspect": "Aspect ratio",
+  "autocut.layout": "Fitting into the frame",
+  "autocut.background": "Background filler",
+  "autocut.style": "Style Design",
+  "autocut.keep-note":
+    "The source frame is kept as is - no reframing, so there is nothing to fit.",
+  "autocut.options": "Options",
+  "autocut.transcribe": "Create a transcript",
+  "autocut.transcribe-hint":
+    "With a transcript each child project already has captions to build on.",
+  "autocut.transcribe-locked":
+    "This mode has to read the transcript to pick segments, so it is always on.",
+  "autocut.auto-edit": "Start AI edit right after cutting",
+  "autocut.auto-edit-hint":
+    "At most 3 projects start right away - the rest are created and wait for you to hit edit.",
+  "autocut.brief-title": "Edit setup for the clips you cut",
+  "autocut.brief-card": "Edit setup",
+  "autocut.brief-hint":
+    "Set it once for the whole session - every clip you cut uses it, so you never have to open each project to redo it.",
+  "autocut.brief-autosave": "Changes are saved automatically.",
+  "autocut.brief-locked":
+    "The session is running - you can edit this once the current step finishes.",
+  "autocut.brief-applies-next":
+    "This setup only applies to segments cut FROM NOW ON. For projects already created, edit the brief inside that project.",
+  "autocut.create": "Create cutting session & analyze",
+  "autocut.creating": "Creating…",
+  "autocut.create-error": "Could not create the cutting session.",
+  "autocut.plan-error-created":
+    "The session was created but the analysis step could not start.",
+  "autocut.open-session": "Open session",
+
+  "autocut.back": "All sessions",
+  "autocut.not-found": "This cutting session was not found.",
+  "autocut.action-error": "Could not run this step.",
+  "autocut.save-error": "Could not save the changes to this session.",
+  "autocut.step-plan": "Analyzing the video",
+  "autocut.step-cut": "Cutting and creating projects",
+  "autocut.planning-hint":
+    "Reading the video and picking segments. On a long video the transcript step can take a few minutes.",
+  "autocut.cutting-hint":
+    "Cutting, reframing and creating a Videos Project for every segment.",
+  "autocut.failed": "The cutting session failed.",
+  "autocut.plan": "Analyze",
+  "autocut.replan": "Analyze again",
+  "autocut.cut": "Cut & create projects",
+  "autocut.cut-n": "Cut & create projects ({n})",
+  "autocut.segments": "Segments",
+  "autocut.no-segment":
+    "No segment yet - hit Analyze and the system will read the video and propose a cutting plan.",
+  "autocut.select-all": "Select all",
+  "autocut.selected-count": "{n} segments selected",
+  "autocut.created-count": "{n} projects created",
+  "autocut.select-aria": "Select segment {title}",
+  "autocut.title-aria": "Title of segment {n}",
+  "autocut.score": "Score {score}/10",
+  "autocut.open-project": "Open project",
+  // ----- Three-column workspace on the cut-session detail page -----
+  "autocut.card-config": "Session setup",
+  "autocut.card-result": "Child projects",
+  "autocut.card-job": "Job log",
+  "autocut.job": "Job",
+  "autocut.job-no-log": "No log yet.",
+  "autocut.job-log-error": "Could not load the job log.",
+  "autocut.no-segment-short": "No segments yet",
+  "autocut.no-project-yet":
+    "No child projects yet - review the cut plan, then hit Cut & create projects.",
+  "autocut.no-project-yet-short": "No child projects",
+  "autocut.config-readonly":
+    "How to cut and the frame size are fixed when the session is created - create a new session to change them.",
+  "autocut.transcript-file": "Transcript",
+
+  // ===== Chú thích chức năng (nút i) =====
+  "help.aria": "What this feature does",
+  // ===== ANCHOR:HELP_PROJECT =====
+  "help.pipeline.title": "The 6 stages of a video",
+  "help.pipeline.body":
+    "Shows where the video currently is: Analyze, Build scenes, Render draft, Assemble draft, Render final, Done.\nThe stage is derived from the files on disk and the jobs running right now. A pulsing dot means work is happening in the background and you do not need to do anything.\nStuck on one stage for a long time usually means a failed job or the AI waiting on your review - check the AI panel on the right or the Render Queue page.",
+  "help.render-final.title": "What does Render final do?",
+  "help.render-final.body":
+    "Exports the finished high quality video into the outputs folder - this is the file you actually publish.\nIt is blocked if automated QC has not run, the QC result is stale, or any check still fails; fix the issue and re-run QC first. A successful draft assembly is also required beforehand.\nA final render costs tens of minutes of machine time, so only hit it once the draft really looks right.",
+  "help.start-edit.title": "Start an AI edit",
+  "help.start-edit.body":
+    "Hands the whole build to the AI: it reads the brief and assets and keeps working until a final video exists, and you watch it live in the panel on the right.\nEvery click opens a new session and burns AI tokens; older sessions stay available for review.\nIf you only want a few fixes on an existing cut, the Review draft card is much faster and cheaper.",
+  "help.video-output.title": "Video output",
+  "help.video-output.body":
+    "Where you watch the latest finished video of this project - zoom in for a large view or open the file directly in the outputs folder.\nWhile the AI is building, this area shows a progress bar; the video appears on its own once the render is done, no page reload needed.",
+  "help.thumbnail.title": "Create thumbnail",
+  "help.thumbnail.body":
+    "Builds a cover image for the video: the system grabs a frame from the video, asks Gemini to paint a background in your Style Design, then composites the title and logo on top.\nThe background step calls Gemini, so it costs money on the API key set in Connections. Without a key you still get a thumbnail, just a simple gradient background from the style.\nIt takes about a minute and you have to wait for the dialog to finish. Running it again overwrites the previous cover.",
+  "help.publish.title": "Publishing pack",
+  "help.publish.body":
+    "Writes ready to use titles, descriptions and hashtags for TikTok, YouTube and Facebook, plus .srt/.vtt subtitles to download. Every block has its own copy button so you can paste straight into the platform.\nIt needs the video transcript, so run an AI edit first; without a transcript the system tells you and generates nothing.\nRegenerating replaces the previous text entirely, so copy anything you want to keep first.",
+  "help.review.title": "Review the draft",
+  "help.review.body":
+    "Watch the draft and pin a note at the exact second you are looking at, like \"text at 00:12 loses its diacritics\".\nWhen you send them, the AI gets the whole batch with timecodes and fixes only those spots instead of rebuilding the video - much faster and far fewer tokens.\nSending is disabled while an AI session for this project is running; wait for the current one to finish.",
+  "help.clips.title": "Cut shorts from a long video",
+  "help.clips.body":
+    "The AI reads the transcript, scores it and proposes the segments worth turning into shorts. Tick the ones you want and the system spins up a separate project for each.\nIt needs a transcript, so the video must go through an AI edit first. Each analysis run calls the AI, takes 1-3 minutes and costs tokens.\nThe source project is untouched - each short is a new project you can delete on its own.",
+  "help.repurpose.title": "Repurpose the aspect ratio",
+  "help.repurpose.body":
+    "Creates a new project with the same content in a different frame, for example turning the vertical TikTok cut into a landscape version for YouTube.\nOnly the source video and the brief are copied over; the layout still has to be re-edited for the new frame - tick \"AI edits automatically\" to start that right away.\nThe ratio the project already uses is disabled.",
+  "help.brief.title": "Edit brief",
+  "help.brief.body":
+    "This is the spec the AI reads before it builds anything: what the source footage is, what you want done, subtitles, highlights, key layout, style and sound effects on or off.\nThe clearer it is, the less the AI has to guess - the source description and the edit request matter most.\nThe brief is stored with the project and reused by every later session. Hitting start edit also saves whatever you were typing.",
+  "help.project-assets.title": "Sources & assets",
+  "help.project-assets.body":
+    "Where you drop the raw video, images and audio for the AI to use - drag onto the card or use the upload button. Connect phone shows a QR code so you can send footage straight from your phone over the same WiFi.\nGive every file a one line description: that is exactly what the AI reads to decide which shot goes where. Videos also get a color grading button to approve the look up front.\nDeleting an asset deletes the real file in the project and cannot be undone.",
+  "help.clean-junk.title": "Clean junk files",
+  "help.clean-junk.body":
+    "Removes the intermediate files produced while building: scene renders, verification frames, color preview cache, the assembled draft and the staging folder - usually the bulk of the disk usage.\nSource files (assets, scenes, brief, meta) and the final video in outputs are left untouched.\nThe system asks for confirmation and shows how much space it frees. Anything deleted has to be re-rendered if you need it again, and cleaning is refused while the project still has a running job.",
+  "help.clone.title": "Duplicate project",
+  "help.clone.body":
+    "Creates a new project with a full copy of this one's scenes, assets, brief and transcript - handy when you want a variant without touching what already works.\nRenders and exported videos are not copied, so the duplicate starts in an unbuilt state.\nYou land straight in the new project; just adjust the parts of the brief that differ and let the AI run, no need to rebuild from scratch.",
+  "help.qc.title": "What is automated QC?",
+  "help.qc.body": "Measures the draft with ffmpeg before the final render: loudness, clipping, black frames stuck between scenes, frozen picture, silent tail, audio/video drift.\nIf any check fails the system BLOCKS the final render, because a final takes tens of minutes and catching a fault there is the most wasteful outcome.\nThe covered-zone check cannot be decided by machine, so the system exports frames with the zones outlined in red for you to judge.",
+
+  // ===== ANCHOR:HELP_PAGES =====
+  "help.phone-tunnel.title": "What does going online do?",
+  "help.phone-tunnel.body": "By default the QR code only works while the phone and the computer are on the SAME WiFi. This button opens a path from the internet to this machine through Cloudflare, so a phone on 4G/5G or somewhere else entirely can still send video and images straight into the project.\nWith no domain configured the system uses a Quick Tunnel: a random xxx.trycloudflare.com address that CHANGES every time you start it. Set a domain on the Connections tab if you want a fixed address.\nOn safety: the upload link carries its own token and dies the moment you close this QR window, so an old link cannot get back in. The tunnel itself, however, KEEPS RUNNING until you stop it - closing the QR window does not stop it.",
+  "help.autocut.title": "What is Auto cut videos?",
+  "help.autocut.body":
+    "Feed in one long video and the system splits it into short segments, creating a separate Videos Project for each so you can keep editing.\nUse it when you have a livestream, podcast or long talk recording and want several clips for social.\nA session only cuts and creates projects - the text, captions and sound effects are still built inside each project afterwards.",
+
+  "help.autocut-mode.title": "How do the three cutting modes differ?",
+  "help.autocut-mode.body":
+    "By duration: splits evenly by the number of minutes you set - the fastest, since nothing has to understand the content.\nAI picks the best parts: reads the speech and scores each stretch, so it must transcribe first and takes longer than duration cutting, but the segments usually hold a complete thought.\nBy request: same as AI picking, except you describe what to look for, e.g. only the parts about pricing.",
+
+  "help.autocut-aspect.title": "What is the aspect ratio for?",
+  "help.autocut-aspect.body":
+    "Sets the frame of the clips you cut out: 9:16 for TikTok/Reels/Shorts, 16:9 for YouTube, 1:1 and 4:5 for Facebook/Instagram feeds.\nPick Keep original and the clips stay in the source frame, skipping the reframing step entirely, which is noticeably faster.\nAny other ratio means every segment has to be re-encoded, so a long video with many segments takes considerably more time.",
+
+  "help.autocut-layout.title": "Crop, fit or auto?",
+  "help.autocut-layout.body":
+    "Decides how the source picture is placed into the new frame when the two ratios do not match.\nCrop zooms in and trims the sides: the subject is large and reads well on a phone, but the edges are lost - text or objects near the border can disappear.\nFit shrinks the picture so the whole frame fits: nothing is lost, but the subject gets smaller and empty bands appear that need a background.\nAuto lets the system look at each segment and choose - crop and track the face when someone is talking, fit when the shot is busy.",
+
+  "help.autocut-background.title": "What is the background filler?",
+  "help.autocut-background.body":
+    "With fit the source does not cover the new frame, leaving empty bands top and bottom (or on the sides) - this picks what fills them.\nAI image gives the nicest background but calls Gemini, so it costs extra time and money on your API key.\nBlur reuses the source itself, scaled up and blurred: free, fast, works with any content.\nStyle color takes the background color of the selected style - flat, tidy, on-brand.",
+
+  "help.autocut-transcribe.title": "What is the transcript for?",
+  "help.autocut-transcribe.body":
+    "Turns the speech into timestamped text, used for captions, highlight keys and for the AI to understand the content.\nWith it on you never have to transcribe again while editing, but the analysis step takes longer - an hour of video can take a few minutes.\nBoth AI cutting modes need a transcript, so there this option turns itself on and cannot be unchecked.",
+
+  "help.autocut-autoedit.title": "What does running the AI edit right away mean?",
+  "help.autocut-autoedit.body":
+    "As soon as cutting finishes, the AI builds every child project using the Edit setup below, so you never open each project and press build.\nHandy when you cut a batch of clips of the same kind, but each project is its own AI session, so it burns real tokens and keeps the machine busy for a while.\nLeave it off if you would rather review the segments first and decide which ones are worth building.",
+
+  "help.autocut-segments.title": "Review the segments before cutting",
+  "help.autocut-segments.body":
+    "This is still only the cutting plan the system proposes - no file has been touched yet.\nUntick the segments you do not need and fix the titles before cutting, because each title becomes the name of a child project.\nOnly Cut & create projects does the real encoding, and that step takes time, so reviewing carefully here is far cheaper than cutting twice.",
+
+  "help.autocut-brief.title": "What is the edit setup for?",
+  "help.autocut-brief.body":
+    "Set once how EVERY video cut out of this session gets built: captions on or off, key layout, sound effects, background music.\nIt saves you opening ten child projects and changing the same thing ten times.\nIt only applies to segments cut AFTER the change - projects already created must be edited inside the project itself.",
+
+  "help.dashboard.title": "What is the Dashboard for?",
+  "help.dashboard.body":
+    "The whole-system view: how many projects exist, how many videos are exported, how many jobs ran today and how many are still queued - click a tile to land on that list.\nThe chart and the table under it are about AI money: tokens spent per day and the cost of each model, so you can see where it goes.\nThe Dashboard only WATCHES, it never builds video. When something breaks the red banners at the top say so first (ffmpeg missing, Claude not signed in, jobs failed today) and you go to the matching page to fix it.",
+
+  "help.projects.title": "What is Videos Project for?",
+  "help.projects.body":
+    "Home for every video in progress: each project is one video with its own size, fps, edit brief and renders.\nClick a row to open a project and start building; tick the box on the left to run a bulk action across several projects at once.\nThe token column shows how much AI spend each project has racked up.",
+
+  "help.projects-junk.title": "What does cleaning junk files do?",
+  "help.projects-junk.body":
+    "Scans the renders/ folder of the selected projects and deletes stale drafts, temp frames and leftovers to win disk space back.\nFinished videos in outputs/ and your source files are never touched.\nYou get a confirmation with the total size first, but once deleted nothing comes back - you would have to render again.",
+
+  "help.projects-render.title": "Bulk final render",
+  "help.projects-render.body":
+    "Queues the final-render job for every selected project; they run one after another, not all at once.\nA final render is heavy and can take tens of minutes per video, so only press this once you have watched the draft and are happy.\nProjects that are not ready (no draft, QC not passing) fail immediately and are skipped, the rest still run.",
+
+  "help.projects-bulk-edit.title": "Bulk AI video build",
+  "help.projects-bulk-edit.body":
+    "Starts an AI build session for each selected project, using the edit brief already saved inside that project.\nThe extra notes box applies to the whole batch, e.g. change the tone or drop the captions.\nEach project is a separate session so it costs real tokens, and once running you have to open each project to stop it.",
+
+  "help.images.title": "What is Images Project for?",
+  "help.images.body":
+    "Where you create and manage AI images: each project is a set of images sharing one topic, ratio and style.\nUse it for thumbnails, illustrations to drop into a video, or backgrounds for a scene.\nEvery generation calls Gemini, so it costs money on the API key set up in Connections.",
+
+  "help.config.title": "What is the Config page for?",
+  "help.config.body":
+    "Tunes render speed and quality to what your machine can actually handle: worker count, GPU use, how many jobs run in parallel.\nEvery change saves instantly and applies to jobs started after it, no restart needed.\nPush the numbers past what the machine can take and renders stall or die midway - the starred value is the level measured on this very machine.",
+
+  "help.config-hardware.title": "Detected hardware",
+  "help.config-hardware.body":
+    "The system reads the CPU, RAM and GPU of the machine it runs on so it can recommend sensible levels.\nAn NVENC or VideoToolbox badge means the card has a dedicated video encoder, so GPU encoding will be much faster.\nWhen it says CPU only the two GPU-encode switches are locked - not a bug, this machine simply lacks that hardware.",
+
+  "help.config-render.title": "Render settings",
+  "help.config-render.body":
+    "These knobs trade speed against safety: more workers and higher concurrency go faster but eat RAM, and overdoing it kills jobs midway.\nGPU encoding is much faster but lower quality than CPU at the same file size - fine for drafts, think twice for finals. A lower draft fps only makes previews quicker and never touches the final render.\nWith the QC gate on the system blocks a final render while the draft has not passed the quality check; turn it off and it is on you.\nEvery change applies to jobs started afterwards; jobs already running keep the old settings.",
+
+  "help.config-ai-attempts.title": "When does the AI redo a video?",
+  "help.config-ai-attempts.body":
+    "Building a video goes through several stages: transcribe, build scenes, draft render, review, then the final render. Sometimes the AI ends its run while a render is still going in the background, so from the outside there is no final video yet - and the system starts the run over.\nEach redo is almost a fresh start, and on every step the AI re-reads the whole conversation up to that point. So the cost does not add up evenly, it jumps.\nMeasured on this very project: runs that DID restart cost $61.87 on average, runs that finished first try only $22.57. Four restarted runs swallowed 34% of the total spend.\nKeeping it low (3-4) means a broken run stops early so you can look at the error, instead of pushing on for 12 attempts before giving up.",
+
+  "help.config-ai-turns.title": "What is a step, and what does lowering the limit buy?",
+  "help.config-ai-turns.body":
+    "A step is one round trip: the AI calls a tool (read a file, run a render, look at a frame) and gets the result back. Finishing a video usually takes a few dozen to a bit over a hundred steps.\nA high limit lets the AI work its way through a hard video, but it is also what lets a run that went off the rails keep going unchecked: the most expensive run on record ate 92 million input tokens.\nLowering it cuts those wandering runs short. Do not overdo it though - below roughly 50 steps a complex video runs out before it is done, and redoing it costs more.\nWhen the limit is hit the run stops mid-way; whatever was built stays in the project, so you can look at it and continue.",
+
+  "help.model-cost.title": "Why does a cheaper model save so much?",
+  "help.model-cost.body":
+    "Measured on this project: for every 1 token the AI writes, it reads about 300 (scripts, files, render logs, frames). So the cost of building a video sits almost entirely on the INPUT side.\nThat makes the input price the thing that decides your bill: Opus 5 $5, Sonnet 5 $3, Haiku 4.5 $1 per million tokens. Switching Opus 5 to Sonnet 5 saves about 40%, to Haiku 4.5 about 80%.\nSonnet 5 is plenty for videos that follow a template a skill already covers: vertical TikTok, landscape YouTube, video translation. Haiku 4.5 suits lighter work: small fixes, subtitle changes, rebuilding a single scene.\nSave Opus 5 for hard videos with fiddly requirements or a lot of judgement calls - that is exactly where a weaker model gets it wrong and the redo costs more than picking Opus in the first place.",
+
+  "help.connections.title": "What is the Connections page for?",
+  "help.connections.body":
+    "Set up the API keys for the AI providers the system uses: Claude to build videos, Gemini to generate images.\nWithout a connection the AI features on other pages either error out or show no model to pick.\nAt the bottom sits Cloudflare Tunnel, for opening this dashboard to the Internet when you need it from another machine.",
+
+  "help.connections-key.title": "What is the API key for?",
+  "help.connections-key.body":
+    "It is the password that lets the system call the AI service on your behalf - every build, chat or image generation is billed to this key.\nThe key is stored on this machine and takes effect immediately, no restart needed; the field only reveals the last few characters.\nFor Claude specifically, if this machine is already signed in to Claude Code the system just uses that account and needs no key.",
+
+  "help.tunnel.title": "What is Cloudflare Tunnel for?",
+  "help.tunnel.body":
+    "Creates a public web address pointing at the dashboard running on this machine, so you can open it from your phone or another computer without touching your router.\nUse it when you want to watch render progress while away from the desk.\nTurning it on opens a path from the Internet into your machine, and the dashboard has no login - anyone with the link gets in, so switch it off when you are done.",
+
+  "help.styles.title": "What is Style Design for?",
+  "help.styles.body":
+    "Where the shared look is declared: colors, fonts, effects. Every video and image the system makes follows the style you pick, so the output stays on-brand.\nMake one style per brand or per channel, then select it inside each project.\nEditing a style does not rebuild old videos - you have to render that project again for the change to show.",
+
+  "help.skills.title": "What are Skills?",
+  "help.skills.body":
+    "A skill is a written procedure the AI reads before building a video: how to do Vietnamese captions, how to pick sound effects, how to grade color.\nEditing a skill changes how the AI works on every video after that, so this is where know-how accumulates instead of being retyped in each chat.\nA new skill takes effect in the next AI session, no restart required.",
+
+  "help.prompts.title": "What are Prompts for?",
+  "help.prompts.body":
+    "A library of reusable request templates: open a prompt and drop it into a project's edit brief instead of typing it out again.\nGreat for the video formats you make over and over - save once, then just pick it next time.\nThese are plain text templates; editing one has no effect on projects that were already built.",
+
+  "help.queue.title": "What is the Render Queue for?",
+  "help.queue.body":
+    "Shows every render job waiting, running or finished, with percentage, current step, timing and the full log when something fails.\nSeveral jobs run in parallel up to the level set in Config, but two jobs of the SAME project never run together so they cannot overwrite each other's files.\nA running job can be canceled; cancel midway and the partial render is discarded, so it has to start over.",
+
+  "help.sfx.title": "What is Sound Effects for?",
+  "help.sfx.body":
+    "The shared sound library for every project: preview right here, add new files, tag and describe them so they can be found later.\nThe AI reads those descriptions and tags to pick effects that match the content, so the clearer the description the better the pick.\nThe hay-dung tag marks the recommended set - these are the files the AI reaches for first when building a video.",
+
+  "help.assets.title": "What is the Assets page for?",
+  "help.assets.body":
+    "The two shared file stores of the system: imports/ is where you drop source files (footage, images, audio), outputs/ is where finished videos land.\nUpload here when a file will be used by several projects, or so you can pick it as the source of an Auto cut session.\nDeleting a file in imports/ that a project still references makes the next render fail with a missing file.",
+
+  // ===== Kiểm tra hệ thống (start/doctor.mjs) =====
+  "doctor.title": "System check",
+  "doctor.recheck": "Check again",
+  "doctor.checking": "Checking this machine…",
+  "doctor.all-good": "All set",
+  "doctor.missing-required": "{n} required item(s) missing",
+  "doctor.missing-optional": "{n} optional feature(s) unavailable",
+  "doctor.details": "Show details",
+  "doctor.hide": "Collapse",
+  "doctor.install": "Install",
+  "doctor.install-size": "Install ({size})",
+  "doctor.installing": "Installing…",
+  "doctor.install-failed": "Install did not succeed - try the manual command below.",
+  "doctor.copy": "Copy command",
+  "doctor.copied": "Copied",
+  "doctor.open-page": "Open page",
+  "doctor.guide": "Guide",
+  "doctor.label.claude-auth": "Claude login",
+  "doctor.label.gemini": "Gemini API key",
+  "doctor.why.node": "runtime for the whole system",
+  "doctor.why.ffmpeg": "cuts, joins and encodes video - nothing renders without it",
+  "doctor.why.chrome": "HyperFrames and Remotion both render through headless Chrome",
+  "doctor.why.claude-cli": "one way to sign in with a subscription (the other is an API key)",
+  "doctor.why.claude-auth": "without credentials, AI editing is unavailable",
+  "doctor.why.whisper": "automatic subtitles from speech",
+  "doctor.why.gemini": "background and illustration images",
+  "doctor.why.cloudflared": "reach the dashboard over 4G/5G",
+  "doctor.why.gpu": "faster rendering",
+  "doctor.why.vieneu": "on-device narration, free and offline",
+  "doctor.why.vieneu-clone": "clone your own voice",
+  "doctor.why.models-dir": "keep AI models on the project's own drive, not the system drive",
+  "doctor.why.runtime": "everything the project downloads in one place, easy to exclude from backups",
+  "doctor.note.ffprobe-missing": "ffmpeg found but ffprobe is missing",
+  "doctor.note.not-needed": "not needed - credentials already present",
+  "doctor.note.module-missing": "Python found but the module is missing",
+  "doctor.note.python-missing": "Python not installed",
+  "doctor.note.cpu-only": "no hardware acceleration - rendering on CPU",
+  "doctor.note.venv-missing": "the project's own Python environment does not exist yet",
+  "doctor.note.system-only": "installed in the system Python (C: drive) - reinstall into .runtime/venv",
+  "doctor.note.models-elsewhere": "models live outside the project - they can be moved, no re-download",
+  "doctor.note.models-empty": "no models in the project yet",
+
+  "help.doctor.title": "What is the system check for?",
+  "help.doctor.body":
+    "It probes whether this machine has everything the pipeline needs: FFmpeg, Google Chrome, Claude credentials, faster-whisper for subtitles, a Gemini key for image generation.\nAnything missing gets an \"Install\" button; anything that cannot be installed automatically shows a command to copy or a link to the page that handles it.\nThe same list runs when you launch start.bat / start.command, so both places always agree.",
+
+  // ===== Text to video =====
+  // Tab name chosen by the user - kept in English in both languages, same as
+  // "Videos Project" and "Auto cut videos".
+  "nav.text-to-video": "Text to video",
+
+  "ttv.subtitle":
+    "Turn an article into a video - AI writes the script, TTS reads it out, you get a Videos Project.",
+  "ttv.new": "Create session",
+  "ttv.empty":
+    "No sessions yet. Paste a news link or the article text itself; the system writes the narration script, synthesises the voice and creates a Videos Project to build on.",
+  "ttv.load-error": "Could not load the session list.",
+  "ttv.col-source": "Source",
+  "ttv.col-script": "Script",
+  "ttv.col-voice": "Voice",
+  "ttv.col-project": "Project",
+  "ttv.delete-aria": "Delete session {name}",
+  "ttv.delete-title": "Delete text-to-video session",
+  "ttv.delete-desc":
+    "Deleting this session only removes its article, script and voice files. Videos Projects already created from it are NOT deleted.",
+
+  "ttv.status.draft": "Draft",
+  "ttv.status.extracting": "Fetching article",
+  "ttv.status.scripting": "Writing script",
+  "ttv.status.ready": "Ready to build",
+  "ttv.status.voicing": "Synthesising voice",
+  "ttv.status.building": "Building",
+  "ttv.status.done": "Done",
+  "ttv.status.failed": "Failed",
+
+  "ttv.create-title": "Create session",
+  "ttv.create": "Create session",
+  "ttv.creating": "Creating…",
+  "ttv.create-error": "Could not create the session.",
+  "ttv.extract-error-created":
+    "The session was created but the article could not be fetched.",
+  "ttv.open-session": "Open session",
+  "ttv.source": "Content source",
+  "ttv.source.url": "Article link",
+  "ttv.source.text": "Paste text",
+  "ttv.url": "Article link",
+  "ttv.url-placeholder": "https://…",
+  "ttv.url-hint":
+    "The system opens the link and extracts the main content. If a site blocks reading, paste the text instead.",
+  "ttv.text": "Article text",
+  "ttv.text-placeholder": "Paste the whole article here…",
+  "ttv.text-hint":
+    "The AI writes the script from exactly what you paste - it does not go looking for more.",
+  "ttv.name": "Session name (optional)",
+  "ttv.name-placeholder": "Leave empty to use the article title",
+
+  "ttv.download": "Download video",
+  "ttv.result-waiting": "The AI is building the video - it will appear here when done.",
+  "ttv.open-project-advanced": "Open project (re-render, QC, clips…)",
+  "ttv.back": "Session list",
+  "project.back": "Project list",
+  "ttv.not-found": "This session was not found.",
+  "ttv.action-error": "Could not run this step.",
+  "ttv.save-error": "Could not save the session changes.",
+  "ttv.failed": "The session failed.",
+  "ttv.chunk-count": "{n} chunks",
+  "ttv.block-count": "{n} blocks",
+  "ttv.char-count": "{n} characters",
+  "ttv.est-duration": "estimated ~{time}",
+  "ttv.real-duration": "actual {time}",
+  "ttv.open-project": "Open project",
+
+  "ttv.stage.source": "Source",
+  "ttv.stage.script": "Script",
+  "ttv.stage.voice": "Voice",
+  "ttv.stage.config": "Settings",
+  "ttv.stage.build": "Build",
+  "ttv.stage-aria": "Step {stage} of 5: {label}",
+
+  "ttv.card-source": "Source article",
+  "ttv.extract": "Extract content",
+  "ttv.re-extract": "Extract again",
+  "ttv.extracting-hint": "Opening the link and extracting the main content…",
+  "ttv.content": "Text the script will be written from",
+  "ttv.content-placeholder-url":
+    "Press \"Extract content\" to fetch the article, or paste the text straight in here.",
+  "ttv.content-hint":
+    "Edit freely before writing the script - the AI only reads what is in this box.",
+
+  "ttv.card-script": "Narration script",
+  "ttv.write-script": "Let AI write it",
+  "ttv.rewrite-script": "Rewrite",
+  "ttv.target-seconds": "Length (sec)",
+  "ttv.target-auto": "Auto",
+  "ttv.target-invalid":
+    "Script length must be between {min} and {max} seconds. Leave empty to let the AI decide.",
+  "ttv.script-model": "Script model",
+  "ttv.script-model-default": "Claude Code default",
+  "ttv.script-model-hint":
+    "Runs on the Claude Code account already signed in on this machine - no API key, no extra billing setup. The model you pick here is saved for the next run.",
+  "ttv.scripting-hint":
+    "The AI is writing the narration script. Long articles can take tens of seconds.",
+  "ttv.no-script":
+    "No script yet. Press \"Let AI write it\" and the AI will draft the narration from the text above.",
+  "ttv.no-source-yet":
+    "Nothing to write from yet. Fetch the article or paste the text in step 1 first.",
+  "ttv.add-chunk": "Add chunk",
+  "ttv.remove-chunk": "Remove chunk",
+  "ttv.remove-chunk-aria": "Remove chunk {n}",
+  "ttv.chunk-aria": "Narration for chunk {n}",
+  "ttv.chunk-est": "~{time}",
+  "ttv.chunk-real": "{time} (actual)",
+  "ttv.estimate-warning":
+    "These durations are only estimated from the character count. The real duration is known only after synthesis: for identical input, TTS output varies by up to 28%.",
+
+  "ttv.card-voice": "Voice",
+  "ttv.voice-not-chosen": "No voice yet",
+  "ttv.voice.selected": "Selected voice:",
+  "ttv.voice.none-selected": "None yet - pick a voice from the list below.",
+  "ttv.voice.style-default": "Default delivery",
+  "ttv.voice.model": "TTS model",
+  "ttv.voice.model-default": "Server default",
+  "ttv.voice.language": "Language",
+  "ttv.voice.language-hint":
+    "All 30 voices read every language and stay the same speaker - the voice follows whatever language the script is written in. This setting only states the intent; it does not change the timbre or add an accent.",
+  "ttv.voice.voice": "Voice",
+  "ttv.voice.filter-aria": "Filter voices by gender",
+  "ttv.voice.filter.all": "All",
+  "ttv.voice.gender.male": "Male",
+  "ttv.voice.gender.female": "Female",
+  "ttv.voice.gender.neutral": "Androgynous",
+  "ttv.voice.q.male-low": "deep male",
+  "ttv.voice.q.male": "male",
+  "ttv.voice.q.male-high": "high male",
+  "ttv.voice.q.female-low": "deep female",
+  "ttv.voice.q.female": "female",
+  "ttv.voice.q.female-high": "high female",
+  "ttv.voice.q.neutral": "androgynous",
+  "ttv.voice.f0-title": "Measured pitch: {f0} Hz",
+  "ttv.voice.neutral-note":
+    "Genuinely androgynous: repeat generations come out male or female (the acoustics measure male, listeners hear female). Preview it a few times before committing.",
+  "ttv.voice.search": "Search by name or timbre",
+  "ttv.voice.none": "No voices could be loaded.",
+  "ttv.voice.no-match": "No voice matches.",
+  "ttv.voice.missing":
+    "The saved voice ({name}) is no longer in the list - pick another one.",
+  "ttv.voice.preview": "Preview",
+  "ttv.voice.preview-aria": "Preview voice {name}",
+  "ttv.voice.stop": "Stop",
+  "ttv.voice.stop-aria": "Stop previewing voice {name}",
+  "ttv.voice.preview-cost":
+    "Every preview is a real synthesis (a few seconds, and it costs money), so it only plays when you press the button.",
+  "ttv.voice.preview-error": "Could not play the preview for voice {name}.",
+  "ttv.voice.preview-failed": "Could not preview this voice.",
+  "ttv.voice.load-error": "Could not load the voice list.",
+  "ttv.voice.gemini-hint":
+    "Gemini is not connected - add GEMINI_API_KEY to .env and restart the server, or paste the key on the Connections page.",
+  "ttv.voice.style": "Reading style",
+  "ttv.voice.style-placeholder": "e.g. slow, warm, like telling a story",
+  "ttv.voice.style-warning":
+    "Changing the reading style re-times everything: with the same script, a different style can change the duration by up to 2.6x.",
+
+  "ttv.card-config": "Video settings",
+  "ttv.aspect": "Aspect ratio",
+  "ttv.fps": "FPS",
+  "ttv.custom-size": "Custom size in use: {size}.",
+  "ttv.brief-hint":
+    "This edit brief applies to the Videos Project this session creates - set it here and you will not have to redo it inside the project.",
+  "ttv.brief-autosave": "Changes save automatically.",
+  "ttv.brief-locked":
+    "The session is running - you can edit the settings once this step finishes.",
+
+  "ttv.card-build": "Output video",
+  "ttv.card-job": "Build log",
+  "ttv.build": "Build video",
+  "ttv.build-hint":
+    "Press Build video: the system synthesises the narration, generates a transcript, then creates a Videos Project and starts the AI edit on it.",
+  "ttv.build-need-script": "Not ready yet: write the narration script in step 2 first.",
+  "ttv.build-need-voice": "Not ready yet: pick a voice in step 3 first.",
+  "ttv.voicing-hint": "Synthesising the narration from the script…",
+  "ttv.building-hint": "Generating the transcript and building the Videos Project…",
+  "ttv.voice-file": "Voice file",
+  "ttv.transcript-file": "Transcript",
+
+  "ttv.ai-panel": "AI log",
+  "ttv.ai-panel-aria": "AI log panel for this text to video session",
+  "ttv.close-panel": "Close the AI log panel",
+  "ttv.panel-empty":
+    "Press \"Build video\" and this panel comes alive: job progress, every log line, then the whole AI edit conversation of the project it creates.",
+  "ttv.panel-job": "Build job",
+  "ttv.panel-no-log": "No log lines yet.",
+  "ttv.panel-log-error": "Could not read the job log.",
+  "ttv.panel-chat-loading": "Looking for the project's AI session…",
+  "ttv.panel-no-session":
+    "The project exists but has no AI session yet - open the project to start editing.",
+
+  "help.ttv.title": "What is Text to video?",
+  "help.ttv.body":
+    "It turns an article into a video: paste a link or the text, the AI writes a narration script, TTS reads it out, and the system creates a Videos Project that already has the voice track and transcript.\nEvery session goes through 5 steps: Source, Script, Voice, Settings, Build. Each one can be revised before you build.\nDeleting a session does NOT delete the Videos Project it created.",
+  "help.ttv-source.title": "Link or pasted text?",
+  "help.ttv-source.body":
+    "Link: the system opens the page and extracts the main content, dropping menus and ads.\nPasted text: use this when a site blocks automated reading, or when you already have the content.\nEither way you can still edit it: the text in the content box is what the AI actually reads.",
+  "help.ttv-script.title": "What is the narration script?",
+  "help.ttv-script.body":
+    "It is the words that will be spoken, split into short chunks so they are easy to edit and easy to line up with the visuals.\nSet \"Length (sec)\" to aim for a specific duration; leave it empty and the AI decides from the content.\nThe duration next to each chunk is only estimated from its character count - the real number exists only after synthesis.",
+  "help.ttv-script-model.title": "What is the script model?",
+  "help.ttv-script-model.body":
+    "It is the Claude model that writes the narration from the article. A stronger model reads more fluently but takes longer; \"Claude Code default\" is fine for most articles.\nIt runs on the Claude Code account signed in on this machine (your subscription), so no separate API key is needed.\nYour choice is saved immediately - the next \"Rewrite\" uses the same model.",
+  "help.ttv-voice.title": "How do I pick a voice?",
+  "help.ttv-voice.body":
+    "There are 30 voices and the name tells you nothing about the timbre, so press play to hear one.\nEvery preview is a real synthesis: a few seconds and real money, so it only plays on click, and only one at a time.\nNarrow the list with the Male / Female / Androgynous buttons, or type in the search box to filter by name or timbre description.\nThe \"deep\" / \"high\" qualifier comes from the pitch MEASURED off real audio, not a hand-written tag - hover it to see the value in Hz.",
+  "help.ttv-voice-model.title": "What does the TTS model change?",
+  "help.ttv-voice-model.body":
+    "It is the model that actually reads the script. Different models differ in timbre, speed and price.\nLeaving it on \"Server default\" is the safe choice - the server always points at the model currently in good standing.",
+  "help.ttv-voice-language.title": "Does picking a language change the voice?",
+  "help.ttv-voice-language.body":
+    "No. Voice and language are independent choices: all 30 voices read every language, and each one still sounds like the same speaker.\nIn a blind listening test (48 judgments), changing the language code produced NO audible difference - the model follows the language of the script itself, not this field.\nSo this is only where you record the intent for the session, and it is why the voice list is not filtered by language.",
+  "help.ttv-voice-style.title": "How does \"Reading style\" work?",
+  "help.ttv-voice-style.body":
+    "It is one sentence describing how you want it read: slow, upbeat, like telling a story…\nIt directly affects the reading SPEED, so changing it changes the video duration - up to 2.6x for the same script.\nChanging it after synthesis means re-reading everything and re-timing every cue from scratch.",
+  "help.ttv-config.title": "What is in the video settings?",
+  "help.ttv-config.body":
+    "Aspect ratio, fps and Style Design decide how the exported video looks.\nThe edit brief below is the same one Videos Project uses: subtitles, key layout, sound effects, background music, skill… Set it here and the project comes out already configured.",
+  "help.ttv-build.title": "What happens when I press Build?",
+  "help.ttv-build.body":
+    "One long job runs through the render queue: synthesise the narration, generate a time-aligned transcript, create a Videos Project and start the AI edit on it.\nProgress updates live right here; when it finishes you get a link to the project.\nEach session builds once - after that, keep working inside the project itself.",
+
+  // ===== Đồng hồ CPU/GPU trên header =====
+  "meter.cpu": "CPU",
+  "meter.gpu": "GPU",
+  "meter.unknown": "unknown",
+  "meter.vram": "VRAM {used}/{total} GB",
+  "meter.cpu-title": "{model} - {threads} threads",
+
+  // ===== Offline voices / voice cloning =====
+  "nav.voices": "Voices",
+
+  // -- Speech engine --
+  "ttv.voice.engine": "Speech engine",
+  "ttv.voice.engine.gemini": "Gemini (cloud)",
+  "ttv.voice.engine.gemini-desc":
+    "Speaks through Google's API. High quality and fast, but every read costs money and needs a connection.",
+  "ttv.voice.engine.vieneu": "VieNeu (on-device)",
+  "ttv.voice.engine.vieneu-desc":
+    "Runs entirely on your machine, free and offline. The only engine that can clone a voice. The trade-off: it reads slower, roughly real time.",
+  "ttv.voice.engine.ready": "Ready",
+  "ttv.voice.engine.unavailable": "Not available",
+  "ttv.voice.engine.clone-ready": "Can clone voices",
+  "ttv.voice.engine.checking": "Checking engines…",
+  "ttv.voice.engine.none":
+    "No speech engine is available. Add GEMINI_API_KEY to .env, or install the offline voices on the Voices page.",
+  "ttv.voice.engine.why.NO_GEMINI_KEY":
+    "No GEMINI_API_KEY in the .env file at the repo root. Get a key at aistudio.google.com/apikey, then restart the server.",
+  "ttv.voice.engine.why.NO_PYTHON":
+    "Python was not found on this machine. Install Python 3.10+ and try again.",
+  "ttv.voice.engine.why.NO_VIENEU":
+    "The offline voice package is not installed. Run `pip install vieneu`, then press Check again.",
+  "ttv.voice.engine.why.NO_TORCH":
+    "It can speak, but it cannot clone voices yet: that needs PyTorch. Run `pip install torch torchaudio`, then press Check again.",
+  "ttv.voice.engine.why.LOAD_FAILED":
+    "The offline package is installed but the model failed to load - see the technical detail below.",
+  "ttv.voice.engine.why.unknown": "This engine is not available on your machine.",
+
+  // -- Region (offline voices only) --
+  "ttv.voice.region": "Region",
+  "ttv.voice.region.all": "All regions",
+  "ttv.voice.region.bac": "Northern",
+  "ttv.voice.region.trung": "Central",
+  "ttv.voice.region.nam": "Southern",
+
+  // -- Voice kind --
+  "ttv.voice.kind.preset": "Built-in",
+  "ttv.voice.kind.cloned": "Cloned",
+  "ttv.voice.cloned-empty":
+    "You haven't cloned any voice yet. Go to the Voices page to create one from a short recording.",
+  "ttv.voice.manage": "Manage voices",
+
+  // -- Timbre descriptions: Gemini --
+  "ttv.timbre.zephyr": "clear, bright",
+  "ttv.timbre.puck": "upbeat, lively",
+  "ttv.timbre.charon": "informative, articulate",
+  "ttv.timbre.kore": "firm, decisive",
+  "ttv.timbre.fenrir": "energetic, excitable",
+  "ttv.timbre.leda": "youthful",
+  "ttv.timbre.orus": "firm, assertive",
+  "ttv.timbre.aoede": "light, breezy",
+  "ttv.timbre.callirrhoe": "easy-going, pleasant",
+  "ttv.timbre.autonoe": "bright",
+  "ttv.timbre.enceladus": "breathy, hushed",
+  "ttv.timbre.iapetus": "clear, crisp",
+  "ttv.timbre.umbriel": "easy-going",
+  "ttv.timbre.algieba": "smooth",
+  "ttv.timbre.despina": "smooth, mellow",
+  "ttv.timbre.erinome": "clear",
+  "ttv.timbre.algenib": "gravelly, raspy",
+  "ttv.timbre.rasalgethi": "informative, scholarly",
+  "ttv.timbre.laomedeia": "upbeat",
+  "ttv.timbre.achernar": "soft, gentle",
+  "ttv.timbre.alnilam": "firm, steely",
+  "ttv.timbre.schedar": "even, composed",
+  "ttv.timbre.gacrux": "deep, seasoned",
+  "ttv.timbre.pulcherrima": "forward, driving",
+  "ttv.timbre.achird": "friendly",
+  "ttv.timbre.zubenelgenubi": "casual, everyday",
+  "ttv.timbre.vindemiatrix": "gentle, soothing",
+  "ttv.timbre.sadachbia": "lively",
+  "ttv.timbre.sadaltager": "knowledgeable, poised",
+  "ttv.timbre.sulafat": "warm",
+
+  // -- Timbre descriptions: VieNeu (reading style) --
+  "ttv.timbre.tin-tuc": "news read",
+  "ttv.timbre.tu-nhien": "natural",
+  "ttv.timbre.ke-chuyen": "storytelling",
+  "ttv.timbre.cloned": "your cloned voice",
+
+  // ===== Voices page =====
+  "voices.title": "Voices",
+  "voices.subtitle":
+    "Clone a voice from a short recording, running entirely on your own machine. Voices you create here are immediately usable in Text to video.",
+  "voices.new": "Clone a voice",
+  "voices.empty-title": "No cloned voices yet",
+  "voices.empty-body":
+    "Give it a 3-8 second recording of the voice you want to copy. The system learns that voice and reads any script in it.",
+  "voices.count": "{n} cloned voices",
+
+  // -- Engine status on this page --
+  "voices.engine-title": "Offline voice engine",
+  "voices.engine-ok": "Ready - it can clone and speak right on this machine.",
+  "voices.engine-speech-only":
+    "It can speak, but cannot clone voices yet. PyTorch still needs to be installed.",
+  "voices.engine-missing": "Not installed - follow the steps below to enable it.",
+  "voices.recheck": "Check again",
+  "voices.rechecking": "Checking…",
+  "voices.install-title": "How to enable offline voices",
+  "voices.install-step1": "Install Python 3.10 or newer (if you don't have it).",
+  "voices.install-step2": "Open PowerShell and run this to install the speech engine:",
+  "voices.install-step3":
+    "To clone voices as well, also install PyTorch (heavier, about 2-3 GB to download):",
+  "voices.install-step4":
+    "Then press Check again. The very first read downloads the model (about 1 GB), so it takes a while.",
+  "voices.copy": "Copy command",
+  "voices.copied": "Copied",
+  "voices.detail": "Technical detail",
+
+  // -- Clone form --
+  "voices.form.title": "Clone a new voice",
+  "voices.form.name": "Voice name",
+  "voices.form.name-placeholder": "e.g. My voice",
+  "voices.form.name-hint": "The name you'll recognise this voice by in Text to video.",
+  "voices.form.gender": "Gender",
+  "voices.form.note": "Note",
+  "voices.form.note-placeholder": "e.g. southern accent, ad read",
+  "voices.form.file": "Reference clip",
+  "voices.form.file-pick": "Choose a recording",
+  "voices.form.file-change": "Change file",
+  "voices.form.file-hint":
+    "A recording or an existing file, {min}-{ideal} seconds works best. Clear speech, no background music, no noise - the cleaner the sample, the closer the clone.",
+  "voices.form.file-too-short":
+    "The sample is only {sec} seconds - it needs at least {min} seconds to capture the voice.",
+  "voices.form.file-too-long":
+    "The sample is {sec} seconds. Only the beginning is used and the rest is discarded - trimming it to {ideal} seconds is enough.",
+  "voices.form.record": "Record now",
+  "voices.form.record-stop": "Stop recording",
+  "voices.form.record-hint": "Record straight from your machine's microphone.",
+  "voices.form.recording": "Recording… {sec}s",
+  "voices.form.no-mic":
+    "The browser microphone isn't available. Choose an existing recording instead.",
+  "voices.form.submit": "Clone voice",
+  "voices.form.submitting": "Learning the voice…",
+  "voices.form.need-name": "Give the voice a name first.",
+  "voices.form.need-file": "Choose or record a reference clip first.",
+  "voices.form.failed": "Could not clone this voice.",
+
+  // -- Voice card --
+  "voices.card.ref": "Reference clip",
+  "voices.card.ref-play": "Play the reference clip",
+  "voices.card.test": "Test read",
+  "voices.card.test-aria": "Test the {name} voice",
+  "voices.card.stop": "Stop",
+  "voices.card.created": "Created {when}",
+  "voices.card.rename": "Rename",
+  "voices.card.save": "Save",
+  "voices.card.delete": "Delete voice",
+  "voices.card.delete-title": "Delete the \"{name}\" voice?",
+  "voices.card.delete-body":
+    "This deletes the reference clip too. Text to video sessions that already used it keep their rendered audio, but reading again will need another voice.",
+  "voices.card.test-failed": "Could not test this voice.",
+  "voices.first-run-slow":
+    "The first read after the server starts takes an extra 15-30 seconds to load the model. Later reads are much faster.",
+
+  // ===== Collapsing sections once a session is done =====
+  "ttv.section.expand": "Expand",
+  "ttv.section.collapse": "Collapse",
+  "ttv.section.done-collapsed": "Finished - collapsed to save space",
+
+  // ===== Video edit style =====
+  "vstyle.label": "Edit style",
+  "vstyle.hint":
+    "The visual language of the video: what it is made of and how it moves. Different from Style Design (colours, fonts, logo) - the two stack.",
+  "vstyle.off-hint":
+    "Off: the video is built from the configuration already picked (skill + Style Design). Turn it on to give this video a visual language of its own - what it is made of and how it moves.",
+  "vstyle.selected": "Selected:",
+  "vstyle.none": "No style picked yet",
+  "vstyle.none-warning":
+    "No style picked - the video is still built from the skill and Style Design, exactly as if this were off. Pick one below to make it count.",
+  "vstyle.search": "Search styles by name or description",
+  "vstyle.no-match": "No style matches.",
+  "vstyle.load-error": "Could not load the edit styles.",
+  "vstyle.missing":
+    "The saved style is no longer in the list - pick another one.",
+  "vstyle.loose-badge": "own palette",
+  "vstyle.vs-style-design":
+    "The style decides MATERIAL and MOTION; Style Design still decides COLOUR and FONT. A style marked \"own palette\" has a signature palette of its own, so images will not follow the brand colours closely - text and graphics still will.",
+
+  // ===== Edit styles admin page (/video-styles) =====
+  "vstyle.page.subtitle":
+    "Add, edit and delete edit styles. A style decides what the video is made of and how it moves; you pick one per video in the Brief.",
+  "vstyle.page.create": "Create edit style",
+  "vstyle.page.create-short": "Create edit style",
+  "vstyle.page.load-error": "Could not load the edit styles.",
+  "vstyle.page.create-error": "Could not create the style.",
+  "vstyle.page.empty": "No edit styles yet - create one or restore a built-in.",
+  "vstyle.page.count": "{n} styles",
+  "vstyle.page.builtin": "built-in",
+  "vstyle.page.col-name": "Style",
+  "vstyle.page.col-palette": "Palette",
+  "vstyle.page.col-motion": "Scene & motion",
+  "vstyle.page.col-usage": "In use",
+  "vstyle.page.col-updated": "Updated",
+  "vstyle.page.usage-n": "{n} projects",
+  "vstyle.page.usage-none": "unused",
+  "vstyle.page.name-label": "Style name",
+  "vstyle.page.name-placeholder": "e.g. Lacquer painting",
+  "vstyle.page.clone-from": "Copy the content of an existing style",
+  "vstyle.page.blank": "Leave empty - write from scratch",
+  "vstyle.page.clone-hint":
+    "Copies the art direction, the avoid list, the palette mode and the motion notes into the new style so you can tweak instead of writing it all again.",
+
+  // -- Style detail page --
+  "vstyle.detail.subtitle":
+    "Edit this style. Changes apply to the NEXT video you build - they do not re-render finished videos.",
+  "vstyle.detail.load-error": "Could not load this style.",
+  "vstyle.detail.save-error": "Could not save the style.",
+  "vstyle.detail.action-error": "The action failed.",
+  "vstyle.detail.id-label": "Style id",
+  "vstyle.detail.id-hint":
+    "Not editable: the briefs of existing projects point at this exact id. Need a different id? Create a new style.",
+  "vstyle.detail.name-label": "Style name",
+  "vstyle.detail.name-hint":
+    "Shown in the style picker and passed straight into the prompt the AI reads.",
+  "vstyle.detail.name-translated":
+    "Note: the style picker in the Brief shows the translated name \"{name}\" (key vstyle.{id}.name in the locale files), not the name here. Renaming here changes the prompt sent to the AI straight away, but the picker label has to be changed in the locale files.",
+  "vstyle.detail.art-label": "Art direction for images (English)",
+  "vstyle.detail.art-hint":
+    "This REPLACES the default art direction in the Gemini image prompt, it is not added on top. Write it in English - the model follows it far more closely: material, drawing technique, lighting, depth.",
+  "vstyle.detail.art-placeholder":
+    "e.g. Japanese paper craft scene: layered origami shapes, visible washi paper fibre texture, soft drop shadows…",
+  "vstyle.detail.avoid-label": "What images must avoid (English)",
+  "vstyle.detail.avoid-hint":
+    "Blocks exactly what tends to creep into this particular style. Appended to the image prompt as \"Avoid: …\".",
+  "vstyle.detail.avoid-placeholder":
+    "e.g. no photographic realism, no 3D glossy render, no digital gradients",
+  "vstyle.detail.motion-label": "Scene & motion (Vietnamese)",
+  "vstyle.detail.motion-hint":
+    "The AI reads this to build the HyperFrames scenes and the Remotion transitions, and it is also the description users see when picking a style. Describe how things enter and leave, the transitions, the pacing, the typography.",
+  "vstyle.detail.motion-placeholder":
+    "e.g. Chuyển cảnh kiểu GẤP và LẬT giấy, không mờ chồng. Vật thể trượt vào theo lớp…",
+  "vstyle.detail.palette-label": "Palette for generated images",
+  "vstyle.detail.palette-brand": "Follow the brand colours",
+  "vstyle.detail.palette-brand-desc":
+    "Gemini images stick to the Style Design palette (primary, secondary, accent) and are told not to drift. Pick this for most styles.",
+  "vstyle.detail.palette-loose": "The style has its own palette",
+  "vstyle.detail.palette-loose-desc":
+    "The style carries a signature palette of its own (black ink wash, Dong Ho folk print, real photography) - forcing brand colours onto it kills the look. Brand colours then appear only as ACCENTS in the images, while text and graphics drawn by HyperFrames/Remotion still follow Style Design exactly.",
+  "vstyle.detail.required":
+    "Fields marked * are required - leaving one empty truncates the prompt sent to the AI.",
+  "vstyle.detail.usage-title": "Projects using this style",
+  "vstyle.detail.usage-empty": "No project uses this style yet.",
+  "vstyle.detail.usage-hint":
+    "Editing the style does not re-render these videos - only the next build picks up the new content.",
+  "vstyle.detail.kind.video-project": "Videos Project",
+  "vstyle.detail.kind.text-to-video": "Text to video",
+  "vstyle.detail.kind.auto-cut": "Auto cut",
+  "vstyle.detail.kind.translate-video": "Translate video",
+  "vstyle.detail.builtin-note":
+    "This is a built-in style shipped with the system. Edit or delete it freely - the original can always be restored.",
+  "vstyle.detail.reset": "Restore original",
+  "vstyle.detail.resetting": "Restoring…",
+  "vstyle.detail.reset-title": "Restore this style to the original?",
+  "vstyle.detail.reset-desc":
+    "The whole style goes back to the version shipped with the system. Your edits will be lost.",
+  "vstyle.detail.delete-title": "Delete this edit style?",
+  "vstyle.detail.delete-desc-1": "You are about to delete the style",
+  "vstyle.detail.delete-in-use":
+    "{n} projects use this style. After deleting they fall back to \"let the AI decide\" (finished videos are untouched) and you have to pick a style again to rebuild them with the same material:",
+  "vstyle.detail.delete-builtin":
+    "This is a built-in style - even after deleting it you can bring it back with the \"Restore original\" button on the style with the same id.",
+
+  // -- The 20 style names --
+  "vstyle.giay-gap-nhat.name": "Japanese paper craft",
+  "vstyle.vox-explainer.name": "VOX-style explainer",
+  "vstyle.tranh-ve-tay.name": "Hand-painted (watercolour)",
+  "vstyle.nguoi-que.name": "Whiteboard stick figures",
+  "vstyle.flat-vector.name": "Flat vector",
+  "vstyle.isometric.name": "Isometric 3D",
+  "vstyle.dat-set.name": "Claymation",
+  "vstyle.cat-dan-zine.name": "Zine paper collage",
+  "vstyle.muc-tau.name": "Ink wash painting",
+  "vstyle.dong-ho.name": "Dong Ho folk print",
+  "vstyle.neon-cyber.name": "Neon cyberpunk",
+  "vstyle.in-retro-70.name": "1970s retro print",
+  "vstyle.ban-ve-ky-thuat.name": "Technical blueprint",
+  "vstyle.pixel-art.name": "Pixel art",
+  "vstyle.anime-cel.name": "Anime cel-shading",
+  "vstyle.3d-studio.name": "Polished 3D studio",
+  "vstyle.anh-tai-lieu.name": "Documentary photography",
+  "vstyle.infographic.name": "Data infographic",
+  "vstyle.cat-out-puppet.name": "Cut-out paper puppets",
+  "vstyle.giao-dien-app.name": "App interface",
+
+  // -- The 20 style descriptions --
+  "vstyle.giay-gap-nhat.desc":
+    "Folded and cut paper in layers, washi fibre texture, soft shadows between layers. Scenes change by folding and flipping.",
+  "vstyle.vox-explainer.desc":
+    "Modern editorial graphics: very bold type, halftone dots, cut-out photo collage, hand-drawn annotation arrows. Hard cuts.",
+  "vstyle.tranh-ve-tay.desc":
+    "Watercolour and gouache on textured paper, brush strokes and pigment blooms left visible. Images bleed into view.",
+  "vstyle.nguoi-que.desc":
+    "Stick figures drawn in marker on a clean whiteboard. Lines draw themselves in time with the narration.",
+  "vstyle.flat-vector.desc":
+    "Flat vector, solid fills, geometric forms, generous white space. Crisp motion along a strict grid.",
+  "vstyle.isometric.desc":
+    "30-degree isometric projection, buildings and systems as clear diagrams. Structures build up layer by layer.",
+  "vstyle.dat-set.desc":
+    "Plasticine characters with fingerprints still in the clay, tabletop miniature set. Slightly jerky stop-motion movement.",
+  "vstyle.cat-dan-zine.desc":
+    "Torn newspaper and magazine scraps, ransom-note typography, tape and staples. Scraps slam down on the beat.",
+  "vstyle.muc-tau.desc":
+    "Ink on rice paper, confident brush strokes, a great deal of empty space. Slow and still.",
+  "vstyle.dong-ho.desc":
+    "Vietnamese folk woodblock print, thick black outlines, mineral pigments, shimmering diep paper. Images stamp into place.",
+  "vstyle.neon-cyber.desc":
+    "Rainy reflective night, neon signage, thick haze, magenta and cyan rim light. Digital glitch on every cut.",
+  "vstyle.in-retro-70.desc":
+    "1970s offset print: three ink colours, plate misregistration, heavy paper grain, halftone. Plates slip then snap into register on each cut.",
+  "vstyle.ban-ve-ky-thuat.desc":
+    "White lines on deep blue, dimension lines and cutaways, a drafting grid. Lines draw in assembly order.",
+  "vstyle.pixel-art.desc":
+    "Crisp 16-bit pixels, limited palette, dithered shading. Everything moves in whole-pixel steps.",
+  "vstyle.anime-cel.desc":
+    "Clean line art, hard-edged two-tone shading, speed lines, vivid key light. Fast cuts at the climax.",
+  "vstyle.3d-studio.desc":
+    "Studio 3D render: soft light, infinite backdrop, matte against gloss, shallow depth of field. Very smooth camera drift.",
+  "vstyle.anh-tai-lieu.desc":
+    "Real photojournalistic images, natural light, candid moments. Slow push and drift across stills.",
+  "vstyle.infographic.desc":
+    "Clean charts and diagrams, clear numeric hierarchy, plenty of white space. Bars grow and figures count up.",
+  "vstyle.cat-out-puppet.desc":
+    "Paper puppets jointed at the limbs, construction-paper texture, slightly rough cut edges. Characters move by rotating at the joints.",
+  "vstyle.giao-dien-app.desc":
+    "Frosted glass interface panels floating in space, layered shadows, crisp icons. A simulated cursor performs real actions.",
+
+  // ===== Text to video: the AI build stage + project link =====
+  "ttv.status.editing": "AI is building the video",
+  "ttv.build.handoff": "Handed over to the AI to build",
+  "ttv.build.child-title": "Build progress",
+  "ttv.build.child-hint":
+    "The build runs inside its own project. The bar below is that project's REAL progress - it keeps going after the steps above are finished.",
+  "ttv.build.open-project": "Open the project for details",
+  "ttv.build.project-link": "Project being built:",
+  "ttv.build.waiting": "Waiting for the AI to start…",
+  "ttv.build.no-project": "No project yet - press Build video to start.",
+  "ttv.build.running-job": "Running: {label}",
+  "ttv.build.long-warning":
+    "This is the longest step, usually tens of minutes. You can close the page - it keeps running.",
+
+  // -- Back-link in Videos Project --
+  "project.from-ttv": "From Text to video",
+  "project.from-ttv-title": "Created by the Text to video session \"{id}\"",
+  "project.back-to-ttv": "Back to the Text to video session",
+
+  // -- Reading speed --
+  "ttv.voice.speed": "Reading speed",
+  "ttv.voice.speed-normal": "Normal",
+  "ttv.voice.speed-hint":
+    "Applied after synthesis, so the voice does NOT go squeaky. x1.1-x1.2 sounds noticeably more awake while staying natural.",
+  "ttv.voice.speed-preview-note":
+    "The preview already plays at this speed - what you hear is what you get.",
+
+  // ===== Translate video =====
+  "nav.translate-video": "Translate video",
+
+  "tv.subtitle":
+    "Drop a video in: the system pulls the dialogue, the AI translates it, then the translated subtitles are burned onto the video.",
+  "tv.new": "Create session",
+  "tv.empty":
+    "No sessions yet. Upload a video - the system pulls the dialogue, translates it into the language you pick, then burns the translated subtitles onto that same video.",
+  "tv.load-error": "Could not load the session list.",
+  "tv.col-langs": "Languages",
+  "tv.col-mode": "Output",
+  "tv.delete-aria": "Delete session {name}",
+  "tv.delete-title": "Delete translate-video session",
+  "tv.delete-desc":
+    "Deleting this session also deletes the uploaded source video, the dialogue, the translation and the subtitled video. This cannot be undone.",
+
+  "tv.status.draft": "Draft",
+  "tv.status.transcribing": "Pulling dialogue",
+  "tv.status.transcribed": "Dialogue ready",
+  "tv.status.translating": "Translating",
+  "tv.status.translated": "Translated",
+  "tv.status.rendering": "Burning subtitles",
+  "tv.status.done": "Done",
+  "tv.status.failed": "Failed",
+
+  "tv.create-title": "Create session",
+  "tv.create": "Create session",
+  "tv.creating": "Creating…",
+  "tv.create-error": "Could not create the session.",
+  "tv.create-hint":
+    "The session is created first, then you upload the video - that way big files have somewhere to go and you can watch the progress.",
+  "tv.name": "Session name (optional)",
+  "tv.name-placeholder": "Leave empty to name it after the video file",
+
+  "tv.mode.subtitle": "Subtitles",
+  "tv.mode.dub": "Dubbing",
+  "tv.mode.both": "Both",
+  "tv.configure": "Configure",
+  "tv.subtitle-lang": "Subtitle language",
+  "tv.dub-lang": "Dub language",
+  "tv.dub-lang-same": "Same as subtitles ({lang})",
+  "tv.dub-lang-cost":
+    "Speaking a different language than the on-screen text means the AI translates twice - double the cost. Hit Translate again after changing it.",
+
+  "tv.lang.auto": "Auto-detect",
+  "tv.lang.vi": "Vietnamese",
+  "tv.lang.en": "English",
+  "tv.lang.zh": "Chinese",
+  "tv.lang.ja": "Japanese",
+  "tv.lang.ko": "Korean",
+  "tv.lang.fr": "French",
+  "tv.lang.de": "German",
+  "tv.lang.es": "Spanish",
+  "tv.lang.pt": "Portuguese",
+  "tv.lang.ru": "Russian",
+  "tv.lang.th": "Thai",
+  "tv.lang.id": "Indonesian",
+  "tv.lang.hi": "Hindi",
+  "tv.lang.ar": "Arabic",
+  "tv.lang.it": "Italian",
+
+  "tv.stage.source": "Source",
+  "tv.stage.transcript": "Dialogue",
+  "tv.stage.translation": "Translation",
+  "tv.stage.subtitle": "Subtitles",
+  "tv.stage.result": "Result",
+  "tv.stage-aria": "Step {stage}/5: {label}",
+
+  "tv.back": "Session list",
+  "tv.not-found": "This session was not found.",
+  "tv.action-error": "Could not run this step.",
+  "tv.save-error": "Could not save the session changes.",
+  "tv.failed": "The session failed.",
+  "tv.section.expand": "Expand",
+  "tv.section.collapse": "Collapse",
+  "tv.section.done-collapsed":
+    "The session is finished, so the setup cards are collapsed - press Expand to review or edit.",
+  "tv.cue-count": "{n} lines",
+  "tv.translated-count": "{n} lines translated",
+
+  "tv.card-source": "Source video",
+  "tv.upload-video": "Upload video",
+  "tv.replace-video": "Replace video",
+  "tv.uploading": "Uploading the video…",
+  "tv.upload-error": "Could not upload the video.",
+  "tv.drop-hint": "Drag a video file here, or press Upload video.",
+  "tv.no-source-yet": "No source video yet.",
+  "tv.source-lang": "Language spoken in the video",
+
+  "tv.card-transcript": "Dialogue",
+  "tv.transcribe": "Pull dialogue",
+  "tv.re-transcribe": "Pull again",
+  "tv.transcribing-hint":
+    "Listening through the video and writing down every line with its timecode…",
+  "tv.no-transcript": "No dialogue yet - press Pull dialogue to start.",
+  "tv.transcript-file": "Dialogue file",
+  "tv.job": "Running job",
+  "tv.ai-panel": "AI log",
+  "tv.ai-panel-empty":
+    "Run transcription, translation or the subtitle burn - the AI log streams in here.",
+  "tv.ai-panel.step-transcribe": "Transcribing",
+  "tv.ai-panel.step-subtitle": "Burning subtitles",
+  "tv.ai-panel.step-dub": "Dubbing",
+  "tv.job-no-log": "No log lines yet.",
+  "tv.job-log-error": "Could not read the job log.",
+
+  "tv.stt-provider": "Speech-to-text AI",
+  "tv.stt.local": "On this machine - faster-whisper (free)",
+  "tv.stt.gemini": "Gemini (uses the key you already have)",
+  "tv.stt.soniox": "Soniox ($0.10/hour)",
+  "tv.stt.diarization": "labels speakers",
+  "tv.stt.unavailable": "not available",
+  "tv.stt.diarization-hint":
+    "This one labels who says each line, so dubbing can give every speaker their own voice.",
+  "tv.stt.no-diarization-hint":
+    "This one cannot tell speakers apart, so dubbing gets a single voice for the whole video.",
+  "tv.transcript-speakers": "{n} speakers",
+  "tv.transcript-no-speakers": "no speaker labels",
+
+  "tv.card-translation": "Translation",
+  "tv.card-translation-status": "Translation progress",
+  "tv.translate": "AI translate",
+  "tv.re-translate": "Translate again",
+  "tv.target-lang": "Translate into",
+  "tv.mode": "Output",
+  "tv.translating-hint":
+    "The AI is translating line by line, keeping the timecodes intact…",
+  "tv.no-translation": "not translated",
+  "tv.cue-aria": "Translation of line {n}",
+  "tv.cue-subtitle-of": "On screen ({lang})",
+  "tv.cue-dub-of": "Spoken ({lang})",
+  "tv.cue-dub-missing": "Not translated yet - hit Translate again",
+  "tv.cue-dub-aria": "Spoken line {n}",
+  "tv.dub-needs-retranslate":
+    "Dubbing is set to {lang} but there is no translation to speak yet. Hit Translate again, or the render will be blocked.",
+  "tv.cue-hint": "Edit any line by hand - changes save themselves.",
+
+  "tv.model": "Translation model",
+  "tv.model.gemini-2.5-flash": "Flash (recommended, fast + cheap)",
+  "tv.model.gemini-2.5-pro": "Pro (hard lines, idioms)",
+  "tv.model.gemini-2.5-flash-lite": "Flash Lite (cheapest)",
+  "tv.model-current": "Translated by {provider}, model {model}.",
+
+  "tv.card-subtitle": "Subtitles",
+  "tv.preview": "Preview",
+  "tv.preview-text": "This is a sample subtitle line",
+  "tv.preview-hint":
+    "The backdrop is a real frame from the video you uploaded. This box is a simulation - font size, blur and bottom offset are scaled down from the real frame.",
+  "tv.preview-hint-no-source":
+    "No source video yet, so the backdrop is a stand-in pattern. Upload a video to preview on a real frame.",
+  "tv.subtitle-unused-in-dub":
+    "Dubbing is selected: the render burns no text onto the picture, so this subtitle style only applies if you switch back to Subtitles.",
+  "tv.font": "Font",
+  "tv.font.vietnamese": "Vietnamese-ready (recommended)",
+  "tv.font.sans": "Sans serif",
+  "tv.font.serif": "Serif",
+  "tv.font.mono": "Monospace",
+  "tv.font-size": "Font size (px)",
+  "tv.color": "Text colour",
+  "tv.backdrop": "Backdrop",
+  "tv.backdrop.blur": "Blur",
+  "tv.backdrop.solid": "Solid",
+  "tv.backdrop.none": "None",
+  "tv.backdrop-color": "Backdrop colour",
+  "tv.backdrop-opacity": "Text background opacity",
+  "tv.blur": "Blur amount (px)",
+  "tv.bottom": "Distance from bottom (px)",
+  "tv.style-autosave": "Changes save themselves.",
+  "tv.style-locked":
+    "The session is running - the subtitle style unlocks when this step finishes.",
+
+  "tv.card-result": "Output video",
+  "tv.render": "Burn subtitles",
+  "tv.re-render": "Burn again",
+  "tv.rendering-hint": "Burning the translated subtitles onto the video…",
+  "tv.render-hint":
+    "Press Burn subtitles: the translated lines are written straight onto the picture using the style from step 4.",
+  "tv.render-need-transcript": "Not ready: pull the dialogue in step 2 first.",
+  "tv.render-need-translation": "Not ready: translate the dialogue in step 3 first.",
+  "tv.download": "Download video",
+
+  "tv.card-dub": "Dubbing",
+  "tv.dub-render": "Dub the video",
+  "tv.dub-re-render": "Dub again",
+  "tv.dub-rendering-hint":
+    "Reading each line, squeezing it to fit and placing it at its exact timecode…",
+  "tv.dub-render-hint":
+    "Press Dub the video: every translated line is read aloud, stretched a little to match its timecode, and replaces the original audio.",
+  "tv.dub.need-cues": "Nothing to dub yet - pull the dialogue and translate it first.",
+  "tv.dub.engine": "Speech engine",
+  "tv.dub.voices": "Voice per speaker",
+  "tv.dub.voices-error": "Could not load the voice list.",
+  "tv.dub.not-diarized":
+    "This dialogue has no speaker labels, so the whole video uses one voice. For a voice per person, pull the dialogue again with Gemini or Soniox.",
+  "tv.dub.all-speakers": "One voice for the whole video",
+  "tv.dub.speaker": "Speaker {name}",
+  "tv.dub.speaker-count": "{n} speakers",
+  "tv.dub.voice-aria": "Voice for speaker {name}",
+  "tv.dub.voice-auto": "Pick automatically from the original pitch",
+  "tv.dub.f0": "{f0} Hz",
+  "tv.dub.f0-title":
+    "Measured pitch of the original voice - the basis for matching a voice of the same gender",
+  "tv.dub.preview": "Preview",
+  "tv.dub.stop": "Stop",
+  "tv.dub.preview-failed": "Could not play the preview.",
+  "tv.dub.preview-hint":
+    "The preview reads ONE real line from that speaker and stretches it exactly like the real render does - if it already sounds rushed, the translation is too long, so fix the words before dubbing the whole video.",
+  "tv.dub.tempo": "x{tempo} faster",
+  "tv.dub.fit": "{final}s / {source}s of room",
+  "tv.dub.clipped": "hit the stretch limit",
+  "tv.dub.overflowed": "runs into the next line",
+  "tv.dub.keep-original": "Keep the original audio low underneath",
+  "tv.dub.keep-original-short": "original kept",
+  "tv.dub.original-volume": "Original audio level: {percent}%",
+  "tv.dub.original-volume-hint":
+    "The ceiling is deliberately low so the dubbed voice always stays clear and the two layers never clip when they add up.",
+  "tv.dub.report": "Last dubbing run",
+  "tv.dub.stretched": "{n} lines stretched",
+  "tv.dub.tempo-range": "tempo x{min}-x{max}",
+  "tv.dub.clipped-count": "{n} lines hit the limit",
+  "tv.dub.overflowed-count": "{n} lines overflowed",
+  "tv.dub.report-ok":
+    "No line runs into the next one - the dub sits on the original timing.",
+  "tv.dub.report-overflow":
+    "Some lines are longer than the room they have, even at full stretch. Shorten the wording on exactly those lines and dub again - stretching harder just makes the voice sound fast-forwarded.",
+
+  "help.tv.title": "What is Translate video?",
+  "help.tv.body":
+    "Drop a video in: the system pulls the dialogue with timecodes, the AI translates it into the language you pick, then the translated subtitles are burned onto that same video - or the translation is read aloud and replaces the original audio.\nEvery session goes through 5 steps: Source, Dialogue, Translation, Subtitles, Result. Each step can be edited and re-run.\nPick the output (Subtitles or Dubbing) in the Translation card.",
+  "help.tv-source.title": "What kind of source file works?",
+  "help.tv-source.body":
+    "Any video file the machine can read (MP4, MOV, MKV…). Once uploaded the system measures duration, resolution and fps itself.\nBig files go straight to the backend instead of through the proxy, so leave the page alone until the upload finishes.\nReplacing the video makes the old dialogue and translation useless - pull the dialogue again.",
+  "help.tv-lang.title": "What is the source language for?",
+  "help.tv-lang.body":
+    "It is the language SPOKEN in the video, used when pulling the dialogue - getting it right cuts the spelling mistakes a lot.\n\"Auto-detect\" lets the machine guess, which is right most of the time. Set it by hand only when the video mixes languages or has loud background noise.\nThis is NOT the target language - what you translate into is a separate field in step 3.",
+  "help.tv-transcript.title": "What does pulling the dialogue do?",
+  "help.tv-transcript.body":
+    "The machine listens through the whole video and writes down every line with its start and end time. That is the timing skeleton of the subtitles, so it has to happen before translating.\nThe step runs through the render queue, so it keeps going if you close the page; the log shows up right here.\nPulling again overwrites the whole dialogue and translation.",
+  "help.tv-translation.title": "Can I fix the AI translation by hand?",
+  "help.tv-translation.body":
+    "Yes, and you should. Each line shows the original above and the translation below - editing a box saves it, no Save button.\nTimecodes stay exactly as the original, so editing the words never shifts the subtitles.\nTranslating again overwrites every hand edit - think before pressing it.",
+  "help.tv-mode.title": "Subtitles or dubbing?",
+  "help.tv-mode.body":
+    "Subtitles: the translation is written onto the picture as text and the original audio stays.\nDubbing: the translation is read out as a voice that replaces the original audio, with no text burned in. The translation itself is written differently too - the AI is told to pick SHORTER phrasings so each line fits the slot of the original line.\nSwitching mode means translating again: the two modes need two different kinds of sentence.",
+  "help.tv-stt.title": "Why choose a speech-to-text AI?",
+  "help.tv-stt.body":
+    "On this machine (faster-whisper): free, works offline, but it cannot tell speakers apart.\nGemini: uses the key you already have and labels speakers by inference, with no per-word timecodes.\nSoniox: the most reliable speaker labelling, billed by the hour.\nSpeaker labels are what lets dubbing give each person their own voice - this choice decides that.\nChanging it does NOT delete the dialogue you already have; press Pull again to get a version from the new AI.",
+  "help.tv-model.title": "Which translation model?",
+  "help.tv-model.body":
+    "Flash: fast and cheap, good enough for most dialogue - this is the default.\nPro: slower and pricier, worth it only when Flash breaks on idioms, wordplay or specialist terms.\nFlash Lite: the cheapest, fine for simple dialogue made of short lines.\nThis choice applies to the next Translate press only and is not stored on the session - reloading the page returns it to the default.",
+  "help.tv-dub.title": "How does dubbing work?",
+  "help.tv-dub.body":
+    "Every translated line is read as its own file and then placed at the EXACT timecode of the original line - never chained end to end, so timing errors cannot accumulate across the video.\nWhen a line is longer than the room it has, the system speeds the voice up a little (x1.25 at most - past that the ear hears fast-forwarding). If it still does not fit, the line is allowed to spill slightly instead of being cut off.\nHow many lines had to be stretched, and how many overflowed, is reported in the Output video card once dubbing finishes.\nThere is no lip-sync - matching mouths means regenerating the picture, which is a different system.",
+  "help.tv-dub-voices.title": "How are voices matched to speakers?",
+  "help.tv-dub-voices.body":
+    "Left on \"Pick automatically\": the system measures the real pitch of each person in the video, then picks a voice of the same gender with the closest pitch, and never gives two people the same voice.\nPick one by hand and your choice survives every re-run - only the remaining speakers get assigned automatically.\nThe preview reads a real line from that speaker with the exact same stretching as the real render, so it tells you the truth about what you are about to get.\nDialogue without speaker labels shows a single row: one voice for the whole video.",
+  "help.tv-subtitle.title": "What can the subtitle style change?",
+  "help.tv-subtitle.body":
+    "Font, size, text colour, the backdrop behind the text and the distance from the bottom of the frame.\nThe preview box shows the result immediately, so you do not need a render to judge it - a render takes minutes.\nThe numbers are measured on the REAL frame, so a 4K video needs a bigger font size than a 1080p one.",
+  "help.tv-font.title": "Why only a few fonts?",
+  "help.tv-font.body":
+    "Because this is the list verified to render Vietnamese text correctly. An unregistered font is silently swapped for another one, and Vietnamese diacritics are always the first thing to break: dropped marks, or marks stacking on top of each other.\nThat only shows up after the render is done, so a fixed list is the cheapest way to block it.\nNeed another font? Add it in Style Design instead of typing it here.",
+  "help.tv-result.title": "What happens when I burn subtitles?",
+  "help.tv-result.body":
+    "A job runs through the render queue: the translated lines are written onto the picture with the style from step 4, then a new video is written out.\nProgress and log show up right here; when it finishes you watch and download the video in this same card.\nYou can burn as many times as you like - each run overwrites the previous result.",
+
+  // ===== App shell: collapsible left rail + right panel =====
+  "shell.nav-aria": "Main navigation",
+  "shell.nav-collapse": "Collapse navigation",
+  "shell.nav-expand": "Expand navigation",
+  // Label next to the icon inside the rail - the rail is only 220px wide
+  "shell.nav-collapse-short": "Collapse menu",
+  "shell.nav-expand-short": "Expand menu",
+  "shell.panel-collapse": "Collapse AI panel",
+  "shell.panel-expand": "Expand AI panel",
+  "shell.panel-open": "AI panel",
+  "shell.panel-close": "Close AI panel",
+
+  // ===== Three-column workspace =====
+  "workspace.aria": "Workspace",
+  "workspace.col.source": "Source",
+  "workspace.col.setup": "Request & setup",
+  "workspace.col.output": "Progress & output",
+  "workspace.block.expand": "Expand",
+  "workspace.block.collapse": "Collapse",
+  "workspace.done-collapsed": "Finished - the input blocks collapsed themselves to free up the screen",
+  "workspace.output.title": "Output video",
+  "workspace.output.idle": "No video yet - run a build to produce one.",
+  "workspace.output.running": "Building the video…",
+  "workspace.output.done": "Output video is ready",
+  "workspace.output.failed": "The build failed",
+  "workspace.output.no-video": "Finished, but there is no video file.",
+  "workspace.output.download": "Download video",
+
+  // ===== Aug 2026 UI overhaul: search, filters, empty states, hints =====
+  "dash.failed-today": "{n} failed jobs today",
+  "autocut.search": "Search by name or source file…",
+  "ttv.search": "Search by name or source…",
+  "tv.search": "Search by name or video file…",
+  "styleDetail.font-files": "Font files on disk",
+  "vstyle.detail.card-identity": "Identity",
+  "vstyle.detail.card-art": "Art direction",
+  "vstyle.detail.card-motion": "Staging & motion",
+  "help.voices.title": "What is the Voices page for?",
+  "help.voices.body": "Clone your own voice so Text to video can narrate with it. Everything runs on your machine through VieNeu-TTS - no audio leaves the computer and there is no per-use cost.\nIt needs Python, the vieneu package and PyTorch; the block at the top says exactly what is missing and hands you the install command to copy.\nA reference clip of 5-15 seconds of clear speech is enough - longer is NOT better, the model only uses the beginning.",
+  "common.no-match": "Nothing matches the current search or filters.",
+  "projects.search-placeholder": "Search projects by name or ID…",
+  "imagesPage.search-placeholder": "Search image projects by name or ID…",
+  "queue.filter-by-status": "Filter by status",
+  "assetsPage.scope-aria": "Choose file collection",
+  "stylesPage.count": "{n} styles",
+  "stylesPage.search": "Search styles by name or tag…",
+  "stylesPage.no-match": "No style matches your search.",
+  "help.video-styles.title": "What is a video style?",
+  "help.video-styles.body": "A video style is the visual language of one video: MATERIAL (folded paper, ink wash, pixel art…) and MOTION. It layers on top of a Style Design instead of replacing it - the Style Design still owns brand colors, fonts and logo. Edit styles here, then pick one per video in the edit brief; leave it empty to let the AI decide.",
+  "vstyle.page.delete-selected-title": "Delete selected styles",
+  "vstyle.page.delete-desc": "Delete these {n} video styles? This cannot be undone.",
+  "vstyle.page.delete-in-use": "{n} of them are still used by projects - those projects fall back to \"AI decides\".",
+  "vstyle.page.delete-n": "Delete {n} styles",
+  "vstyle.page.delete-errors": "Could not delete {n} video styles.",
+
+  // ===== Aug 2026 UI overhaul: search, filters, empty states, hints =====
+  "imageDetail.ai-panel": "AI log",
+  "imageDetail.ai-panel-empty": "No image job has run yet. Hit \"Generate\" to start - the log will stream here.",
+  "imageDetail.no-log": "No log lines yet.",
+  "dash.cost-by-model": "AI cost by model",
+  // Spells out the SCOPE: this table follows the chart's day filter but NOT the
+  // project-type filter - unsaid, readers assume both blocks cover the same set.
+  "dash.cost-by-model-scope": "{n} days · all project types",
+  "dash.cost-by-model-error": "Could not load cost by model",
+  "dash.no-usage-by-model": "No model has run up any cost in this period yet.",
+  "dash.col-ai": "AI",
+  "dash.col-model": "Model",
+  "dash.col-tokens-in": "Tokens in",
+  "dash.col-tokens-out": "Tokens out",
+  "dash.col-cost-in": "$ in",
+  "dash.col-cost-out": "$ out",
+  "dash.col-cost-total": "Total $",
+  "dash.model-none": "(model not recorded)",
+  "dash.total-row": "Total",
+  "help.cost-by-model.title": "How are these two money columns calculated?",
+  "help.cost-by-model.body": "This table splits the money you actually paid into two parts: what was spent on the AI READING your input, and what was spent on the AI WRITING output. The two columns add up to exactly the \"Total $\" column.\nHow the split works: each model's list price is used as a ratio (output tokens usually cost 5x input tokens), and the real amount is divided along that ratio. So this shows how your money is allocated, not a price quote.\nWhy not simply multiply tokens by the list price: content the AI already read is cached, and re-reading it costs about 10% of the input price - multiplying directly would show a figure several times higher than what you actually paid.\nA model that is not in the price table has no ratio to split by, so both $ cells show \"-\". That money is still counted in full under \"Total $\", and the note below the table says how much could not be split.",
+  "dash.unallocated-note": "Of that, {amount} could not be split into the two parts because {n} rows have no recorded model (no price table to derive a ratio from). It is still counted in full under \"Total $\".",
+
+  // ===== Aug 2026 UI overhaul: search, filters, empty states, hints =====
+  "common.status-unknown": "Other status",
+  "prompts.count": "{n} prompt templates",
+  "prompts.search": "Search by name or prompt content…",
+  "skills.count": "{n} skills",
+  "skills.search": "Search by skill name or description…",
+  "queue.search": "Search by project, scene or job id…",
+  "assetsPage.search": "Search by file name…",
+  "music.search": "Search by file name, mood, description…",
+  "voices.load-error": "Could not load the voice engine or the cloned voice library.",
+  "autocut.stage.source": "Source video",
+  "autocut.stage.plan": "Analyze",
+  "autocut.stage.review": "Review plan",
+  "autocut.stage.cut": "Cut & create projects",
+  "autocut.stage.done": "Done",
+  "autocut.stage-aria": "Step {stage}/5: {label}",
+};

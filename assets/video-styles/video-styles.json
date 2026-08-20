@@ -1,0 +1,205 @@
+{
+  "styles": [
+    {
+      "id": "giay-gap-nhat",
+      "name": "Gấp giấy Nhật Bản",
+      "art": "Japanese paper craft scene: layered origami and kirigami cut-paper shapes, visible washi paper fibre texture, crisp folded creases, soft realistic drop shadows between paper layers, shallow paper-diorama depth, gentle even studio light.",
+      "avoid": "no photographic realism, no 3D glossy render, no digital gradients, no metallic surfaces",
+      "palette": "brand",
+      "motion": "Chuyển cảnh kiểu GẤP và LẬT giấy, không mờ chồng. Vật thể trượt vào theo lớp, mỗi lớp một bóng đổ nhẹ. Chữ đặt như dán trên mảnh giấy, hơi nghiêng vài độ. Nhịp thong thả, easing mềm.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "vox-explainer",
+      "name": "Giải thích kiểu VOX",
+      "art": "Editorial explainer illustration in the VOX/Vice News style: bold flat graphic shapes, halftone dot texture, cut-out archival photo collage elements, hand-drawn circles and arrows annotating the subject, high contrast, confident modern editorial layout.",
+      "avoid": "no soft airbrush, no photoreal 3D, no cute mascots, no pastel decoration",
+      "palette": "brand",
+      "motion": "Chữ tiêu đề CỰC ĐẬM, co hẹp, vào bằng cách trượt kèm khối màu quét ngang. Mũi tên và vòng khoanh vẽ tay chạy nét theo lời nói. Cắt cảnh dứt khoát đúng nhịp nhấn giọng, không dùng fade.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "tranh-ve-tay",
+      "name": "Tranh vẽ tay (màu nước)",
+      "art": "Hand-painted illustration: watercolour and gouache on textured cotton paper, visible brush strokes and pigment blooms, soft bleeding edges, subtle paper grain showing through, warm hand-made imperfection.",
+      "avoid": "no vector sharpness, no digital gradients, no 3D render, no photographic detail",
+      "palette": "brand",
+      "motion": "Hình hiện ra như mực loang, dùng mask quét dần chứ không phóng to. Chuyển động nhẹ, hơi trôi như giấy. Chữ viết tay hoặc serif mảnh. Tránh mọi chuyển động máy móc, giật cục.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "nguoi-que",
+      "name": "Người que bảng trắng",
+      "art": "Whiteboard marker drawing: simple black stick figures and quick schematic doodles on a clean white board, uneven hand-drawn marker line weight, minimal shading, a few colour accents only where meaning requires it.",
+      "avoid": "no realistic anatomy, no shading, no background scenery, no photographic elements",
+      "palette": "brand",
+      "motion": "Nét VẼ DẦN như đang được viết ra (stroke-dashoffset), không hiện sẵn. Mỗi ý một nét mới, ý cũ mờ bớt chứ không biến mất. Nhịp bám sát lời giảng, dừng lại đúng lúc người nói nhấn.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "flat-vector",
+      "name": "Vector phẳng",
+      "art": "Clean flat vector illustration: solid colour fills, no gradients, geometric simplified forms, generous negative space, consistent stroke weight, modern editorial infographic feel.",
+      "avoid": "no textures, no drop shadows, no 3D, no photographic elements, no gradients",
+      "palette": "brand",
+      "motion": "Hình khối trượt và xoay theo trục rõ ràng, easing dứt khoát. Chuyển cảnh bằng khối màu quét kín màn hình. Bố cục căn lưới nghiêm, chữ sans-serif đậm.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "isometric",
+      "name": "Đẳng cự 3D",
+      "art": "Isometric technical illustration: 30-degree axonometric projection, clean geometric buildings/objects/systems, flat shading with two light levels, precise edges, diagram-like clarity.",
+      "avoid": "no perspective vanishing points, no photographic texture, no hand-drawn wobble",
+      "palette": "brand",
+      "motion": "Camera trượt ngang chậm giữ đúng góc đẳng cự, KHÔNG xoay phối cảnh. Khối dựng lên từng tầng theo thứ tự giải thích. Đường nối giữa các khối chạy nét khi nhắc tới.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "dat-set",
+      "name": "Đất sét stop-motion",
+      "art": "Claymation scene: hand-moulded plasticine characters and props, visible fingerprints and tool marks in the clay, soft matte surface, tabletop miniature set, warm practical lighting with soft shadows.",
+      "avoid": "no smooth digital 3D, no glossy plastic, no vector flatness",
+      "palette": "brand",
+      "motion": "Chuyển động GIẬT nhẹ như stop-motion: giảm còn 12 hình/giây cho vật thể chính, nền vẫn mượt. Vật nảy nhẹ khi dừng. Tuyệt đối không easing quá mượt - mất chất thủ công.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "cat-dan-zine",
+      "name": "Cắt dán báo",
+      "art": "Cut-and-paste zine collage: torn newspaper and magazine scraps, ransom-note mixed typography, photocopied high-contrast textures, visible tape and staples, rough torn paper edges, punk DIY energy.",
+      "avoid": "no clean vector shapes, no smooth gradients, no polished corporate look",
+      "palette": "brand",
+      "motion": "Mảnh giấy DẬP xuống đúng nhịp trống, hơi lệch góc mỗi lần. Rung giật 1-2px giữ nhịp. Chữ nhảy cỡ và font liên tục. Cắt cảnh thô, không chuyển mượt.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "muc-tau",
+      "name": "Tranh mực tàu",
+      "art": "East Asian ink wash painting (sumi-e): black ink on rice paper, gradient washes from deep black to pale grey, confident single brush strokes, vast empty space as composition, subtle bleed into the paper fibre.",
+      "avoid": "no bright colours, no hard vector edges, no digital gradients, no busy detail",
+      "palette": "loose",
+      "motion": "Nét mực chạy theo hướng bút, đầu đậm cuối nhạt. Giữ RẤT NHIỀU khoảng trống, đừng lấp đầy khung. Chuyển cảnh bằng loang mực. Nhịp chậm, tĩnh, để hình thở.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "dong-ho",
+      "name": "Tranh Đông Hồ",
+      "art": "Vietnamese Dong Ho folk woodblock print: hand-carved block print look, bold black outlines, flat traditional mineral pigments, printed on textured diep paper with visible shimmering shell-powder ground, naive charming folk figures.",
+      "avoid": "no modern vector cleanliness, no photographic realism, no 3D shading, no anime styling",
+      "palette": "loose",
+      "motion": "Hình xuất hiện như ĐÓNG DẤU xuống giấy: hiện nhanh kèm rung nhẹ rồi đứng yên. Giữ nét viền dày đặc trưng. Bố cục cân đối kiểu tranh dân gian. Không dùng chuyển động bay lượn hiện đại.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "neon-cyber",
+      "name": "Neon cyberpunk",
+      "art": "Neon cyberpunk night scene: rain-slicked reflective surfaces, glowing neon signage, dense atmospheric haze, strong magenta-cyan rim lighting, deep black shadows, cinematic anamorphic flare.",
+      "avoid": "no daylight, no pastel, no flat vector, no clean minimal white space",
+      "palette": "brand",
+      "motion": "Chữ phát sáng kèm quầng nhẹ, nhấp nháy như đèn neon hỏng ở khung đầu. Nhiễu số và lệch kênh màu ở mỗi lần cắt cảnh. Camera trôi chậm liên tục, không đứng yên hẳn.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "in-retro-70",
+      "name": "In retro thập niên 70",
+      "art": "1970s offset print aesthetic: limited three-colour ink palette, visible misregistration between plates, heavy paper grain and print noise, halftone dots, warm faded inks, vintage poster composition.",
+      "avoid": "no crisp digital edges, no modern gradients, no 3D, no pure white brightness",
+      "palette": "brand",
+      "motion": "Mỗi lần cắt cảnh lệch bản in 2-3px rồi khớp lại. Hạt nhiễu chạy liên tục. Chữ dùng serif hoặc chữ cong kiểu poster cũ. Nhịp vừa phải, ấm áp.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "ban-ve-ky-thuat",
+      "name": "Bản vẽ kỹ thuật",
+      "art": "Technical blueprint schematic: precise white and pale cyan line work on deep blue ground, dimension lines and callout leaders, cross-section cutaways, drafting grid, engineering annotation marks.",
+      "avoid": "no photographic texture, no painterly shading, no decorative illustration",
+      "palette": "loose",
+      "motion": "Đường nét VẼ DẦN theo thứ tự lắp ráp, kèm đường kích thước bung ra. Lưới nền trôi rất chậm. Chữ dùng font đều nét kiểu bản vẽ. Cảm giác chính xác, không ngẫu hứng.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "pixel-art",
+      "name": "Pixel art",
+      "art": "16-bit pixel art: crisp aligned pixel grid, limited indexed palette, deliberate dithering for shading, chunky readable sprites, retro game scene composition.",
+      "avoid": "no anti-aliasing, no smooth curves, no gradients, no photographic detail",
+      "palette": "brand",
+      "motion": "Mọi thứ dịch chuyển theo BƯỚC pixel, không trượt mượt nửa pixel. Chuyển cảnh bằng ô vuông lấp dần. Chữ dùng font pixel. Giữ khung hình thấp cho đúng chất game cũ.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "anime-cel",
+      "name": "Anime cel-shading",
+      "art": "Anime cel-shaded illustration: clean confident line art, two-tone flat cel shading with hard shadow edges, expressive characters, dramatic speed lines, vivid saturated key light.",
+      "avoid": "no photorealism, no painterly blending, no 3D render, no western cartoon proportions",
+      "palette": "brand",
+      "motion": "Nhấn mạnh bằng đường tốc độ và rung khung hình ngắn. Cắt cảnh nhanh ở cao trào. Hiệu ứng loé sáng một khung khi nhấn. Chữ katakana-style hoặc sans đậm nghiêng.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "3d-studio",
+      "name": "3D studio bóng bẩy",
+      "art": "Polished 3D studio render: soft global illumination, seamless infinite backdrop, matte and glossy material contrast, subtle depth of field, product-visualisation quality, clean soft shadows.",
+      "avoid": "no hand-drawn texture, no flat vector, no grain, no visible brush strokes",
+      "palette": "brand",
+      "motion": "Camera trôi rất mượt kèm xoá phông nông. Vật thể xoay chậm liên tục. Chuyển cảnh bằng đẩy camera xuyên qua vật thể. Chữ mảnh, nhiều khoảng thở, sang trọng.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "anh-tai-lieu",
+      "name": "Ảnh thật tài liệu",
+      "art": "Documentary editorial photography: natural available light, authentic candid moments, realistic depth of field, true-to-life colour, photojournalistic framing, no staging.",
+      "avoid": "no illustration, no 3D render, no cartoon, no artificial studio gloss",
+      "palette": "loose",
+      "motion": "Ken Burns nhẹ: phóng và trôi rất chậm trên ảnh tĩnh. Chuyển cảnh cắt thẳng hoặc mờ chồng ngắn. Chữ đặt trên dải nền mờ để đọc được trên mọi ảnh.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "infographic",
+      "name": "Infographic số liệu",
+      "art": "Data-driven infographic: clean charts and diagrams, clear numeric hierarchy, generous white space, restrained iconography, precise alignment grid, editorial data-journalism clarity.",
+      "avoid": "no decorative clutter, no photographic background, no 3D chart effects, no drop shadows",
+      "palette": "brand",
+      "motion": "Cột và đường biểu đồ MỌC LÊN từ 0 đúng lúc đọc tới con số. Số đếm tăng dần thay vì hiện sẵn. Mỗi màn chỉ một ý số liệu. Căn lưới tuyệt đối.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "cat-out-puppet",
+      "name": "Rối giấy cắt",
+      "art": "Cut-out paper puppet animation: flat character parts with visible joint pivots, construction-paper texture, slightly crude hand-cut edges, simple layered stage-like backdrop.",
+      "avoid": "no smooth 3D, no realistic anatomy, no gradients, no photographic depth",
+      "palette": "brand",
+      "motion": "Nhân vật cử động bằng cách XOAY quanh khớp nối, chân tay là mảnh rời. Miệng đổi giữa vài hình cố định theo lời. Chuyển động thô, hài hước, hơi vụng về có chủ ý.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    },
+    {
+      "id": "giao-dien-app",
+      "name": "Giao diện app",
+      "art": "Modern app UI showcase: floating interface panels with frosted translucent glass, soft layered shadows, rounded corners, crisp iconography, subtle depth, clean tech product presentation.",
+      "avoid": "no hand-drawn texture, no grain, no photographic clutter, no skeuomorphic ornament",
+      "palette": "brand",
+      "motion": "Panel trượt vào kèm mờ nền phía sau. Con trỏ giả lập thao tác thật, bấm đâu có phản hồi đó. Chuyển cảnh bằng phóng vào một phần giao diện. Chữ sans hiện đại, cỡ chuẩn hệ thống.",
+      "createdAt": "2026-08-04T13:01:22.752Z",
+      "updatedAt": "2026-08-04T13:01:22.752Z"
+    }
+  ],
+  "removedBuiltins": []
+}

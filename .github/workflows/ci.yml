@@ -1,0 +1,45 @@
+name: CI
+
+# Chạy trên mọi push vào main và mọi Pull Request. Với PR từ người ngoài, hãy bật
+# Settings -> Actions -> "Require approval for all outside collaborators" để
+# workflow chỉ chạy sau khi bạn duyệt.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Push liên tiếp trên cùng một nhánh: hủy lần chạy cũ, chỉ giữ lần mới nhất
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Typecheck and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # Node 22: hyperframes khai engines ">=22", thấp hơn là npm cảnh báo và
+      # một số API của nó không chạy
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      # npm ci (không phải npm install): cài đúng theo package-lock.json và
+      # fail nếu lockfile lệch package.json - đúng thứ cần bắt ở PR
+      - run: npm ci
+
+      - name: Typecheck (server + web + remotion)
+        run: npm run typecheck
+
+      - name: Build (server + web)
+        run: npm run build
+
+# KHÔNG chạy render thật ở đây: việc đó cần FFmpeg, Chrome, GPU và khóa
+# Claude/Gemini. Đưa khóa thật vào CI vừa tốn tiền vừa rủi ro lộ, nên CI chỉ
+# gác phần kiểm được tĩnh. Phần hình ảnh/âm thanh vẫn phải người xem và duyệt.

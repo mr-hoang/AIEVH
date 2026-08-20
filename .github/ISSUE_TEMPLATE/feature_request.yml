@@ -1,0 +1,29 @@
+name: Feature request / Đề xuất tính năng
+description: Đề xuất một tính năng hoặc cải tiến - Suggest an idea
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Dự án này ưu tiên những thứ giúp làm xong một video nhanh hơn hoặc đẹp hơn.
+        This project prioritises things that make finishing a video faster or better.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Vấn đề bạn đang gặp / What problem are you hitting?
+      description: Mô tả tình huống thật, đừng chỉ mô tả giải pháp - cách giải quyết tốt nhất có thể khác điều bạn nghĩ ban đầu.
+      placeholder: |
+        Ví dụ: video bài viết dài 10 phút chỉ có một nền tĩnh nên xem rất chán.
+    validations:
+      required: true
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: Bạn nghĩ nên làm thế nào? / What would you like to happen?
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Cách khác đã thử / Alternatives you considered

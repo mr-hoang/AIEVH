@@ -1,0 +1,28 @@
+{
+  "name": "ai-edit-video",
+  "license": "MIT",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AIEV Local Studio — ChatGPT/Codex hoặc Claude điều khiển HyperFrames + Remotion",
+  "workspaces": [
+    "apps/web",
+    "apps/server",
+    "engines/remotion"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,web -c yellow,cyan \"npm run dev -w apps/server\" \"npm run dev -w apps/web\"",
+    "build": "npm run build -w apps/server && npm run build -w apps/web",
+    "start": "concurrently -n server,web -c yellow,cyan \"npm run start -w apps/server\" \"npm run start -w apps/web\"",
+    "typecheck": "npm run typecheck -w apps/server && npm run typecheck -w apps/web && npm run typecheck -w engines/remotion",
+    "package:safe": "powershell -ExecutionPolicy Bypass -File scripts/package-safe.ps1"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.4"
+  },
+  "dependencies": {
+    "hyperframes": "^0.7.81"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

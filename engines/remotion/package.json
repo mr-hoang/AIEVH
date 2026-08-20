@@ -1,0 +1,22 @@
+{
+  "name": "remotion-engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tầng lắp ráp Remotion — composition Assemble data-driven từ meta.json (xem skill remotion-assemble)",
+  "scripts": {
+    "studio": "remotion studio",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.500",
+    "@remotion/fonts": "^4.0.500",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "remotion": "^4.0.500",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "typescript": "^5.0.0"
+  }
+}

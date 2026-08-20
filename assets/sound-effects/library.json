@@ -1,0 +1,1015 @@
+[
+  {
+    "file": "1-108.mp3",
+    "tags": [
+      "khac"
+    ],
+    "durationMs": 2116,
+    "description": "Chạy nhanh, đi trốn, hài hước vui vui"
+  },
+  {
+    "file": "anime-wow-1.mp3",
+    "tags": [
+      "meme",
+      "voice",
+      "wow",
+      "hay-dung"
+    ],
+    "durationMs": 4200,
+    "description": "Tiếng 'Wow' phong cách anime, bất ngờ thích thú"
+  },
+  {
+    "file": "anime-wow-2.mp3",
+    "tags": [
+      "meme",
+      "voice",
+      "wow"
+    ],
+    "durationMs": 4200,
+    "description": "Tiếng 'Wow' phong cách anime, bất ngờ thích thú"
+  },
+  {
+    "file": "arcade-bonus-1.wav",
+    "tags": [
+      "game",
+      "bonus",
+      "thang"
+    ],
+    "durationMs": 2000,
+    "description": "Nhạc hiệu bonus game arcade, ăn điểm/phần thưởng"
+  },
+  {
+    "file": "arcade-bonus-2.wav",
+    "tags": [
+      "game",
+      "bonus",
+      "thang"
+    ],
+    "durationMs": 2000,
+    "description": "Nhạc hiệu bonus game arcade, ăn điểm/phần thưởng"
+  },
+  {
+    "file": "arcade-bonus-3.wav",
+    "tags": [
+      "game",
+      "bonus",
+      "thang"
+    ],
+    "durationMs": 2000,
+    "description": "Nhạc hiệu bonus game arcade, ăn điểm/phần thưởng"
+  },
+  {
+    "file": "arcade-bonus-4.wav",
+    "tags": [
+      "game",
+      "bonus",
+      "thang"
+    ],
+    "durationMs": 2000,
+    "description": "Nhạc hiệu bonus game arcade, ăn điểm/phần thưởng"
+  },
+  {
+    "file": "boing.mp3",
+    "tags": [
+      "hai",
+      "cartoon",
+      "nhan"
+    ],
+    "durationMs": 889,
+    "description": "Tiếng lò xo boing hoạt hình, nhấn chi tiết hài"
+  },
+  {
+    "file": "build-up.mp3",
+    "tags": [
+      "transition",
+      "cao-trao",
+      "build-up"
+    ],
+    "durationMs": 7372,
+    "description": "Đoạn dồn nhịp tăng dần, dẫn vào cao trào"
+  },
+  {
+    "file": "buy.mp3",
+    "tags": [
+      "tien",
+      "ui",
+      "thang",
+      "hay-dung"
+    ],
+    "durationMs": 1202,
+    "description": "Mua hàng thành công"
+  },
+  {
+    "file": "buzzer.mp3",
+    "tags": [
+      "gameshow",
+      "sai",
+      "buzzer"
+    ],
+    "durationMs": 1776,
+    "description": "Còi buzzer gameshow — sai/bị loại"
+  },
+  {
+    "file": "cabinet-closing.wav",
+    "tags": [
+      "foley",
+      "do-vat"
+    ],
+    "durationMs": 2436,
+    "description": "Foley đóng cửa tủ"
+  },
+  {
+    "file": "camera-flash-1.wav",
+    "tags": [
+      "camera",
+      "flash",
+      "chup-anh",
+      "hay-dung"
+    ],
+    "durationMs": 1241,
+    "description": "Đèn flash máy ảnh nháy"
+  },
+  {
+    "file": "camera-flash-2.wav",
+    "tags": [
+      "camera",
+      "flash",
+      "chup-anh"
+    ],
+    "durationMs": 1393,
+    "description": "Đèn flash máy ảnh nháy"
+  },
+  {
+    "file": "camera-flash-3.wav",
+    "tags": [
+      "camera",
+      "flash",
+      "chup-anh"
+    ],
+    "durationMs": 1152,
+    "description": "Đèn flash máy ảnh nháy"
+  },
+  {
+    "file": "camera-flash-4.wav",
+    "tags": [
+      "camera",
+      "flash",
+      "chup-anh"
+    ],
+    "durationMs": 1580,
+    "description": "Đèn flash máy ảnh nháy"
+  },
+  {
+    "file": "camera-shutter-1.wav",
+    "tags": [
+      "camera",
+      "shutter",
+      "chup-anh"
+    ],
+    "durationMs": 654,
+    "description": "Màn trập máy ảnh — chụp ảnh, freeze frame"
+  },
+  {
+    "file": "camera-shutter-2.wav",
+    "tags": [
+      "camera",
+      "shutter",
+      "chup-anh"
+    ],
+    "durationMs": 653,
+    "description": "Màn trập máy ảnh — chụp ảnh, freeze frame"
+  },
+  {
+    "file": "camera-shutter-3.wav",
+    "tags": [
+      "camera",
+      "shutter",
+      "chup-anh"
+    ],
+    "durationMs": 1349,
+    "description": "Màn trập máy ảnh — chụp ảnh, freeze frame"
+  },
+  {
+    "file": "camera-shutter-4.mp3",
+    "tags": [
+      "camera",
+      "shutter",
+      "chup-anh"
+    ],
+    "durationMs": 882,
+    "description": "Màn trập máy ảnh — chụp ảnh, freeze frame"
+  },
+  {
+    "file": "camera-shutter.mp3",
+    "tags": [
+      "camera",
+      "shutter",
+      "chup-anh"
+    ],
+    "durationMs": 340,
+    "description": "Màn trập máy ảnh — chụp ảnh, freeze frame"
+  },
+  {
+    "file": "camera-snap.wav",
+    "tags": [
+      "camera",
+      "shutter",
+      "chup-anh",
+      "hay-dung"
+    ],
+    "durationMs": 2703,
+    "description": "Chụp ảnh snap nhanh"
+  },
+  {
+    "file": "chomp.mp3",
+    "tags": [
+      "hai",
+      "an-uong",
+      "hay-dung"
+    ],
+    "durationMs": 489,
+    "description": "Tiếng cắn/nhai một phát"
+  },
+  {
+    "file": "chopping-lime.wav",
+    "tags": [
+      "foley",
+      "nau-an"
+    ],
+    "durationMs": 6974,
+    "description": "Foley dao thớt cắt chanh"
+  },
+  {
+    "file": "clash-royale-startup.mp3",
+    "tags": [
+      "meme",
+      "game",
+      "intro"
+    ],
+    "durationMs": 3396,
+    "description": "Nhạc hiệu mở game Clash Royale (meme)"
+  },
+  {
+    "file": "click-button.mp3",
+    "tags": [
+      "ui",
+      "click",
+      "hay-dung"
+    ],
+    "durationMs": 496,
+    "description": "Click nút bấm UI"
+  },
+  {
+    "file": "correct.mp3",
+    "tags": [
+      "gameshow",
+      "dung",
+      "thang"
+    ],
+    "durationMs": 1272,
+    "description": "Chuông trả lời đúng"
+  },
+  {
+    "file": "crickets.mp3",
+    "tags": [
+      "meme",
+      "im-lang",
+      "hai"
+    ],
+    "durationMs": 5277,
+    "description": "Tiếng dế kêu — im lặng gượng gạo (meme)"
+  },
+  {
+    "file": "digital-counting-1.mp3",
+    "tags": [
+      "ui",
+      "dem-so",
+      "so-lieu"
+    ],
+    "durationMs": 511,
+    "description": "Tiếng đếm số điện tử — count-up số liệu"
+  },
+  {
+    "file": "digital-counting-2.mp3",
+    "tags": [
+      "ui",
+      "dem-so",
+      "so-lieu"
+    ],
+    "durationMs": 7059,
+    "description": "Tiếng đếm số điện tử chạy dài — count-up số liệu"
+  },
+  {
+    "file": "ding.mp3",
+    "tags": [
+      "ui",
+      "thong-bao",
+      "nhan",
+      "hay-dung"
+    ],
+    "durationMs": 2952,
+    "description": "Ding chuông thông báo sáng"
+  },
+  {
+    "file": "drawer-open-close.wav",
+    "tags": [
+      "foley",
+      "do-vat"
+    ],
+    "durationMs": 4037,
+    "description": "Foley mở/đóng ngăn kéo"
+  },
+  {
+    "file": "dry-fart.mp3",
+    "tags": [
+      "hai",
+      "meme",
+      "hay-dung"
+    ],
+    "durationMs": 313,
+    "description": "Tiếng xì hơi khô (hài)"
+  },
+  {
+    "file": "duck-toy.mp3",
+    "tags": [
+      "hai",
+      "meme",
+      "hay-dung"
+    ],
+    "durationMs": 960,
+    "description": "Vịt đồ chơi kêu chít (hài)"
+  },
+  {
+    "file": "dun-dun-dun-brass.mp3",
+    "tags": [
+      "meme",
+      "kich-tinh",
+      "nhan"
+    ],
+    "durationMs": 5120,
+    "description": "Dun-dun-dun kèn đồng kịch tính (meme)"
+  },
+  {
+    "file": "error.mp3",
+    "tags": [
+      "ui",
+      "loi",
+      "sai",
+      "hay-dung"
+    ],
+    "durationMs": 993,
+    "description": "Tiếng lỗi hệ thống"
+  },
+  {
+    "file": "fail.mp3",
+    "tags": [
+      "sai",
+      "that-bai",
+      "hai"
+    ],
+    "durationMs": 5039,
+    "description": "Nhạc hiệu thất bại"
+  },
+  {
+    "file": "fairy-dust.mp3",
+    "tags": [
+      "magic",
+      "reveal",
+      "lap-lanh"
+    ],
+    "durationMs": 7059,
+    "description": "Bụi tiên lấp lánh — magic reveal"
+  },
+  {
+    "file": "fart-echo.mp3",
+    "tags": [
+      "hai",
+      "meme",
+      "hay-dung"
+    ],
+    "durationMs": 1874,
+    "description": "Tiếng xì hơi vang (hài)"
+  },
+  {
+    "file": "fast-forward.mp3",
+    "tags": [
+      "transition",
+      "tua-nhanh"
+    ],
+    "durationMs": 8736,
+    "description": "Tiếng tua nhanh băng"
+  },
+  {
+    "file": "film-countdown.mp3",
+    "tags": [
+      "intro",
+      "dem-nguoc",
+      "phim"
+    ],
+    "durationMs": 10056,
+    "description": "Đếm ngược đầu phim 3-2-1"
+  },
+  {
+    "file": "funny.mp3",
+    "tags": [
+      "hai",
+      "nhac-nen"
+    ],
+    "durationMs": 2560,
+    "description": "Nhạc nền hài ngắn"
+  },
+  {
+    "file": "glasses-cheers-1.wav",
+    "tags": [
+      "foley",
+      "an-mung"
+    ],
+    "durationMs": 2069,
+    "description": "Cụng ly chúc mừng"
+  },
+  {
+    "file": "glasses-cheers-2.wav",
+    "tags": [
+      "foley",
+      "an-mung"
+    ],
+    "durationMs": 2135,
+    "description": "Cụng ly chúc mừng"
+  },
+  {
+    "file": "glitch.mp3",
+    "tags": [
+      "transition",
+      "glitch",
+      "cong-nghe"
+    ],
+    "durationMs": 840,
+    "description": "Nhiễu glitch điện tử — chuyển cảnh lỗi"
+  },
+  {
+    "file": "hava-nagila.mp3",
+    "tags": [
+      "meme",
+      "nhac-nen",
+      "an-mung"
+    ],
+    "durationMs": 16324,
+    "description": "Nhạc Hava Nagila (meme ăn mừng)"
+  },
+  {
+    "file": "heartbeat-calm-1.mp3",
+    "tags": [
+      "heartbeat",
+      "hoi-hop"
+    ],
+    "durationMs": 4500,
+    "description": "Nhịp tim chậm rãi — hồi hộp nhẹ"
+  },
+  {
+    "file": "heartbeat-calm-2.mp3",
+    "tags": [
+      "heartbeat",
+      "hoi-hop"
+    ],
+    "durationMs": 4500,
+    "description": "Nhịp tim chậm rãi — hồi hộp nhẹ"
+  },
+  {
+    "file": "heartbeat-calm-2.wav",
+    "tags": [
+      "heartbeat",
+      "hoi-hop"
+    ],
+    "durationMs": 4500,
+    "description": "Nhịp tim chậm rãi — hồi hộp nhẹ"
+  },
+  {
+    "file": "heartbeat-fast.mp3",
+    "tags": [
+      "heartbeat",
+      "cang-thang"
+    ],
+    "durationMs": 4219,
+    "description": "Nhịp tim nhanh — căng thẳng"
+  },
+  {
+    "file": "heartbeat-single.mp3",
+    "tags": [
+      "heartbeat",
+      "nhan"
+    ],
+    "durationMs": 1500,
+    "description": "Một nhịp tim đơn — nhấn khoảnh khắc"
+  },
+  {
+    "file": "heartbeat-single.wav",
+    "tags": [
+      "heartbeat",
+      "nhan"
+    ],
+    "durationMs": 1500,
+    "description": "Một nhịp tim đơn — nhấn khoảnh khắc"
+  },
+  {
+    "file": "heartbeat-very-fast.mp3",
+    "tags": [
+      "heartbeat",
+      "cang-thang",
+      "cao-trao"
+    ],
+    "durationMs": 4219,
+    "description": "Nhịp tim rất nhanh — cao trào căng thẳng"
+  },
+  {
+    "file": "ice-in-glass.wav",
+    "tags": [
+      "foley",
+      "do-uong"
+    ],
+    "durationMs": 3270,
+    "description": "Foley đá viên rơi vào ly"
+  },
+  {
+    "file": "iphone-typing.mp3",
+    "tags": [
+      "ui",
+      "go-phim",
+      "dien-thoai",
+      "hay-dung"
+    ],
+    "durationMs": 16872,
+    "description": "Gõ phím iPhone"
+  },
+  {
+    "file": "jontron-what.mp3",
+    "tags": [
+      "meme",
+      "voice",
+      "soc",
+      "hay-dung"
+    ],
+    "durationMs": 3162,
+    "description": "'WHAT?!' JonTron (meme ngỡ ngàng)"
+  },
+  {
+    "file": "ka-ching.mp3",
+    "tags": [
+      "tien",
+      "ka-ching",
+      "thang",
+      "hay-dung"
+    ],
+    "durationMs": 2438,
+    "description": "Ka-ching máy tính tiền — chốt đơn, doanh thu"
+  },
+  {
+    "file": "mario-coin.mp3",
+    "tags": [
+      "meme",
+      "game",
+      "tien"
+    ],
+    "durationMs": 744,
+    "description": "Ăn xu Mario (meme) — điểm cộng, tiền"
+  },
+  {
+    "file": "mechanical-keyboard.mp3",
+    "tags": [
+      "ui",
+      "go-phim",
+      "hay-dung"
+    ],
+    "durationMs": 12147,
+    "description": "Gõ bàn phím cơ"
+  },
+  {
+    "file": "meme-laugh.mp3",
+    "tags": [
+      "meme",
+      "hai",
+      "cuoi"
+    ],
+    "durationMs": 30373,
+    "description": "Tràng cười meme"
+  },
+  {
+    "file": "mii-channel-music.mp3",
+    "tags": [
+      "meme",
+      "nhac-nen",
+      "cho-doi"
+    ],
+    "durationMs": 17040,
+    "description": "Nhạc Mii Channel (meme chờ đợi/awkward)"
+  },
+  {
+    "file": "money-counter.mp3",
+    "tags": [
+      "tien",
+      "dem-so"
+    ],
+    "durationMs": 4944,
+    "description": "Máy đếm tiền chạy"
+  },
+  {
+    "file": "money.mp3",
+    "tags": [
+      "tien",
+      "hay-dung"
+    ],
+    "durationMs": 2482,
+    "description": "Tiếng tiền xào xạc"
+  },
+  {
+    "file": "mouse-click.mp3",
+    "tags": [
+      "ui",
+      "click",
+      "hay-dung"
+    ],
+    "durationMs": 3065,
+    "description": "Click chuột"
+  },
+  {
+    "file": "netflix-jingle.mp3",
+    "tags": [
+      "intro",
+      "jingle"
+    ],
+    "durationMs": 4063,
+    "description": "Jingle 'tudum' kiểu Netflix mở đầu"
+  },
+  {
+    "file": "new-item.wav",
+    "tags": [
+      "game",
+      "bonus",
+      "reveal"
+    ],
+    "durationMs": 2436,
+    "description": "Nhận vật phẩm mới (game)"
+  },
+  {
+    "file": "omg-wow.mp3",
+    "tags": [
+      "voice",
+      "wow",
+      "meme"
+    ],
+    "durationMs": 6602,
+    "description": "Giọng 'OMG wow' bất ngờ"
+  },
+  {
+    "file": "opening-bottle.wav",
+    "tags": [
+      "foley",
+      "do-uong"
+    ],
+    "durationMs": 4771,
+    "description": "Foley mở nắp chai"
+  },
+  {
+    "file": "opening-can.wav",
+    "tags": [
+      "foley",
+      "do-uong"
+    ],
+    "durationMs": 2970,
+    "description": "Foley bật lon nước"
+  },
+  {
+    "file": "opening-jar.wav",
+    "tags": [
+      "foley",
+      "do-vat"
+    ],
+    "durationMs": 2669,
+    "description": "Foley mở hũ"
+  },
+  {
+    "file": "paper-handle-foley.mp3",
+    "tags": [
+      "foley",
+      "giay"
+    ],
+    "durationMs": 1032,
+    "description": "Foley cầm giấy sột soạt"
+  },
+  {
+    "file": "paper-tear-1.wav",
+    "tags": [
+      "foley",
+      "giay",
+      "xe"
+    ],
+    "durationMs": 419,
+    "description": "Xé giấy"
+  },
+  {
+    "file": "paper-tear-2.wav",
+    "tags": [
+      "foley",
+      "giay",
+      "xe"
+    ],
+    "durationMs": 441,
+    "description": "Xé giấy"
+  },
+  {
+    "file": "paper-tear-3.wav",
+    "tags": [
+      "foley",
+      "giay",
+      "xe"
+    ],
+    "durationMs": 371,
+    "description": "Xé giấy"
+  },
+  {
+    "file": "peeling-veggies.wav",
+    "tags": [
+      "foley",
+      "nau-an"
+    ],
+    "durationMs": 26793,
+    "description": "Foley gọt rau củ"
+  },
+  {
+    "file": "pop-2.mp3",
+    "tags": [
+      "ui",
+      "pop",
+      "reveal"
+    ],
+    "durationMs": 288,
+    "description": "Pop bật nhẹ — hiện element"
+  },
+  {
+    "file": "pop-bubble.wav",
+    "tags": [
+      "ui",
+      "pop"
+    ],
+    "durationMs": 1969,
+    "description": "Bong bóng vỡ pop"
+  },
+  {
+    "file": "pop.mp3",
+    "tags": [
+      "ui",
+      "pop",
+      "reveal",
+      "hay-dung"
+    ],
+    "durationMs": 967,
+    "description": "Pop bật nhẹ — hiện element"
+  },
+  {
+    "file": "punch.mp3",
+    "tags": [
+      "va-cham",
+      "nhan"
+    ],
+    "durationMs": 432,
+    "description": "Cú đấm — va chạm mạnh"
+  },
+  {
+    "file": "quick-swoosh.mp3",
+    "tags": [
+      "transition",
+      "swoosh"
+    ],
+    "durationMs": 731,
+    "description": "Swoosh lướt nhanh — chuyển cảnh"
+  },
+  {
+    "file": "quick-ting.mp3",
+    "tags": [
+      "ui",
+      "ting",
+      "nhan"
+    ],
+    "durationMs": 940,
+    "description": "Ting nhanh — nhấn chi tiết sáng"
+  },
+  {
+    "file": "riser-metallic.mp3",
+    "tags": [
+      "transition",
+      "riser",
+      "cao-trao"
+    ],
+    "durationMs": 2763,
+    "description": "Riser kim loại dâng lên — vào drop/chuyển cảnh"
+  },
+  {
+    "file": "run-vine.mp3",
+    "tags": [
+      "meme",
+      "hai"
+    ],
+    "durationMs": 8256,
+    "description": "Tiếng chạy vụt (meme Vine)"
+  },
+  {
+    "file": "shocked.mp3",
+    "tags": [
+      "soc",
+      "nhan"
+    ],
+    "durationMs": 1416,
+    "description": "Giật mình sốc"
+  },
+  {
+    "file": "shocking.mp3",
+    "tags": [
+      "soc",
+      "kich-tinh"
+    ],
+    "durationMs": 2392,
+    "description": "Âm sốc kịch tính"
+  },
+  {
+    "file": "sonic-ring.mp3",
+    "tags": [
+      "meme",
+      "game",
+      "tien"
+    ],
+    "durationMs": 862,
+    "description": "Ăn ring Sonic (meme)"
+  },
+  {
+    "file": "spongebob-a-few-moments-later.mp3",
+    "tags": [
+      "meme",
+      "chuyen-thoi-gian",
+      "voice"
+    ],
+    "durationMs": 2016,
+    "description": "'A few moments later' — SpongeBob, chuyển thời gian"
+  },
+  {
+    "file": "spongebob-two-hours-later.mp3",
+    "tags": [
+      "meme",
+      "chuyen-thoi-gian",
+      "voice"
+    ],
+    "durationMs": 2415,
+    "description": "'Two hours later' — SpongeBob, chuyển thời gian"
+  },
+  {
+    "file": "swoosh.mp3",
+    "tags": [
+      "transition",
+      "swoosh",
+      "hay-dung"
+    ],
+    "durationMs": 360,
+    "description": "Swoosh chuyển cảnh"
+  },
+  {
+    "file": "ta-da.mp3",
+    "tags": [
+      "reveal",
+      "an-mung",
+      "thang",
+      "hay-dung"
+    ],
+    "durationMs": 2067,
+    "description": "Ta-da! — khoe kết quả"
+  },
+  {
+    "file": "take-off.mp3",
+    "tags": [
+      "transition",
+      "tang-truong"
+    ],
+    "durationMs": 2551,
+    "description": "Cất cánh vút lên"
+  },
+  {
+    "file": "temple-bell.mp3",
+    "tags": [
+      "chuong",
+      "binh-yen"
+    ],
+    "durationMs": 1907,
+    "description": "Chuông chùa ngân"
+  },
+  {
+    "file": "ting.wav",
+    "tags": [
+      "ui",
+      "ting",
+      "nhan",
+      "hay-dung"
+    ],
+    "durationMs": 2569,
+    "description": "Ting chuông sáng"
+  },
+  {
+    "file": "video0_k03U0Iy.mp3",
+    "tags": [
+      "khac"
+    ],
+    "durationMs": 6649,
+    "description": "Chưa phân loại — nghe thử để cập nhật mô tả"
+  },
+  {
+    "file": "vine-boom.mp3",
+    "tags": [
+      "meme",
+      "nhan",
+      "boom"
+    ],
+    "durationMs": 1255,
+    "description": "Vine boom — nhấn mạnh cực gắt (meme)"
+  },
+  {
+    "file": "voice-oh-god-help-me.mp3",
+    "tags": [
+      "meme",
+      "voice",
+      "hai"
+    ],
+    "durationMs": 6223,
+    "description": "Giọng 'Oh god help me' (meme)"
+  },
+  {
+    "file": "water-drip.mp3",
+    "tags": [
+      "foley",
+      "nuoc"
+    ],
+    "durationMs": 496,
+    "description": "Giọt nước nhỏ"
+  },
+  {
+    "file": "weee.mp3",
+    "tags": [
+      "hai",
+      "voice"
+    ],
+    "durationMs": 9683,
+    "description": "'Weee' vui nhộn kéo dài"
+  },
+  {
+    "file": "whoosh.wav",
+    "tags": [
+      "transition",
+      "swoosh"
+    ],
+    "durationMs": 3270,
+    "description": "Whoosh chuyển cảnh dày"
+  },
+  {
+    "file": "windows-xp-startup.mp3",
+    "tags": [
+      "meme",
+      "intro",
+      "cong-nghe"
+    ],
+    "durationMs": 4911,
+    "description": "Nhạc khởi động Windows XP (meme)"
+  },
+  {
+    "file": "wrong-answer-buzzer.mp3",
+    "tags": [
+      "gameshow",
+      "sai",
+      "buzzer"
+    ],
+    "durationMs": 1063,
+    "description": "Còi trả lời sai"
+  },
+  {
+    "file": "x-files-theme-1.mp3",
+    "tags": [
+      "meme",
+      "bi-an",
+      "nhac-nen"
+    ],
+    "durationMs": 7838,
+    "description": "Nhạc X-Files bí ẩn (meme conspiracy)"
+  },
+  {
+    "file": "x-files-theme-2.mp3",
+    "tags": [
+      "meme",
+      "bi-an",
+      "nhac-nen"
+    ],
+    "durationMs": 14864,
+    "description": "Nhạc X-Files bí ẩn (meme conspiracy)"
+  },
+  {
+    "file": "y2mate_VKI8qDn.mp3",
+    "tags": [
+      "khac"
+    ],
+    "durationMs": 1161,
+    "description": "thêm kết nối, tham gia mới"
+  }
+]

@@ -1,0 +1,1070 @@
+@import "tailwindcss";
+
+/* Không hiển thị chữ gợi ý mờ trong ô nhập. Nhãn Field/aria-label vẫn giữ
+   nguyên để biểu mẫu rõ nghĩa và trình đọc màn hình vẫn hoạt động. */
+input::placeholder,
+textarea::placeholder {
+  color: transparent !important;
+  opacity: 0 !important;
+}
+
+/* ============ Thang chữ - BA BẬC, KHÔNG CÓ BẬC THỨ TƯ ============
+
+   Đây là thứ quyết định giao diện có bị rối mắt hay không, nên viết ra thành
+   luật chứ không để mỗi trang tự đoán. Trước đợt đại tu này toàn dashboard có
+   416 chỗ `text-xs` so với 136 chỗ `text-sm`: 12px đã lặng lẽ trở thành cỡ chữ
+   thân bài, kèm một đuôi dài 10px/11px/13px/15px tự chế. Hậu quả là mọi thứ
+   trông như nhau - không phân biệt được đâu là nội dung, đâu là chú thích.
+
+   Từ nay chỉ có ba bậc, chọn theo VAI TRÒ của chữ chứ không theo chỗ trống:
+
+     text-sm   14px  NỘI DUNG. Mọi thứ người dùng thật sự đọc: mô tả, giá trị,
+                     nhãn ô nhập, tên mục trong danh sách, câu thông báo.
+                     Đây là mặc định - phân vân thì chọn cái này.
+     text-meta 13px  PHỤ CHÚ. Chỉ dữ liệu đi kèm nội dung: mốc thời gian, id,
+                     số đếm, câu gợi ý dưới ô nhập, đường dẫn file.
+     text-xs   12px  CHI TIẾT KHUNG. CHỈ dùng trong badge/chip, <th> của bảng,
+                     và nhãn in hoa của cột (.t-eyebrow). Không dùng cho câu văn.
+
+   CẤM: text-[10px], text-[11px], text-[13px], text-[15px] và mọi cỡ tùy biến
+   khác. Cần 13px thì dùng `text-meta` - đó là lý do nó tồn tại. Dưới 12px thì
+   không có bậc nào cả: chữ đó hoặc đủ quan trọng để đọc được, hoặc không nên
+   có mặt. */
+
+@theme {
+  /* 13px. Có tên riêng để không ai phải gõ `text-[13px]` nữa - cỡ tùy biến gõ
+     tay chính là cách bậc thứ tư lẻn vào hệ thống. */
+  --text-meta: 0.8125rem;
+  --text-meta--line-height: 1.45;
+}
+
+/* ============ Design tokens - nguồn sự thật: .claude/skills/webui-design ============ */
+
+:root {
+  /* Brand */
+  --primary: #ed3c47;
+  --primary-hover: #d62e3a;
+  --primary-soft: #fdedef;
+  --secondary: #ff7849;
+
+  /* Surface */
+  --bg: #ffffff;
+  --bg-subtle: #f6f6f7;
+  --surface: #ffffff;
+  --border: #e7e7ea;
+
+  /* Text */
+  --text: #101113;
+  --text-muted: #5f6470;
+
+  /* Semantic */
+  --success: #16a34a;
+  --success-bg: #e7f6ec;
+  --danger: #e8590c;
+  --danger-bg: #fbeee5;
+
+  /* Chart series - CHỈ dùng cho biểu đồ nhiều series (dataviz).
+     Series 1 = --primary (Claude); --chart-2 = Gemini; --chart-3 = OpenAI.
+     Bộ [--primary, --chart-2, --chart-3] đã chạy qua validator dataviz:
+     pass CVD ΔE, chroma, lightness band và contrast ≥3:1 trên nền light. */
+  --chart-2: #2f6fed;
+  --chart-3: #0d9488;
+
+  /* Shape & motion */
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow-card: 0 1px 2px rgba(16, 17, 19, 0.06);
+  --transition: 150ms ease;
+}
+
+[data-theme="dark"] {
+  --primary: #ed3c47;
+  --primary-hover: #f25560;
+  --primary-soft: #3a1d20;
+  --secondary: #ff7849;
+
+  --bg: #131417;
+  --bg-subtle: #1a1b1f;
+  --surface: #1e1f24;
+  --border: #2c2d33;
+
+  --text: #f2f3f5;
+  --text-muted: #9a9ea9;
+
+  --success: #2ebd6b;
+  --success-bg: #17301f;
+  --danger: #f0742e;
+  --danger-bg: #33231a;
+
+  /* Chart series - bước riêng cho dark (không flip tự động), validate lại
+     bằng validator dataviz trên nền --surface dark: pass đủ 5 check. */
+  --chart-2: #5b8def;
+  --chart-3: #27ab92;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* ============ App shell - rail trái + panel phải gấp được ============
+
+   RÀNG BUỘC BỐ CỤC (đọc trước khi sửa):
+
+   1. Bề rộng rail và panel do CSS quyết định, KHÔNG do state React. Script chạy
+      trước paint trong Shell.tsx (SHELL_SCRIPT) đọc localStorage rồi ghi
+      `data-nav` / `data-panel` lên <html>, y hệt cách THEME_SCRIPT trong
+      layout.tsx chống nháy theme. Nhờ vậy khung hình ĐẦU TIÊN đã đúng bề rộng;
+      React chỉ đồng bộ lại nhãn aria sau khi mount, không tham gia layout.
+      Hệ quả: mọi thứ đổi theo trạng thái gấp/mở phải đi qua biến CSS dưới đây,
+      không được viết `{collapsed ? "w-14" : "w-56"}` trong JSX - viết thế là
+      lại nháy đúng một khung hình mỗi lần tải trang.
+
+   2. Tự gấp theo bề rộng màn hình cũng nằm ở đây, không dùng JS resize listener:
+      - dưới 1440px rail MẶC ĐỊNH về dạng icon. Con số này tính ngược từ
+        workspace: chrome ăn 220 (rail) + 440 (panel) = 660px, dưới 1440 thì
+        workspace còn chưa tới 740px, tức là tụt xuống dưới ngưỡng 2 cột. Rail
+        phải là thứ nhường chỗ trước, không phải workspace.
+      - dưới 1280px panel phải thôi chừa chỗ và chuyển hẳn thành drawer đè lên
+        (giữ đúng ngưỡng `xl` mà các trang đang dùng).
+      Media query phải liệt kê CẢ `:root` LẪN `html[data-nav="collapsed"]` thì
+      mới thắng được khối gán ở trên - cùng độ ưu tiên nên thắng bằng thứ tự.
+
+   3. Tự gấp chỉ là MẶC ĐỊNH, không phải luật. Người dùng bấm mở rail thì ghi
+      hẳn `data-nav="expanded"`, và khối gán cho giá trị đó đặt SAU media query
+      nên thắng - máy đoán hộ thì được, đoán rồi khóa luôn thì không. Vì thế nút
+      gấp/mở KHÔNG bị ẩn ở màn hẹp. */
+
+:root {
+  /* Rail trái - giá trị của trạng thái MỞ */
+  --shell-nav-cur: 220px;
+  --shell-nav-pad: 12px;
+  --shell-nav-item-pad: 12px;
+  --shell-nav-justify: flex-start;
+  --shell-nav-label: inline; /* nhãn chữ cạnh icon */
+  --shell-nav-extra: flex; /* badge phiên bản dưới đáy rail */
+  --shell-nav-only-expanded: inline-flex;
+  --shell-nav-only-collapsed: none;
+
+  /* Panel phải - giá trị của trạng thái MỞ */
+  --shell-panel-w: 440px;
+  --shell-panel-strip-w: 40px;
+  --shell-panel-cur: var(--shell-panel-w);
+  --shell-panel-strip: none;
+  --shell-panel-body: flex;
+  --shell-panel-toggle: inline-flex; /* nút gấp, chỉ có nghĩa khi panel ghim */
+  --shell-panel-drawer: none; /* nút mở drawer, chỉ có nghĩa khi màn hẹp */
+}
+
+html[data-nav="collapsed"] {
+  --shell-nav-cur: 56px;
+  --shell-nav-pad: 8px;
+  --shell-nav-item-pad: 0px;
+  --shell-nav-justify: center;
+  --shell-nav-label: none;
+  --shell-nav-extra: none;
+  --shell-nav-only-expanded: none;
+  --shell-nav-only-collapsed: inline-flex;
+}
+
+@media (max-width: 1439.98px) {
+  :root,
+  html[data-nav="collapsed"] {
+    --shell-nav-cur: 56px;
+    --shell-nav-pad: 8px;
+    --shell-nav-item-pad: 0px;
+    --shell-nav-justify: center;
+    --shell-nav-label: none;
+    --shell-nav-extra: none;
+    --shell-nav-only-expanded: none;
+    --shell-nav-only-collapsed: inline-flex;
+  }
+}
+
+/* PHẢI đứng sau media query ở trên: cùng độ ưu tiên nên thắng nhờ thứ tự dòng.
+   Đây là chỗ "người dùng đã tự tay mở rail" thắng phép tự gấp theo bề rộng. */
+html[data-nav="expanded"] {
+  --shell-nav-cur: 220px;
+  --shell-nav-pad: 12px;
+  --shell-nav-item-pad: 12px;
+  --shell-nav-justify: flex-start;
+  --shell-nav-label: inline;
+  --shell-nav-extra: flex;
+  --shell-nav-only-expanded: inline-flex;
+  --shell-nav-only-collapsed: none;
+}
+
+html[data-panel="collapsed"] {
+  --shell-panel-cur: var(--shell-panel-strip-w);
+  --shell-panel-strip: flex;
+  --shell-panel-body: none;
+}
+
+@media (max-width: 1279.98px) {
+  :root,
+  html[data-panel="collapsed"] {
+    /* Drawer thì luôn hiện đủ nội dung, không có dải mỏng và không có nút gấp */
+    --shell-panel-strip: none;
+    --shell-panel-body: flex;
+    --shell-panel-toggle: none;
+    --shell-panel-drawer: inline-flex;
+  }
+}
+
+/* ============ Base ============ */
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+      sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Logo đổi theo theme */
+  [data-theme="dark"] .logo-light {
+    display: none;
+  }
+  html:not([data-theme="dark"]) .logo-dark {
+    display: none;
+  }
+}
+
+/* ============ Component classes (hex chỉ được phép ở file này) ============ */
+
+@layer components {
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color var(--transition), color var(--transition),
+    border-color var(--transition), opacity var(--transition);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+}
+.btn-secondary {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--bg-subtle);
+}
+.btn-destructive {
+  background: transparent;
+  color: var(--danger);
+}
+.btn-destructive:hover:not(:disabled) {
+  background: var(--danger-bg);
+}
+.btn-sm {
+  height: 30px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: currentColor;
+  flex: none;
+}
+.badge-success {
+  background: var(--success-bg);
+  color: var(--success);
+}
+.badge-running {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.badge-danger {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+.badge-muted {
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+}
+/* Chấm nhấp nháy - phiên AI đang chạy */
+.badge-dot-pulse {
+  animation: badge-pulse 1.2s ease-in-out infinite;
+}
+@keyframes badge-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 16px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.table th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.table tbody tr {
+  transition: background-color var(--transition);
+}
+.table tbody tr:hover {
+  background: var(--bg-subtle);
+}
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+.table .row-click {
+  cursor: pointer;
+}
+
+/* Banner - thông báo cấp TRANG (tải lỗi, lưu xong, cảnh báo trước khi chạy).
+
+   KHÔNG có vạch màu bên trái: nền đã đủ tách khối thông báo khỏi trang, thêm
+   một vạch dày 3px nữa chỉ làm mép trái lởm chởm khi nhiều banner xếp chồng.
+
+   Trước đợt đại tu, chỉ có mỗi biến thể danger; nên mỗi trang cần báo THÀNH
+   CÔNG lại tự chế một hộp riêng (skills/[name], video-styles/[id], styles/[id],
+   images/[id] - bốn kiểu khác nhau). Có đủ bốn tông ở đây thì không ai phải
+   chế nữa. */
+.banner {
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--text);
+  /* Nội dung banner gần như luôn là chuỗi do SERVER trả về: đường dẫn file,
+     lệnh, URL - những thứ dài và KHÔNG có dấu cách để xuống dòng. Không cho
+     ngắt giữa từ thì một token dài đẩy toác cả Card. Đặt ở đây một lần thay vì
+     bắt từng chỗ gọi nhớ bọc `[overflow-wrap:anywhere]` - đã sót hai chỗ đúng
+     vì lý do đó. */
+  overflow-wrap: anywhere;
+}
+.banner-danger {
+  background: var(--danger-bg);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+.banner-success {
+  background: var(--success-bg);
+}
+.banner-info {
+  background: var(--primary-soft);
+}
+.banner-muted {
+  background: var(--bg-subtle);
+}
+
+/* Panel - hộp LỒNG BÊN TRONG card (nhóm thiết lập, hộp log, khối tóm tắt).
+   Thay cho 8 bản sao y hệt chuỗi
+   `rounded-[var(--radius)] border border-[var(--border)] bg-[var(--bg-subtle)] p-3`
+   nằm rải rác trong ModelPicker, BriefFields, ImageProjectForm, ProjectPublishCard,
+   VideoStyleSelect, ConfirmDeleteModal, UpdateModal, AutoCutCreateModal.
+   Nền --bg-subtle chứ không phải --surface: lồng surface trong surface thì không
+   nhìn ra ranh giới, chỉ thấy một cái viền lơ lửng. */
+.panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-subtle);
+  padding: 12px;
+}
+
+/* Nhãn in hoa cỡ nhỏ - tiêu đề cột workspace, tiêu đề nhóm trong trang cấu
+   hình. CÙNG một công thức với `.table th` và `.workspace-col-title`, tách ra
+   để chỗ nào cần cũng gọi đúng một tên. */
+.t-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+/* Khung xám lúc chờ dữ liệu. Trước đây có ba kiểu chờ khác nhau (câu chữ giữa
+   trang, card animate-pulse, component Skeleton định nghĩa ngay trong app/page.tsx)
+   - giờ chỉ còn class này, dùng qua <Skeleton />. */
+.skeleton {
+  border-radius: var(--radius);
+  background: var(--bg-subtle);
+  animation: skeleton-pulse 1.6s ease-in-out infinite;
+}
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+.input {
+  height: 36px;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+  transition: border-color var(--transition);
+}
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+.input::placeholder {
+  color: var(--text-muted);
+}
+textarea.input {
+  height: auto;
+  padding: 10px 12px;
+  resize: vertical;
+}
+.label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  transition: background-color var(--transition), color var(--transition);
+}
+.nav-item:hover {
+  background: var(--border);
+}
+.nav-item.active {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.nav-item.active:hover {
+  background: var(--primary-soft);
+}
+
+/* Thanh tiến trình vô định - hiển thị khi AI đang làm việc.
+   6px, ĐÚNG BẰNG <ProgressBar>: hai thanh này thay nhau xuất hiện ở cùng một
+   chỗ (chưa đo được phần trăm → đo được), lệch chiều cao là mỗi lần đổi trạng
+   thái nội dung dưới nó lại nhích một nhịp. */
+.progress-indeterminate {
+  position: relative;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--bg-subtle);
+  overflow: hidden;
+}
+.progress-indeterminate::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 35%;
+  border-radius: 9999px;
+  background: var(--primary);
+  animation: progress-slide 1.2s ease-in-out infinite;
+}
+@keyframes progress-slide {
+  0% {
+    left: -35%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Thanh tiến trình MỘT DÒNG cho dòng tóm tắt của khối đang gấp (khối video
+   thành phẩm lúc đang dựng). Toàn <span>: dòng tóm tắt của WorkspaceBlock là một
+   <p>, nhét <div> vào đó là HTML không hợp lệ và React sẽ báo lệch hydrate. */
+.summary-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+.summary-progress-track {
+  position: relative;
+  /* Bề rộng CỐ ĐỊNH: để nó co giãn thì gặp dòng bước dài (ffmpeg đếm frame) là
+     thanh tụt về đúng bằng min-width, nhìn như cái gạch nối. */
+  flex: 0 0 96px;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--border);
+  overflow: hidden;
+}
+.summary-progress-fill {
+  display: block;
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--primary);
+  transition: width var(--transition);
+}
+/* Chưa đo được phần trăm (AI đang chạy, chưa có job) - chạy qua chạy lại */
+.summary-progress-fill.is-indeterminate {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 35%;
+  animation: progress-slide 1.2s ease-in-out infinite;
+}
+/* % + tên bước là chuỗi tự do, dài thì cắt bớt chứ không đẩy toác thanh */
+.summary-progress-text {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.switch {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  flex: none;
+  border-radius: 9999px;
+  background: var(--border);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+.switch[aria-checked="true"] {
+  background: var(--primary);
+}
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(16, 17, 19, 0.25);
+  transition: transform var(--transition);
+}
+.switch[aria-checked="true"]::after {
+  transform: translateX(16px);
+}
+
+/* Checkbox native - chọn nhiều hàng trong bảng */
+.checkbox {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* Slider chỉnh màu - input range native, thumb/track ăn theo --primary */
+.slider {
+  width: 100%;
+  height: 20px; /* vùng bấm thoải mái, track native vẫn mảnh */
+  flex: 1;
+  accent-color: var(--primary);
+  cursor: pointer;
+  background: transparent;
+}
+.slider:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Nút chỉ có icon (sửa, xóa, phát thử, phóng to…).
+
+   Trước đợt đại tu có hơn 10 bản chép tay của cùng một chuỗi class, ở BỐN cỡ
+   khác nhau (p-1, p-1.5, h-7, h-8, h-9) và ba màu nền hover khác nhau - nhiều
+   khi đứng cạnh nhau trong đúng một ô bảng. Giờ chỉ có hai cỡ, và cỡ mặc định
+   cao 30px để xếp thẳng hàng với `.btn-sm`. */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
+}
+.icon-btn:hover:not(:disabled) {
+  background: var(--bg-subtle);
+  color: var(--text);
+}
+.icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* Bên trong hàng bảng dày đặc - vẫn đủ 24px vùng bấm theo khuyến nghị a11y */
+.icon-btn-sm {
+  width: 24px;
+  height: 24px;
+}
+/* Hành động phá hủy: chỉ ĐỔI MÀU LÚC HOVER, không đỏ sẵn. Đỏ sẵn thì mỗi hàng
+   trong bảng có một chấm đỏ, mắt đọc thành "hàng này lỗi". */
+.icon-btn-danger:hover:not(:disabled) {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+/* Nhóm nút chọn - chọn MỘT trong vài lựa chọn ngắn.
+   Thay cho 6 biến thể tự chế trước đây: 3 bán kính (9999px / --radius), 3 kiểu
+   padding và 2 màu chữ lúc không được chọn.
+
+   TỪNG NÚT RỜI, KHÔNG PHẢI MỘT THANH DÀI. Bản đầu làm kiểu "segmented": cả
+   nhóm nằm trong một cái khung xám, mục đang chọn nổi lên bằng nền trắng +
+   đổ bóng. Nhìn ra thì nó thành một thanh ngang dài mà mắt phải dò mới thấy
+   ô nào đang sáng - người dùng báo lại đúng chỗ đó. Giờ mỗi lựa chọn là một
+   nút riêng có viền riêng, cách nhau hẳn ra, và cái đang chọn tô màu thương
+   hiệu nên liếc một cái là thấy. */
+.seg {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.seg-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition),
+    border-color var(--transition);
+}
+.seg-item:hover:not(:disabled):not([aria-checked="true"]):not(
+    [aria-pressed="true"]
+  ) {
+  border-color: var(--text-muted);
+  background: var(--bg-subtle);
+}
+/* Đang chọn: tô hẳn màu thương hiệu - viền, nền nhạt và chữ cùng một màu.
+   Đây là chỗ cố ý KHÁC bản trước (nền trắng + bóng): người dùng cần nhìn phát
+   ra ngay, mà nút chọn nằm trong biểu mẫu chứ không cạnh nút primary thật nên
+   không sợ tranh chú ý. */
+.seg-item[aria-checked="true"],
+.seg-item[aria-pressed="true"] {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 600;
+}
+.seg-item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* Cỡ 36px - ĐÚNG BẰNG `.input` và `.btn`. Dùng khi nhóm nút đứng cạnh ô nhập
+   hay nút trên cùng một hàng (header card biểu đồ ở Dashboard): lệch 4px trên
+   một hàng ngang là thứ nhìn ra ngay dù không chỉ được tên.
+   Cỡ mặc định 30px khớp `.btn-sm`, hợp với biểu mẫu và toolbar. */
+.seg-md .seg-item {
+  height: 36px;
+  padding: 0 14px;
+  font-size: 14px;
+}
+
+/* Thẻ lựa chọn - lựa chọn "to" cần tiêu đề + mô tả (chế độ cắt, engine giọng
+   đọc, tỉ lệ khung hình, phong cách dựng). Trước đây có 5 bản dựng tay, mỗi bản
+   một cỡ chữ và một padding; hai trong số đó còn quên cả role="radio". */
+.option-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color var(--transition), background-color var(--transition);
+}
+.option-card:hover:not(:disabled):not([aria-checked="true"]) {
+  border-color: var(--text-muted);
+}
+.option-card[aria-checked="true"],
+.option-card[aria-pressed="true"] {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+.option-card:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------------- App shell ---------------- */
+
+/* Nút icon vuông trong shell (gấp rail, gấp panel, đóng drawer).
+   CỐ Ý không khai báo `display`: cái đó do lớp trạng thái
+   (.shell-nav-toggle/.shell-panel-toggle/.shell-panel-drawer) đặt qua biến CSS,
+   đặt ở đây nữa là hai rule cùng độ ưu tiên tranh nhau theo thứ tự dòng. */
+.shell-icon-btn {
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
+}
+.shell-icon-btn:hover {
+  background: var(--bg-subtle);
+  color: var(--text);
+}
+
+.shell-nav {
+  width: var(--shell-nav-cur);
+  padding: var(--shell-nav-pad);
+  /* overflow-x hidden: lúc rail đang co lại, nhãn chưa kịp biến mất sẽ thò ra
+     đè lên nội dung nếu không cắt */
+  overflow-x: hidden;
+  transition: width var(--transition), padding var(--transition);
+}
+.shell-nav .nav-item,
+.shell-nav-source {
+  justify-content: var(--shell-nav-justify);
+  padding-left: var(--shell-nav-item-pad);
+  padding-right: var(--shell-nav-item-pad);
+}
+.shell-nav-label {
+  display: var(--shell-nav-label);
+}
+.shell-nav-extra {
+  display: var(--shell-nav-extra);
+}
+/* Đáy rail (mã nguồn + phiên bản + nút gấp/mở) dán cứng vào đáy vùng cuộn:
+   màn thấp mà 16 mục điều hướng làm rail phải cuộn thì nút gấp cũng cuộn mất -
+   nút duy nhất để mở rail ra lại mà phải đi tìm bằng cách cuộn là mất luôn. */
+/* Nút gấp/mở rail: dán ĐỈNH, ngay trên mục điều hướng đầu tiên. Rail có 17 mục
+   nên trên màn hình thấp là phải cuộn - nút gấp mà cuộn mất tầm với thì coi như
+   không có nút. Cùng nền với rail để lúc cuộn không thấy chữ chạy xuyên qua. */
+.shell-nav-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
+.shell-nav-foot {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+  padding-top: 10px;
+}
+/* Nút gấp/mở rail - một Ô đầy đủ chiều ngang rail chứ không phải icon trần:
+   lúc rail còn 56px nó vẫn là ô vuông có viền, nhìn ra ngay là bấm được. */
+.shell-nav-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  justify-content: var(--shell-nav-justify);
+  padding: 7px var(--shell-nav-item-pad);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition),
+    border-color var(--transition);
+}
+.shell-nav-toggle:hover {
+  background: var(--primary-soft);
+  border-color: var(--primary-soft);
+  color: var(--primary);
+}
+.only-nav-expanded {
+  display: var(--shell-nav-only-expanded);
+}
+.only-nav-collapsed {
+  display: var(--shell-nav-only-collapsed);
+}
+
+.shell-panel {
+  width: var(--shell-panel-cur);
+  flex: none;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+  border-left: 1px solid var(--border);
+  background: var(--bg);
+  transition: width var(--transition);
+}
+/* Trang không khai báo panel: khung vẫn nằm sẵn trong DOM nhưng rộng 0.
+   Lý do: trang đăng ký panel bằng useEffect nên SSR chưa biết có panel hay
+   không. Nếu khung chỉ mount khi đăng ký xong thì nội dung vẽ ra full width rồi
+   mới bị thụt vào - giật đúng một khung hình mỗi lần mở trang có panel. Để sẵn
+   ở width 0 thì cú đó thành một lần trượt 150ms, đọc ra là có chủ đích.
+   visibility: hidden chứ không chỉ width 0 - nếu không, nút mở panel vẫn nằm
+   trong thứ tự Tab dù mắt không thấy gì. */
+.shell-panel.is-empty {
+  width: 0;
+  border-left-width: 0;
+  visibility: hidden;
+}
+.shell-panel-strip {
+  display: var(--shell-panel-strip);
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
+}
+.shell-panel-strip:hover {
+  background: var(--bg-subtle);
+  color: var(--text);
+}
+/* Nhãn dọc trên dải mỏng - dải chỉ rộng 40px nên chữ phải quay 90 độ */
+.shell-panel-strip-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 60vh;
+}
+.shell-panel-body {
+  display: var(--shell-panel-body);
+}
+.shell-panel-toggle {
+  display: var(--shell-panel-toggle);
+}
+.shell-panel-drawer {
+  display: var(--shell-panel-drawer);
+}
+.shell-panel-scrim {
+  display: none;
+}
+
+@media (max-width: 1279.98px) {
+  /* Panel rời khỏi dòng chảy → không chừa chỗ nữa, trượt vào từ mép phải */
+  .shell-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    width: min(440px, 100%);
+    transform: translateX(101%);
+    transition: transform var(--transition);
+  }
+  .shell-panel.is-open {
+    transform: none;
+  }
+  .shell-panel-scrim.is-open {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 39;
+    background: color-mix(in srgb, var(--text) 40%, transparent);
+  }
+}
+
+/* ---------------- Workspace 3 cột ---------------- */
+
+/* Container query chứ không media query: bề rộng thật của workspace phụ thuộc
+   rail và panel đang gấp hay mở, chứ không phụ thuộc bề rộng cửa sổ. Gấp cả hai
+   ở màn 1440px là workspace rộng bằng màn 1920px mở hết - dùng media query thì
+   người dùng gấp bớt mà vẫn chỉ được 2 cột, đúng thứ họ vừa cố tránh. */
+.workspace {
+  container-type: inline-size;
+  container-name: workspace;
+}
+.workspace-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 16px;
+}
+/* Ngưỡng tính theo bề rộng tối thiểu dùng được của một cột (~340px cho label +
+   input + padding card) cộng gap: 2 cột = 2*340 + 16 ≈ 700px.
+   Ba ngưỡng 700/1200 đã kiểm bằng trình duyệt thật cho monotonic: thu nhỏ cửa sổ
+   thì số cột chỉ giảm, không có chỗ nào hẹp hơn mà lại ra NHIỀU cột hơn - lúc
+   panel chuyển thành drawer nó trả lại 440px một phát, rất dễ dính lỗi đó. */
+@container workspace (min-width: 700px) {
+  .workspace-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* Hai cột: nguồn + thiết lập đứng cạnh nhau hàng trên, cột kết quả trải hết
+     bề ngang hàng dưới. Video là thứ cần bề ngang nhất, ép nó vào nửa màn là phí. */
+  .workspace-col-output {
+    grid-column: 1 / -1;
+  }
+}
+/* 3 cột: chốt 1200px chứ không phải 1050px lý thuyết, để mỗi cột còn ~390px -
+   đủ cho ô nhập + nút mà không phải xuống hàng liên tục. */
+@container workspace (min-width: 1200px) {
+  .workspace-grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr) minmax(0, 1.25fr);
+  }
+  .workspace-col-output {
+    grid-column: auto;
+  }
+}
+
+.workspace-col-title {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+/* Khung video thành phẩm - giữ đúng tỉ lệ khung hình của project (16/9 hay
+   9/16) nhưng chặn chiều cao để video dọc không đẩy mọi thứ khác xuống dưới
+   màn hình; phần thừa để object-fit: contain xử lý. */
+.workspace-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--workspace-aspect, 16 / 9);
+  max-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-subtle);
+}
+.workspace-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--bg-subtle);
+}
+.workspace-shimmer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.workspace-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: workspace-shimmer 1.6s ease-in-out infinite;
+}
+@keyframes workspace-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .workspace-shimmer::after {
+    animation: none;
+  }
+}
+}

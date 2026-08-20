@@ -1,0 +1,16 @@
+[
+  {
+    "id": "noti-tiktok-chuyen-nghiep",
+    "name": "Noti TikTok - chuyên nghiệp, sound nhẹ nhàng",
+    "content": "Dùng skill /noti-tiktok-vn để edit video theo đúng style của tôi. Chèn các ảnh theo đúng thứ tự nội dung trong video.\nKhông cần chạy sub. Tôi muốn dùng sound effect nhẹ nhàng, không bị chói tai, đúng những key được làm nổi bật. Giữ nguyên thời lượng video. Các key chính của video sẽ được làm nổi bật để dễ nhìn áp dụng cho cả lúc video chạy. Có hiệu ứng zoom in zoom out vào những nội dung quan trọng.\nTôi muốn video này nhìn thật chuyên nghiệp.\nNhững đoạn được tạo tư ảnh do Gemini tạo và ghép vẫn sử dụng làm nổi bật các key chính. Ngoài những đoạn ghép này thì các key chính theo từng ý (phía bên trên video) và key phụ (phía dưới video) trong video gốc vẫn được làm nổi bật và ghép với video. Key chính này sẽ thay đổi và không phải lúc nào cũng hiển thị ở đầu video. Hiển thị xong và hết ý thì tắt đi, đợi key mới thì mới hiển thị. Cảnh do gemini tạo ra dùng làm cảnh trám nhé, ảnh trong cảnh trám sẽ nằm chính giữa màn hình để hiển thị được đầy đủ nội dung. Cho xuất hiện cảnh trám tạo ra từ gemini nhiều chút đẻ video đỡ nhàm chán nhé, những đoạn nói dài thì cho cảnh trám vào để video đỡ chán hơn cho người xem. Ảnh từ Gemini tạo ra sử dụng làm cảnh trám sẽ hiển thị chính giữa video để đảm bảo không bị che khuất bởi các KEY chính.\nLưu ý: nếu brief có Style Design thì màu/font/tone tuân thủ 100% theo Style Design đó (ghi đè branding mặc định của skill).",
+    "createdAt": "2026-07-29T10:00:00.000Z",
+    "updatedAt": "2026-07-31T03:36:10.984Z"
+  },
+  {
+    "id": "edit-kieu-remotion",
+    "name": "Edit kiểu Remotion - chia scene + lắp ráp",
+    "content": "Edit video này theo pipeline chia scene + lắp ráp bằng Remotion (làm đúng theo skill video-pipeline và remotion-assemble):\n1. Phân tích video nguồn (transcribe nếu cần) và chia thành các scene rời, khai báo trong meta.json đúng schema: scene chữ động/motion graphics dùng HyperFrames (có src), đoạn footage dùng thẳng khai srcVideo với from/to.\n2. Dựng các scene HyperFrames (chữ động, callout, caption) và render từng scene ra renders/ ở chất lượng draft trước.\n3. Dùng Remotion lắp ráp toàn bài: ghép các scene + footage theo đúng thứ tự timeline, crossfade nhẹ giữa các đoạn (transitionOverlap), voice gốc giữ nguyên làm xương sống sync, chèn sound effect theo atFrame.\n4. Render draft toàn bài bằng Remotion, trích frame verify ở các mốc chuyển cảnh (không hở frame đen, chữ tiếng Việt đủ dấu), sửa xong mới render final.\n5. Cập nhật meta.json đúng hợp đồng (output là STRING đường dẫn outputs/<id>-v<N>.mp4).\nYêu cầu chất lượng: chuyển cảnh mượt, sound effect nhẹ nhàng không chói tai, video nhìn thật chuyên nghiệp.\nLưu ý: nếu brief có Style Design thì màu/font/tone của mọi scene tuân thủ 100% theo Style Design đó.",
+    "createdAt": "2026-07-29T13:00:00.000Z",
+    "updatedAt": "2026-07-29T13:00:00.000Z"
+  }
+]

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Câu hỏi sử dụng / Usage question
+    url: https://github.com/mr-hoang/AIEVH/discussions
+    about: Hỏi cách dùng, xin gợi ý cấu hình - dùng Discussions thay vì Issues. Ask how to use it here.
+  - name: Báo lỗ hổng bảo mật / Report a security vulnerability
+    url: https://github.com/mr-hoang/AIEVH/security/advisories/new
+    about: Đừng mở issue công khai cho lỗ hổng bảo mật. Do not open a public issue for vulnerabilities.

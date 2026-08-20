@@ -1,0 +1,861 @@
+{
+  "generatedAt": "2026-08-03T05:51:28.822Z",
+  "source": "https://simple-icons.org",
+  "license": "CC0-1.0 (áp cho file SVG, KHÔNG áp cho quyền nhãn hiệu của brand)",
+  "notice": "Logo là nhãn hiệu của chủ sở hữu. Dùng để nhắc tới/minh họa thì được; không được dùng theo cách ngụ ý brand đó tài trợ hay chứng thực nội dung. Glyph một màu - cần bản đủ màu thì tải từ trang brand chính chủ và bỏ vào thư mục này.",
+  "count": 121,
+  "icons": [
+    {
+      "slug": "alibabadotcom",
+      "title": "Alibaba.com",
+      "color": "#FF6A00",
+      "file": "alibabadotcom.svg",
+      "source": "https://www.alibabagroup.com/en/ir/reports"
+    },
+    {
+      "slug": "aliexpress",
+      "title": "AliExpress",
+      "color": "#FF4747",
+      "file": "aliexpress.svg",
+      "source": "https://www.alibabagroup.com/en/ir/reports"
+    },
+    {
+      "slug": "alipay",
+      "title": "Alipay",
+      "color": "#1677FF",
+      "file": "alipay.svg",
+      "source": "https://global.alipay.com/docs/ac/website_hk/design"
+    },
+    {
+      "slug": "amazon",
+      "title": "Amazon",
+      "color": null,
+      "file": "amazon.svg",
+      "source": "https://commons.wikimedia.org/wiki/File:Amazon%202024.svg",
+      "license": "Wikimedia Commons (xem trang file); nhãn hiệu thuộc chủ sở hữu"
+    },
+    {
+      "slug": "amd",
+      "title": "AMD",
+      "color": "#ED1C24",
+      "file": "amd.svg",
+      "source": "https://www.amd.com"
+    },
+    {
+      "slug": "android",
+      "title": "Android",
+      "color": "#3DDC84",
+      "file": "android.svg",
+      "source": "https://partnermarketinghub.withgoogle.com/brands/android/visual-identity/visual-identity/logo-lock-ups"
+    },
+    {
+      "slug": "anthropic",
+      "title": "Anthropic",
+      "color": "#191919",
+      "file": "anthropic.svg",
+      "source": "https://www.anthropic.com"
+    },
+    {
+      "slug": "apple",
+      "title": "Apple",
+      "color": "#000000",
+      "file": "apple.svg",
+      "source": "https://www.apple.com"
+    },
+    {
+      "slug": "asus",
+      "title": "ASUS",
+      "color": "#000000",
+      "file": "asus.svg",
+      "source": "https://www.asus.com"
+    },
+    {
+      "slug": "audacity",
+      "title": "Audacity",
+      "color": "#0000CC",
+      "file": "audacity.svg",
+      "source": "https://github.com/audacity/audacity/blob/c818449c69193f5311b430fbf600d8d6cbe49047/images/audacity.svg"
+    },
+    {
+      "slug": "binance",
+      "title": "Binance",
+      "color": "#F0B90B",
+      "file": "binance.svg",
+      "source": "https://binance.com"
+    },
+    {
+      "slug": "bitcoin",
+      "title": "Bitcoin",
+      "color": "#F7931A",
+      "file": "bitcoin.svg",
+      "source": "https://bitcoin.org"
+    },
+    {
+      "slug": "blender",
+      "title": "Blender",
+      "color": "#E87D0D",
+      "file": "blender.svg",
+      "source": "https://www.blender.org/about/logo"
+    },
+    {
+      "slug": "bluesky",
+      "title": "Bluesky",
+      "color": "#1185FE",
+      "file": "bluesky.svg",
+      "source": "https://bsky.social/about/blog/press-faq"
+    },
+    {
+      "slug": "claude",
+      "title": "Claude",
+      "color": "#D97757",
+      "file": "claude.svg",
+      "source": "https://claude.ai"
+    },
+    {
+      "slug": "cloudflare",
+      "title": "Cloudflare",
+      "color": "#F38020",
+      "file": "cloudflare.svg",
+      "source": "https://www.cloudflare.com/logo/"
+    },
+    {
+      "slug": "coinbase",
+      "title": "Coinbase",
+      "color": "#0052FF",
+      "file": "coinbase.svg",
+      "source": "https://www.coinbase.com/press"
+    },
+    {
+      "slug": "davinciresolve",
+      "title": "DaVinci Resolve",
+      "color": "#233A51",
+      "file": "davinciresolve.svg",
+      "source": "https://www.blackmagicdesign.com/media/images/davinci-resolve-logo-square"
+    },
+    {
+      "slug": "deepseek",
+      "title": "DeepSeek",
+      "color": "#5786FE",
+      "file": "deepseek.svg",
+      "source": "https://www.deepseek.com"
+    },
+    {
+      "slug": "dell",
+      "title": "Dell",
+      "color": "#007DB8",
+      "file": "dell.svg",
+      "source": "https://www.dell.com"
+    },
+    {
+      "slug": "discord",
+      "title": "Discord",
+      "color": "#5865F2",
+      "file": "discord.svg",
+      "source": "https://discord.com/branding"
+    },
+    {
+      "slug": "docker",
+      "title": "Docker",
+      "color": "#2496ED",
+      "file": "docker.svg",
+      "source": "https://www.docker.com/company/newsroom/media-resources"
+    },
+    {
+      "slug": "dropbox",
+      "title": "Dropbox",
+      "color": "#0061FF",
+      "file": "dropbox.svg",
+      "source": "https://www.dropbox.com/branding"
+    },
+    {
+      "slug": "ebay",
+      "title": "eBay",
+      "color": "#E53238",
+      "file": "ebay.svg",
+      "source": "https://go.developer.ebay.com/logos"
+    },
+    {
+      "slug": "elevenlabs",
+      "title": "ElevenLabs",
+      "color": "#000000",
+      "file": "elevenlabs.svg",
+      "source": "https://elevenlabs.io/brand"
+    },
+    {
+      "slug": "epicgames",
+      "title": "Epic Games",
+      "color": "#313131",
+      "file": "epicgames.svg",
+      "source": "https://dev.epicgames.com/docs/services/en-US/EpicAccountServices/DesignGuidelines/index.html#epicgamesbrandguidelines"
+    },
+    {
+      "slug": "ethereum",
+      "title": "Ethereum",
+      "color": "#3C3C3D",
+      "file": "ethereum.svg",
+      "source": "https://ethereum.org/en/assets/"
+    },
+    {
+      "slug": "facebook",
+      "title": "Facebook",
+      "color": "#0866FF",
+      "file": "facebook.svg",
+      "source": "https://about.meta.com/brand/resources/facebook/logo"
+    },
+    {
+      "slug": "figma",
+      "title": "Figma",
+      "color": "#F24E1E",
+      "file": "figma.svg",
+      "source": "https://www.figma.com/using-the-figma-brand/"
+    },
+    {
+      "slug": "firebase",
+      "title": "Firebase",
+      "color": "#DD2C00",
+      "file": "firebase.svg",
+      "source": "https://firebase.google.com/brand-guidelines"
+    },
+    {
+      "slug": "git",
+      "title": "Git",
+      "color": "#F03C2E",
+      "file": "git.svg",
+      "source": "https://git-scm.com/community/logos"
+    },
+    {
+      "slug": "github",
+      "title": "GitHub",
+      "color": "#181717",
+      "file": "github.svg",
+      "source": "https://github.com/logos"
+    },
+    {
+      "slug": "githubcopilot",
+      "title": "GitHub Copilot",
+      "color": "#000000",
+      "file": "githubcopilot.svg",
+      "source": "https://primer.style/foundations/icons/copilot-24"
+    },
+    {
+      "slug": "gitlab",
+      "title": "GitLab",
+      "color": "#FC6D26",
+      "file": "gitlab.svg",
+      "source": "https://about.gitlab.com/press/press-kit/"
+    },
+    {
+      "slug": "go",
+      "title": "Go",
+      "color": "#00ADD8",
+      "file": "go.svg",
+      "source": "https://blog.golang.org/go-brand"
+    },
+    {
+      "slug": "google",
+      "title": "Google",
+      "color": "#4285F4",
+      "file": "google.svg",
+      "source": "https://partnermarketinghub.withgoogle.com"
+    },
+    {
+      "slug": "googlegemini",
+      "title": "Google Gemini",
+      "color": "#8E75B2",
+      "file": "googlegemini.svg",
+      "source": "https://gemini.google.com"
+    },
+    {
+      "slug": "grab",
+      "title": "Grab",
+      "color": "#00B14F",
+      "file": "grab.svg",
+      "source": "https://en.wikipedia.org/wiki/File:Grab_(application)_logo.svg"
+    },
+    {
+      "slug": "hp",
+      "title": "HP",
+      "color": "#0096D6",
+      "file": "hp.svg",
+      "source": "https://brandcentral.hp.com/us/en/elements/hp-logo.html"
+    },
+    {
+      "slug": "huawei",
+      "title": "Huawei",
+      "color": "#FF0000",
+      "file": "huawei.svg",
+      "source": "https://e.huawei.com/ph/material/partner/0a72728b864949c48b22106454352483"
+    },
+    {
+      "slug": "huggingface",
+      "title": "Hugging Face",
+      "color": "#FFD21E",
+      "file": "huggingface.svg",
+      "source": "https://huggingface.co/brand"
+    },
+    {
+      "slug": "instagram",
+      "title": "Instagram",
+      "color": "#FF0069",
+      "file": "instagram.svg",
+      "source": "https://about.meta.com/brand/resources/instagram"
+    },
+    {
+      "slug": "intel",
+      "title": "Intel",
+      "color": "#0071C5",
+      "file": "intel.svg",
+      "source": "https://www.intel.com/content/www/us/en/newsroom/resources/press-kits-intel-overview.html"
+    },
+    {
+      "slug": "javascript",
+      "title": "JavaScript",
+      "color": "#F7DF1E",
+      "file": "javascript.svg",
+      "source": "https://github.com/voodootikigod/logo.js/blob/1544bdeed6d618a6cfe4f0650d04ab8d9cfa76d9/js.svg"
+    },
+    {
+      "slug": "kakaotalk",
+      "title": "KakaoTalk",
+      "color": "#FFCD00",
+      "file": "kakaotalk.svg",
+      "source": "https://commons.wikimedia.org/wiki/File:KakaoTalk_logo.svg"
+    },
+    {
+      "slug": "kimi",
+      "title": "Kimi",
+      "color": "#000000",
+      "file": "kimi.svg",
+      "source": "https://moonshotai.github.io/Branding-Guide"
+    },
+    {
+      "slug": "kubernetes",
+      "title": "Kubernetes",
+      "color": "#326CE5",
+      "file": "kubernetes.svg",
+      "source": "https://github.com/kubernetes/kubernetes/tree/cac53883f4714452f3084a22e4be20d042a9df33/logo"
+    },
+    {
+      "slug": "langchain",
+      "title": "LangChain",
+      "color": "#7FC8FF",
+      "file": "langchain.svg",
+      "source": "https://www.langchain.com/langchain"
+    },
+    {
+      "slug": "laravel",
+      "title": "Laravel",
+      "color": "#FF2D20",
+      "file": "laravel.svg",
+      "source": "https://github.com/laravel/art/tree/5a8325b064634b900f25dbb6f1cafd888b2d2211"
+    },
+    {
+      "slug": "lenovo",
+      "title": "Lenovo",
+      "color": "#E2231A",
+      "file": "lenovo.svg",
+      "source": "https://news.lenovo.com/press-kits/"
+    },
+    {
+      "slug": "lg",
+      "title": "LG",
+      "color": "#A50034",
+      "file": "lg.svg",
+      "source": "https://www.lg.com/global/our-brand/brand-expression/elements/logo/index.jsp"
+    },
+    {
+      "slug": "line",
+      "title": "LINE",
+      "color": "#00C300",
+      "file": "line.svg",
+      "source": "https://line.me/en/logo"
+    },
+    {
+      "slug": "linux",
+      "title": "Linux",
+      "color": "#FCC624",
+      "file": "linux.svg",
+      "source": "https://www.linuxfoundation.org/the-linux-mark/"
+    },
+    {
+      "slug": "mastercard",
+      "title": "MasterCard",
+      "color": "#EB001B",
+      "file": "mastercard.svg",
+      "source": "https://www.mastercard.com/brandcenter/us/en/download-artwork.html"
+    },
+    {
+      "slug": "mastodon",
+      "title": "Mastodon",
+      "color": "#6364FF",
+      "file": "mastodon.svg",
+      "source": "https://github.com/mastodon/mastodon/blob/7ccf7a73f1c47a8c03712c39f7c591e837cf6d08/app/javascript/images/logo-symbol-icon.svg"
+    },
+    {
+      "slug": "messenger",
+      "title": "Messenger",
+      "color": "#0866FF",
+      "file": "messenger.svg",
+      "source": "https://about.meta.com/brand/resources/facebook/messenger-icon"
+    },
+    {
+      "slug": "meta",
+      "title": "Meta",
+      "color": "#0467DF",
+      "file": "meta.svg",
+      "source": "https://www.meta.com"
+    },
+    {
+      "slug": "microsoft",
+      "title": "Microsoft",
+      "color": null,
+      "file": "microsoft.svg",
+      "source": "https://commons.wikimedia.org/wiki/File:Microsoft%20logo%20(2012).svg",
+      "license": "Wikimedia Commons (xem trang file); nhãn hiệu thuộc chủ sở hữu"
+    },
+    {
+      "slug": "mistralai",
+      "title": "Mistral AI",
+      "color": "#FA520F",
+      "file": "mistralai.svg",
+      "source": "https://chat.mistral.ai"
+    },
+    {
+      "slug": "mongodb",
+      "title": "MongoDB",
+      "color": "#47A248",
+      "file": "mongodb.svg",
+      "source": "https://www.mongodb.com/pressroom"
+    },
+    {
+      "slug": "mysql",
+      "title": "MySQL",
+      "color": "#4479A1",
+      "file": "mysql.svg",
+      "source": "https://www.mysql.com/about/legal/logos.html"
+    },
+    {
+      "slug": "n8n",
+      "title": "n8n",
+      "color": "#EA4B71",
+      "file": "n8n.svg",
+      "source": "https://n8n.io/press"
+    },
+    {
+      "slug": "netflix",
+      "title": "Netflix",
+      "color": "#E50914",
+      "file": "netflix.svg",
+      "source": "https://brand.netflix.com/en/assets/logos"
+    },
+    {
+      "slug": "nextdotjs",
+      "title": "Next.js",
+      "color": "#000000",
+      "file": "nextdotjs.svg",
+      "source": "https://vercel.com/design/brands#next-js"
+    },
+    {
+      "slug": "nodedotjs",
+      "title": "Node.js",
+      "color": "#5FA04E",
+      "file": "nodedotjs.svg",
+      "source": "https://nodejs.org/en/about/branding"
+    },
+    {
+      "slug": "notion",
+      "title": "Notion",
+      "color": "#000000",
+      "file": "notion.svg",
+      "source": "https://www.notion.so"
+    },
+    {
+      "slug": "nvidia",
+      "title": "NVIDIA",
+      "color": "#76B900",
+      "file": "nvidia.svg",
+      "source": "https://www.nvidia.com/en-us"
+    },
+    {
+      "slug": "obsstudio",
+      "title": "OBS Studio",
+      "color": "#302E31",
+      "file": "obsstudio.svg",
+      "source": "https://commons.wikimedia.org/wiki/File:OBS.svg"
+    },
+    {
+      "slug": "ollama",
+      "title": "Ollama",
+      "color": "#000000",
+      "file": "ollama.svg",
+      "source": "https://github.com/ollama/ollama/issues/2152#issuecomment-1905286922"
+    },
+    {
+      "slug": "openai",
+      "title": "OpenAI",
+      "color": null,
+      "file": "openai.svg",
+      "source": "https://commons.wikimedia.org/wiki/File:OpenAI%20logo%202025%20(wordmark).svg",
+      "license": "Wikimedia Commons (xem trang file); nhãn hiệu thuộc chủ sở hữu"
+    },
+    {
+      "slug": "oppo",
+      "title": "OPPO",
+      "color": "#2D683D",
+      "file": "oppo.svg",
+      "source": "https://www.figma.com/community/file/832815970641696814/OPPO-Media-Kit"
+    },
+    {
+      "slug": "paypal",
+      "title": "PayPal",
+      "color": "#002991",
+      "file": "paypal.svg",
+      "source": "https://www.paypal.com/us"
+    },
+    {
+      "slug": "perplexity",
+      "title": "Perplexity",
+      "color": "#1FB8CD",
+      "file": "perplexity.svg",
+      "source": "https://www.perplexity.ai"
+    },
+    {
+      "slug": "php",
+      "title": "PHP",
+      "color": "#777BB4",
+      "file": "php.svg",
+      "source": "https://php.net/download-logos.php"
+    },
+    {
+      "slug": "pinterest",
+      "title": "Pinterest",
+      "color": "#BD081C",
+      "file": "pinterest.svg",
+      "source": "https://business.pinterest.com/en/brand-guidelines"
+    },
+    {
+      "slug": "postgresql",
+      "title": "PostgreSQL",
+      "color": "#4169E1",
+      "file": "postgresql.svg",
+      "source": "https://wiki.postgresql.org/wiki/Logo"
+    },
+    {
+      "slug": "python",
+      "title": "Python",
+      "color": "#3776AB",
+      "file": "python.svg",
+      "source": "https://www.python.org/community/logos/"
+    },
+    {
+      "slug": "qualcomm",
+      "title": "Qualcomm",
+      "color": "#3253DC",
+      "file": "qualcomm.svg",
+      "source": "https://www.qualcomm.com"
+    },
+    {
+      "slug": "qwen",
+      "title": "QWen",
+      "color": "#6950EF",
+      "file": "qwen.svg",
+      "source": "https://qwen.ai"
+    },
+    {
+      "slug": "react",
+      "title": "React",
+      "color": "#61DAFB",
+      "file": "react.svg",
+      "source": "https://github.com/facebook/create-react-app/blob/282c03f9525fdf8061ffa1ec50dce89296d916bd/test/fixtures/relative-paths/src/logo.svg"
+    },
+    {
+      "slug": "reddit",
+      "title": "Reddit",
+      "color": "#FF4500",
+      "file": "reddit.svg",
+      "source": "https://www.redditinc.com/brand"
+    },
+    {
+      "slug": "redis",
+      "title": "Redis",
+      "color": "#FF4438",
+      "file": "redis.svg",
+      "source": "https://redis.io/brand-guidelines"
+    },
+    {
+      "slug": "replicate",
+      "title": "Replicate",
+      "color": "#000000",
+      "file": "replicate.svg",
+      "source": "https://replicate.com"
+    },
+    {
+      "slug": "roblox",
+      "title": "Roblox",
+      "color": "#000000",
+      "file": "roblox.svg",
+      "source": "https://www.roblox.com"
+    },
+    {
+      "slug": "rust",
+      "title": "Rust",
+      "color": "#000000",
+      "file": "rust.svg",
+      "source": "https://www.rust-lang.org"
+    },
+    {
+      "slug": "samsung",
+      "title": "Samsung",
+      "color": "#1428A0",
+      "file": "samsung.svg",
+      "source": "https://www.samsung.com/us/about-us/brand-identity/logo/"
+    },
+    {
+      "slug": "shazam",
+      "title": "Shazam",
+      "color": "#0088FF",
+      "file": "shazam.svg",
+      "source": "https://shazam.com"
+    },
+    {
+      "slug": "shopee",
+      "title": "Shopee",
+      "color": "#EE4D2D",
+      "file": "shopee.svg",
+      "source": "https://shopee.com"
+    },
+    {
+      "slug": "signal",
+      "title": "Signal",
+      "color": "#3B45FD",
+      "file": "signal.svg",
+      "source": "https://signal.org/brand"
+    },
+    {
+      "slug": "sinaweibo",
+      "title": "Sina Weibo",
+      "color": "#E6162D",
+      "file": "sinaweibo.svg",
+      "source": "https://en.wikipedia.org/wiki/Sina_Weibo"
+    },
+    {
+      "slug": "snapchat",
+      "title": "Snapchat",
+      "color": "#FFFC00",
+      "file": "snapchat.svg",
+      "source": "https://www.snapchat.com/brand-guidelines"
+    },
+    {
+      "slug": "sony",
+      "title": "Sony",
+      "color": "#FFFFFF",
+      "file": "sony.svg",
+      "source": "https://www.sony.com"
+    },
+    {
+      "slug": "soundcloud",
+      "title": "SoundCloud",
+      "color": "#FF5500",
+      "file": "soundcloud.svg",
+      "source": "https://press.soundcloud.com"
+    },
+    {
+      "slug": "spotify",
+      "title": "Spotify",
+      "color": "#1ED760",
+      "file": "spotify.svg",
+      "source": "https://developer.spotify.com/documentation/general/design-and-branding/#using-our-logo"
+    },
+    {
+      "slug": "steam",
+      "title": "Steam",
+      "color": "#000000",
+      "file": "steam.svg",
+      "source": "https://partner.steamgames.com/doc/marketing/branding"
+    },
+    {
+      "slug": "stripe",
+      "title": "Stripe",
+      "color": "#635BFF",
+      "file": "stripe.svg",
+      "source": "https://stripe.com/newsroom/information"
+    },
+    {
+      "slug": "tailwindcss",
+      "title": "Tailwind CSS",
+      "color": "#06B6D4",
+      "file": "tailwindcss.svg",
+      "source": "https://tailwindcss.com/brand"
+    },
+    {
+      "slug": "techcombank",
+      "title": "Techcombank",
+      "color": null,
+      "file": "techcombank.png",
+      "source": "https://commons.wikimedia.org/wiki/File:Techcombank%20logo.png",
+      "license": "Wikimedia Commons (xem trang file); nhãn hiệu thuộc chủ sở hữu"
+    },
+    {
+      "slug": "telegram",
+      "title": "Telegram",
+      "color": "#26A5E4",
+      "file": "telegram.svg",
+      "source": "https://telegram.org/tour/screenshots"
+    },
+    {
+      "slug": "tesla",
+      "title": "Tesla",
+      "color": "#CC0000",
+      "file": "tesla.svg",
+      "source": "https://www.tesla.com/tesla-gallery"
+    },
+    {
+      "slug": "threads",
+      "title": "Threads",
+      "color": "#000000",
+      "file": "threads.svg",
+      "source": "https://www.meta.com/brand/resources/instagram/threads"
+    },
+    {
+      "slug": "tiktok",
+      "title": "TikTok",
+      "color": "#000000",
+      "file": "tiktok.svg",
+      "source": "https://tiktok.com"
+    },
+    {
+      "slug": "trello",
+      "title": "Trello",
+      "color": "#0052CC",
+      "file": "trello.svg",
+      "source": "https://atlassian.design/resources/logo-library"
+    },
+    {
+      "slug": "twitch",
+      "title": "Twitch",
+      "color": "#9146FF",
+      "file": "twitch.svg",
+      "source": "https://brand.twitch.tv"
+    },
+    {
+      "slug": "typescript",
+      "title": "TypeScript",
+      "color": "#3178C6",
+      "file": "typescript.svg",
+      "source": "https://www.typescriptlang.org/branding"
+    },
+    {
+      "slug": "ubuntu",
+      "title": "Ubuntu",
+      "color": "#E95420",
+      "file": "ubuntu.svg",
+      "source": "https://design.ubuntu.com/resources"
+    },
+    {
+      "slug": "unity",
+      "title": "Unity",
+      "color": "#FFFFFF",
+      "file": "unity.svg",
+      "source": "https://brand.unity.com"
+    },
+    {
+      "slug": "unrealengine",
+      "title": "Unreal Engine",
+      "color": "#0E1128",
+      "file": "unrealengine.svg",
+      "source": "https://www.unrealengine.com/en-US/branding"
+    },
+    {
+      "slug": "vercel",
+      "title": "Vercel",
+      "color": "#000000",
+      "file": "vercel.svg",
+      "source": "https://vercel.com/geist/brands"
+    },
+    {
+      "slug": "viber",
+      "title": "Viber",
+      "color": "#7360F2",
+      "file": "viber.svg",
+      "source": "https://www.viber.com/brand-center"
+    },
+    {
+      "slug": "vinfast",
+      "title": "VinFast",
+      "color": null,
+      "file": "vinfast.svg",
+      "source": "https://commons.wikimedia.org/wiki/File:VinFast%20logo%20(simple%20variant).svg",
+      "license": "Wikimedia Commons (xem trang file); nhãn hiệu thuộc chủ sở hữu"
+    },
+    {
+      "slug": "visa",
+      "title": "Visa",
+      "color": "#1A1F71",
+      "file": "visa.svg",
+      "source": "https://merchantsignageeu.visa.com/product.asp?dptID=696"
+    },
+    {
+      "slug": "vuedotjs",
+      "title": "Vue.js",
+      "color": "#4FC08D",
+      "file": "vuedotjs.svg",
+      "source": "https://github.com/vuejs/art/blob/a1c78b74569b70a25300925b4eacfefcc143b8f6/logo.svg"
+    },
+    {
+      "slug": "wechat",
+      "title": "WeChat",
+      "color": "#07C160",
+      "file": "wechat.svg",
+      "source": "https://wechat.design/tool/brand"
+    },
+    {
+      "slug": "whatsapp",
+      "title": "WhatsApp",
+      "color": "#25D366",
+      "file": "whatsapp.svg",
+      "source": "https://about.meta.com/brand/resources/whatsapp/whatsapp-brand"
+    },
+    {
+      "slug": "wordpress",
+      "title": "WordPress",
+      "color": "#21759B",
+      "file": "wordpress.svg",
+      "source": "https://wordpress.org/about/logos"
+    },
+    {
+      "slug": "x",
+      "title": "X",
+      "color": "#000000",
+      "file": "x.svg",
+      "source": "https://x.com"
+    },
+    {
+      "slug": "xiaomi",
+      "title": "Xiaomi",
+      "color": "#FF6900",
+      "file": "xiaomi.svg",
+      "source": "https://www.mi.com/global"
+    },
+    {
+      "slug": "youtube",
+      "title": "YouTube",
+      "color": "#FF0000",
+      "file": "youtube.svg",
+      "source": "https://www.youtube.com/howyoutubeworks/resources/brand-resources/#logos-icons-and-colors"
+    },
+    {
+      "slug": "zalo",
+      "title": "Zalo",
+      "color": "#0068FF",
+      "file": "zalo.svg",
+      "source": "https://zalo.me"
+    },
+    {
+      "slug": "zoom",
+      "title": "Zoom",
+      "color": "#0B5CFF",
+      "file": "zoom.svg",
+      "source": "https://brand.zoom.us/media-library/"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+/*
+ * Brand tokens cho video — AIEV - Mr Hoàng.
+ * Copy file này vào project HyperFrames khi dựng scene (skill video-pipeline).
+ *
+ * LƯU Ý: sub-composition HyperFrames render BIỆT LẬP — trong compositions/*.html
+ * KHÔNG dùng var() kế thừa từ :root của master; dùng giá trị literal (hex viết thẳng).
+ * File này là nguồn sự thật để tra giá trị.
+ */
+:root {
+  --brand-primary: #ed3c47;
+  --brand-secondary: #ff7849;
+  --brand-bg: #101113;
+  --brand-text: #ffffff;
+  --brand-font: "Inter", "Be Vietnam Pro", -apple-system, "Segoe UI", sans-serif;
+}

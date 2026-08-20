@@ -1,0 +1,5 @@
+# SQLite WAL/SHM + upload tạm
+data/*.sqlite-wal
+data/*.sqlite-shm
+data/tmp-uploads/
+dist/
