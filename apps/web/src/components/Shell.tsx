@@ -3,12 +3,13 @@
 /**
  * Khung ứng dụng: topbar + rail điều hướng trái + vùng làm việc + panel AI phải.
  *
- * Hai thứ ăn chỗ của vùng làm việc đều gấp được và nhớ lựa chọn:
- * - rail trái (220px ↔ 56px icon), key localStorage `aiev-nav`;
- * - panel AI phải (440px ↔ dải mỏng 40px), key `aiev-panel`.
+ * Rail trái gấp được (220px ↔ 56px icon), key localStorage `aiev-nav`.
+ * Panel AI phải là cột cố định 440px: khi trang có panel, nó luôn nằm cạnh khu
+ * thiết lập để người dùng vừa chỉnh brief vừa theo dõi AI, không có trạng thái
+ * ẩn/hiện khó tìm lại.
  *
  * BỀ RỘNG DO CSS QUYẾT ĐỊNH, KHÔNG DO STATE REACT. SHELL_SCRIPT chạy trước paint
- * ghi `data-nav`/`data-panel` lên <html>, globals.css đọc thẳng hai thuộc tính đó
+ * ghi `data-nav` lên <html>, globals.css đọc thẳng thuộc tính đó
  * (xem khối "App shell" ở đầu globals.css). State React ở đây chỉ để nhãn aria và
  * tooltip nói đúng trạng thái - không được dùng nó để chọn class bề rộng, làm thế
  * là mỗi lần tải trang lại nháy một khung hình đúng bằng lúc rail bung ra rồi co
@@ -20,8 +21,8 @@
  *
  * Panel AI là một SLOT của shell chứ không phải mỗi trang tự dựng: trang khai báo
  * <ShellRightPanel title="…">…</ShellRightPanel> ở bất kỳ đâu trong cây, shell lo
- * bề rộng, chỗ chừa, nút gấp và chế độ drawer. Nhờ vậy không trang nào phải tự
- * đoán số kiểu `xl:pr-[452px]` nữa - con số đó sai ngay khi panel gấp lại.
+ * bề rộng và chỗ chừa. Nhờ vậy không trang nào phải tự
+ * đoán số kiểu `xl:pr-[452px]` nữa.
  */
 
 import {
@@ -42,13 +43,10 @@ import {
   Shapes,
   PanelLeftClose,
   PanelLeftOpen,
-  PanelRightClose,
-  PanelRightOpen,
   Plug,
   Scissors,
   ScrollText,
   Settings2,
-  X,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -78,14 +76,13 @@ import { useT } from "@/lib/i18n";
 const REPO_URL = "https://github.com/mr-hoang/AIEVH";
 
 const NAV_STORAGE_KEY = "aiev-nav";
-const PANEL_STORAGE_KEY = "aiev-panel";
 
 /**
  * Chống nháy layout: đọc lựa chọn gấp/mở TRƯỚC khung hình đầu tiên, đúng cách
  * THEME_SCRIPT trong layout.tsx làm với theme. Đặt làm phần tử đầu của shell nên
  * nó chạy lúc trình duyệt còn đang phân tích markup, xong trước khi có gì được vẽ.
  */
-const SHELL_SCRIPT = `try{var d=document.documentElement,n=localStorage.getItem("${NAV_STORAGE_KEY}");if(n==="collapsed"||n==="expanded")d.setAttribute("data-nav",n);if(localStorage.getItem("${PANEL_STORAGE_KEY}")==="collapsed")d.setAttribute("data-panel","collapsed")}catch(e){}`;
+const SHELL_SCRIPT = `try{var d=document.documentElement,n=localStorage.getItem("${NAV_STORAGE_KEY}");if(n==="collapsed"||n==="expanded")d.setAttribute("data-nav",n);d.removeAttribute("data-panel");localStorage.removeItem("aiev-panel")}catch(e){}`;
 
 /**
  * Dưới ngưỡng này rail MẶC ĐỊNH gấp lại (xem lý do con số trong globals.css).
@@ -220,8 +217,8 @@ const ShellPanelContext = createContext<ShellPanelApi | null>(null);
  * vào khung panel của shell, nên CÂY REACT vẫn nằm ở trang: state, SSE, chat
  * component… giữ nguyên, chỉ đổi chỗ vẽ ra màn hình.
  *
- * Gấp/mở, bề rộng, chỗ chừa và chế độ drawer đều là việc của shell - trang không
- * cần (và không được) tự tính lại.
+ * Bề rộng và chỗ chừa là việc của shell - trang không cần (và không được) tự
+ * tính lại.
  *
  * ```tsx
  * <ShellRightPanel title={t("ttv.ai-panel")}>
@@ -261,8 +258,6 @@ export function Shell({ children }: { children: ReactNode }) {
   // chuỗi để setState không kéo theo ReactNode và gây render vòng.
   const [panelTitle, setPanelTitle] = useState<string | null>(null);
   const [slot, setSlot] = useState<HTMLDivElement | null>(null);
-  /** Drawer dưới 1280px - trạng thái tạm thời của phiên, cố ý KHÔNG nhớ */
-  const [drawerOpen, setDrawerOpen] = useState(false);
   /** Chỉ để nhãn aria/tooltip nói đúng - bề rộng rail là việc của CSS */
   const [navCollapsed, setNavCollapsed] = useState(false);
   const [product, setProduct] = useState<ProductSettings>({
@@ -306,17 +301,6 @@ export function Shell({ children }: { children: ReactNode }) {
       localStorage.setItem(NAV_STORAGE_KEY, next ? "collapsed" : "expanded");
     } catch {
       // localStorage bị chặn - vẫn gấp/mở được cho phiên hiện tại
-    }
-  }, []);
-
-  const setPanelCollapsed = useCallback((next: boolean) => {
-    const root = document.documentElement;
-    if (next) root.setAttribute("data-panel", "collapsed");
-    else root.removeAttribute("data-panel");
-    try {
-      localStorage.setItem(PANEL_STORAGE_KEY, next ? "collapsed" : "expanded");
-    } catch {
-      // như trên
     }
   }, []);
 
@@ -370,19 +354,6 @@ export function Shell({ children }: { children: ReactNode }) {
           </span>
 
           <div className="ml-auto flex items-center gap-3">
-            {panelTitle !== null && (
-              <button
-                type="button"
-                onClick={() => setDrawerOpen((o) => !o)}
-                className="shell-panel-drawer shell-icon-btn"
-                aria-expanded={drawerOpen}
-                aria-controls="shell-panel-body"
-                aria-label={t("shell.panel-open")}
-                title={t("shell.panel-open")}
-              >
-                <MessageSquare size={16} strokeWidth={1.75} aria-hidden="true" />
-              </button>
-            )}
             <HardwareMeter />
             <BackendStatus />
             <LanguageToggle />
@@ -501,35 +472,11 @@ export function Shell({ children }: { children: ReactNode }) {
 
           {/* Khung panel LUÔN nằm trong DOM (rộng 0 khi trang không khai báo) -
               xem `.shell-panel.is-empty` trong globals.css để biết vì sao. */}
-          <div
-            className={`shell-panel-scrim ${
-              drawerOpen && panelTitle !== null ? "is-open" : ""
-            }`}
-            onClick={() => setDrawerOpen(false)}
-            aria-hidden="true"
-          />
           <aside
-            className={`shell-panel ${panelTitle === null ? "is-empty" : ""} ${
-              drawerOpen ? "is-open" : ""
-            }`}
+            className={`shell-panel ${panelTitle === null ? "is-empty" : ""}`}
             aria-label={panelTitle ?? undefined}
             aria-hidden={panelTitle === null ? true : undefined}
           >
-            {/* Dải mỏng lúc gấp: panel KHÔNG biến mất hẳn, luôn còn 40px bấm vào
-                là mở lại - biến mất hẳn thì người dùng không tìm ra đường về */}
-            <button
-              type="button"
-              onClick={() => setPanelCollapsed(false)}
-              className="shell-panel-strip"
-              aria-expanded={false}
-              aria-controls="shell-panel-body"
-              aria-label={t("shell.panel-expand")}
-              title={t("shell.panel-expand")}
-            >
-              <PanelRightOpen size={16} strokeWidth={1.75} aria-hidden="true" />
-              <span className="shell-panel-strip-label">{panelTitle}</span>
-            </button>
-
             <div
               id="shell-panel-body"
               className="shell-panel-body min-h-0 min-w-0 flex-1 flex-col gap-3 p-3"
@@ -544,32 +491,6 @@ export function Shell({ children }: { children: ReactNode }) {
                   />
                   <span className="truncate">{panelTitle}</span>
                 </h2>
-                <div className="flex shrink-0 items-center gap-1">
-                  <button
-                    type="button"
-                    onClick={() => setPanelCollapsed(true)}
-                    className="shell-panel-toggle shell-icon-btn"
-                    aria-expanded={true}
-                    aria-controls="shell-panel-body"
-                    aria-label={t("shell.panel-collapse")}
-                    title={t("shell.panel-collapse")}
-                  >
-                    <PanelRightClose
-                      size={16}
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setDrawerOpen(false)}
-                    className="shell-panel-drawer shell-icon-btn"
-                    aria-label={t("shell.panel-close")}
-                    title={t("shell.panel-close")}
-                  >
-                    <X size={16} strokeWidth={2} aria-hidden="true" />
-                  </button>
-                </div>
               </div>
 
               {/* Điểm hạ cánh của portal - nội dung panel do trang cung cấp */}

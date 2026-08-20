@@ -104,13 +104,13 @@ textarea::placeholder {
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-/* ============ App shell - rail trái + panel phải gấp được ============
+/* ============ App shell - rail trái + panel AI phải cố định ============
 
    RÀNG BUỘC BỐ CỤC (đọc trước khi sửa):
 
-   1. Bề rộng rail và panel do CSS quyết định, KHÔNG do state React. Script chạy
+   1. Bề rộng rail do CSS quyết định, KHÔNG do state React. Script chạy
       trước paint trong Shell.tsx (SHELL_SCRIPT) đọc localStorage rồi ghi
-      `data-nav` / `data-panel` lên <html>, y hệt cách THEME_SCRIPT trong
+      `data-nav` lên <html>, y hệt cách THEME_SCRIPT trong
       layout.tsx chống nháy theme. Nhờ vậy khung hình ĐẦU TIÊN đã đúng bề rộng;
       React chỉ đồng bộ lại nhãn aria sau khi mount, không tham gia layout.
       Hệ quả: mọi thứ đổi theo trạng thái gấp/mở phải đi qua biến CSS dưới đây,
@@ -122,8 +122,6 @@ textarea::placeholder {
         workspace: chrome ăn 220 (rail) + 440 (panel) = 660px, dưới 1440 thì
         workspace còn chưa tới 740px, tức là tụt xuống dưới ngưỡng 2 cột. Rail
         phải là thứ nhường chỗ trước, không phải workspace.
-      - dưới 1280px panel phải thôi chừa chỗ và chuyển hẳn thành drawer đè lên
-        (giữ đúng ngưỡng `xl` mà các trang đang dùng).
       Media query phải liệt kê CẢ `:root` LẪN `html[data-nav="collapsed"]` thì
       mới thắng được khối gán ở trên - cùng độ ưu tiên nên thắng bằng thứ tự.
 
@@ -143,14 +141,10 @@ textarea::placeholder {
   --shell-nav-only-expanded: inline-flex;
   --shell-nav-only-collapsed: none;
 
-  /* Panel phải - giá trị của trạng thái MỞ */
+  /* Panel AI phải luôn mở khi trang khai báo nội dung. */
   --shell-panel-w: 440px;
-  --shell-panel-strip-w: 40px;
   --shell-panel-cur: var(--shell-panel-w);
-  --shell-panel-strip: none;
   --shell-panel-body: flex;
-  --shell-panel-toggle: inline-flex; /* nút gấp, chỉ có nghĩa khi panel ghim */
-  --shell-panel-drawer: none; /* nút mở drawer, chỉ có nghĩa khi màn hẹp */
 }
 
 html[data-nav="collapsed"] {
@@ -189,23 +183,6 @@ html[data-nav="expanded"] {
   --shell-nav-extra: flex;
   --shell-nav-only-expanded: inline-flex;
   --shell-nav-only-collapsed: none;
-}
-
-html[data-panel="collapsed"] {
-  --shell-panel-cur: var(--shell-panel-strip-w);
-  --shell-panel-strip: flex;
-  --shell-panel-body: none;
-}
-
-@media (max-width: 1279.98px) {
-  :root,
-  html[data-panel="collapsed"] {
-    /* Drawer thì luôn hiện đủ nội dung, không có dải mỏng và không có nút gấp */
-    --shell-panel-strip: none;
-    --shell-panel-body: flex;
-    --shell-panel-toggle: none;
-    --shell-panel-drawer: inline-flex;
-  }
 }
 
 /* ============ Base ============ */
@@ -785,9 +762,9 @@ textarea.input {
 
 /* ---------------- App shell ---------------- */
 
-/* Nút icon vuông trong shell (gấp rail, gấp panel, đóng drawer).
+/* Nút icon vuông trong shell (gấp rail và các thao tác header).
    CỐ Ý không khai báo `display`: cái đó do lớp trạng thái
-   (.shell-nav-toggle/.shell-panel-toggle/.shell-panel-drawer) đặt qua biến CSS,
+   đặt qua biến CSS,
    đặt ở đây nữa là hai rule cùng độ ưu tiên tranh nhau theo thứ tự dòng. */
 .shell-icon-btn {
   align-items: center;
@@ -903,76 +880,14 @@ textarea.input {
   border-left-width: 0;
   visibility: hidden;
 }
-.shell-panel-strip {
-  display: var(--shell-panel-strip);
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: background-color var(--transition), color var(--transition);
-}
-.shell-panel-strip:hover {
-  background: var(--bg-subtle);
-  color: var(--text);
-}
-/* Nhãn dọc trên dải mỏng - dải chỉ rộng 40px nên chữ phải quay 90 độ */
-.shell-panel-strip-label {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 60vh;
-}
 .shell-panel-body {
   display: var(--shell-panel-body);
-}
-.shell-panel-toggle {
-  display: var(--shell-panel-toggle);
-}
-.shell-panel-drawer {
-  display: var(--shell-panel-drawer);
-}
-.shell-panel-scrim {
-  display: none;
-}
-
-@media (max-width: 1279.98px) {
-  /* Panel rời khỏi dòng chảy → không chừa chỗ nữa, trượt vào từ mép phải */
-  .shell-panel {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 40;
-    width: min(440px, 100%);
-    transform: translateX(101%);
-    transition: transform var(--transition);
-  }
-  .shell-panel.is-open {
-    transform: none;
-  }
-  .shell-panel-scrim.is-open {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 39;
-    background: color-mix(in srgb, var(--text) 40%, transparent);
-  }
 }
 
 /* ---------------- Workspace 3 cột ---------------- */
 
 /* Container query chứ không media query: bề rộng thật của workspace phụ thuộc
-   rail và panel đang gấp hay mở, chứ không phụ thuộc bề rộng cửa sổ. Gấp cả hai
-   ở màn 1440px là workspace rộng bằng màn 1920px mở hết - dùng media query thì
-   người dùng gấp bớt mà vẫn chỉ được 2 cột, đúng thứ họ vừa cố tránh. */
+   rail và cột AI cố định, không chỉ phụ thuộc bề rộng cửa sổ. */
 .workspace {
   container-type: inline-size;
   container-name: workspace;
@@ -986,8 +901,7 @@ textarea.input {
 /* Ngưỡng tính theo bề rộng tối thiểu dùng được của một cột (~340px cho label +
    input + padding card) cộng gap: 2 cột = 2*340 + 16 ≈ 700px.
    Ba ngưỡng 700/1200 đã kiểm bằng trình duyệt thật cho monotonic: thu nhỏ cửa sổ
-   thì số cột chỉ giảm, không có chỗ nào hẹp hơn mà lại ra NHIỀU cột hơn - lúc
-   panel chuyển thành drawer nó trả lại 440px một phát, rất dễ dính lỗi đó. */
+   thì số cột chỉ giảm, không có chỗ nào hẹp hơn mà lại ra NHIỀU cột hơn. */
 @container workspace (min-width: 700px) {
   .workspace-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -14,10 +14,9 @@
  *   những thứ SINH RA trong lúc chạy: scene, file render, QC, báo cáo cắt tự
  *   động, thumbnail, gói xuất bản.
  *
- * Panel AI là SLOT CỦA SHELL: trang chỉ khai báo <ShellRightPanel> và shell lo bề
- * rộng, chỗ chừa, nút gấp, chế độ drawer. Trước đây trang tự dựng một <aside>
- * `fixed` rồi chừa chỗ bằng `xl:pr-[452px]` - con số đó sai ngay khi người dùng
- * gấp panel lại, và mỗi trang lại phải nhớ tự chừa.
+ * Panel AI là SLOT CỦA SHELL: trang chỉ khai báo <ShellRightPanel> và shell giữ
+ * nó thành cột cố định bên phải. Trước đây trang tự dựng một <aside>
+ * `fixed` rồi chừa chỗ bằng `xl:pr-[452px]`, khiến mỗi trang phải nhớ tự chừa.
  *
  * Project xong (status "done") thì các khối khác tự gấp lại còn một dòng tóm tắt:
  * lúc đó người dùng vào trang là để XEM video vừa ra, không phải để sửa brief
@@ -568,8 +567,8 @@ export default function ProjectDetailPage() {
   // Style Design - tên style hiển thị trong tóm tắt modal "Bắt đầu edit"
   const { data: stylesData } = useStyles();
 
-  // Panel AI của project (chat đi theo project) - panel là SLOT của shell nên
-  // trang không giữ state gấp/mở, không chừa chỗ, không tự dựng drawer.
+  // Panel AI của project (chat đi theo project) - panel là SLOT cố định của shell
+  // nên trang không phải tự chừa chỗ hoặc tự dựng aside.
   const [chatSessions, setChatSessions] = useState<ChatSession[] | null>(null);
   const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
 
@@ -884,6 +883,17 @@ export default function ProjectDetailPage() {
 
   const activeSession =
     chatSessions?.find((s) => s.sessionId === activeSessionId) ?? null;
+  const activeAiProvider = !activeSession?.model
+    ? "Claude"
+    : /^gpt-|^codex-/i.test(activeSession.model)
+      ? "ChatGPT / Codex"
+      : /^gemini-/i.test(activeSession.model)
+        ? "Gemini"
+        : "Claude";
+  const activeAiModel = activeSession?.model ?? t("project.ai-model-default");
+  const activeAiEffort = activeSession?.effort
+    ? t(`effort.${activeSession.effort}`)
+    : t("project.ai-mode-default");
 
   // Đã bắt đầu edit lần nào chưa - quyết định nhãn/kích cỡ nút CTA trong khối
   // thao tác (chưa bắt đầu thì nút to, đã có phiên thì là "mở phiên mới").
@@ -1037,8 +1047,7 @@ export default function ProjectDetailPage() {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Không còn `xl:pr-[452px]`: chỗ chừa cho panel AI là việc của shell, và
-          con số tay kiểu đó sai ngay khi người dùng gấp panel lại. */}
+      {/* Không còn `xl:pr-[452px]`: chỗ chừa cho cột AI là việc của shell. */}
       <PageHeader
         title={
           <EditableTitle
@@ -1701,13 +1710,25 @@ export default function ProjectDetailPage() {
         </WorkspaceColumn>
       </Workspace>
 
-      {/* Panel AI: chỉ KHAI BÁO nội dung, shell lo bề rộng/gấp/drawer. Cây React
+      {/* Panel AI: chỉ KHAI BÁO nội dung, shell giữ thành cột cố định. Cây React
           vẫn nằm ở trang này nên state và SSE của ChatThread giữ nguyên. */}
       <ShellRightPanel title={t("project.ai-panel")}>
         {activeSession && (
-          <div className="flex shrink-0 justify-end">
-            <SessionStatusBadge status={activeSession.status} />
-          </div>
+          <Panel
+            title={t("project.ai-current")}
+            actions={<SessionStatusBadge status={activeSession.status} />}
+            className="shrink-0"
+          >
+            <div className="flex flex-wrap gap-2">
+              <Badge tone="muted" dot={false} label={activeAiProvider} />
+              <Badge tone="muted" dot={false} label={activeAiModel} />
+              <Badge
+                tone="muted"
+                dot={false}
+                label={tf("project.ai-mode", { mode: activeAiEffort })}
+              />
+            </div>
+          </Panel>
         )}
 
         {chatSessions && chatSessions.length > 0 && (

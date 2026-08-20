@@ -414,6 +414,10 @@ export interface ChatSession {
   /** Project mà phiên chat gắn vào (null = chat tự do). */
   projectId: string | null;
   status: ChatSessionStatus;
+  /** Model được khóa cho phiên này; null chỉ gặp ở phiên cũ dùng mặc định Claude. */
+  model: string | null;
+  /** Mức suy luận của phiên; null = mặc định của engine ở các phiên cũ. */
+  effort: AgentEffort | null;
   /** ISO - lúc lượt chạy hiện tại BẮT ĐẦU (không reset khi auto-resume). */
   runStartedAt: string | null;
   /** ISO - lúc lượt chạy kết thúc hẳn; null khi đang chạy. */
