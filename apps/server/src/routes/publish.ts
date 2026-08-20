@@ -334,9 +334,10 @@ router.post("/:id/subtitles", (req, res) => {
 router.get("/:id/publish", (req, res) => {
   const id = req.params.id;
   requireProject(id);
+  const hasTranscript = readProjectTranscript(id) !== null;
   const file = publishJsonPathOf(id);
   if (!fs.existsSync(file)) {
-    res.json({ pack: null });
+    res.json({ pack: null, hasTranscript });
     return;
   }
   try {
@@ -348,13 +349,13 @@ router.get("/:id/publish", (req, res) => {
       typeof pack.transcriptRel !== "string" ||
       !Array.isArray(pack.items)
     ) {
-      res.json({ pack: null });
+      res.json({ pack: null, hasTranscript });
       return;
     }
-    res.json({ pack });
+    res.json({ pack, hasTranscript });
   } catch {
     // File hỏng thì coi như chưa có - người dùng chỉ cần bấm soạn lại
-    res.json({ pack: null });
+    res.json({ pack: null, hasTranscript });
   }
 });
 

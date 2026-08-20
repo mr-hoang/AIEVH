@@ -168,6 +168,8 @@ export type JobType =
    * sceneId mang mức mạnh tay (natural | default | tight).
    */
   | "auto-trim"
+  /** Bóc transcript riêng cho video project cũ; không chạy edit/render. */
+  | "project-transcript"
   /** Text to video: projectId là id phiên, không dùng sceneId */
   | "text-to-video"
   /** Dịch video: projectId là id phiên dịch, sceneId mang step (transcribe | render) */
@@ -188,6 +190,7 @@ export const JOB_TYPES: JobType[] = [
   "image-gen",
   "auto-cut",
   "auto-trim",
+  "project-transcript",
 ];
 
 export interface JobRow {

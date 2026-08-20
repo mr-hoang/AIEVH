@@ -222,6 +222,7 @@ export const vi: Record<string, string> = {
   "dash.job.image-gen": "Tạo ảnh",
   "dash.job.auto-cut": "Cắt tự động",
   "dash.job.auto-trim": "Cắt tự động (đo)",
+  "dash.job.project-transcript": "Tạo transcript",
   "dash.job.text-to-video": "Text to video",
   "dash.job.translate-video": "Dịch video",
   "dash.health.ffmpeg": "FFmpeg không có trên PATH - render sẽ thất bại.",
@@ -279,6 +280,7 @@ export const vi: Record<string, string> = {
   "queue.type.image-gen": "Tạo ảnh",
   "queue.type.auto-cut": "Cắt tự động",
   "queue.type.auto-trim": "Cắt tự động (đo)",
+  "queue.type.project-transcript": "Tạo transcript",
   "queue.type.text-to-video": "Text to video",
   "queue.type.translate-video": "Dịch video",
   "queue.log-title": "Log - {id}",
@@ -1138,7 +1140,13 @@ export const vi: Record<string, string> = {
   "publish.empty":
     "Sinh phụ đề .srt/.vtt và soạn tiêu đề, mô tả, hashtag cho TikTok, YouTube, Facebook theo Style Design của project.",
   "publish.no-transcript":
-    "Project chưa có transcript - chạy edit bằng AI trước để tạo transcript, rồi quay lại soạn gói xuất bản.",
+    "Project chưa có transcript. Tạo transcript riêng từ video đã dựng; hệ thống không sửa scene, Brief hoặc video final.",
+  "publish.transcribe": "Tạo transcript riêng",
+  "publish.transcribing": "Đang bóc lời…",
+  "publish.transcript-queued": "Đã đưa vào Render Queue",
+  "publish.transcript-progress": "Đang tạo transcript: {progress}% - {step}",
+  "publish.transcript-done": "Đã tạo transcript. Bây giờ có thể tạo gói xuất bản.",
+  "publish.transcript-error": "Không tạo được transcript.",
   "publish.load-error": "Không tải được gói xuất bản.",
   "publish.error": "Soạn gói xuất bản thất bại.",
   "publish.generated-at": "Soạn {time}",
@@ -1401,13 +1409,13 @@ export const vi: Record<string, string> = {
     "Tạo ảnh bìa cho video: hệ thống cắt một khung hình từ video, nhờ Gemini vẽ nền theo Style Design rồi ghép tiêu đề và logo lên.\nBước vẽ nền gọi Gemini nên tốn phí theo API key ở trang Kết nối. Không có key thì vẫn tạo được ảnh bìa, chỉ là nền gradient đơn giản theo style.\nMất khoảng một phút và phải chờ hộp thoại chạy xong. Tạo lại sẽ ghi đè ảnh bìa cũ.",
   "help.publish.title": "Gói xuất bản",
   "help.publish.body":
-    "Soạn sẵn tiêu đề, mô tả và hashtag riêng cho TikTok, YouTube, Facebook, kèm phụ đề .srt/.vtt để tải về. Mỗi phần có nút copy để dán thẳng lên nền tảng.\nCần transcript của video nên phải chạy edit bằng AI trước; chưa có transcript thì hệ thống báo và không soạn được.\nSoạn lại sẽ thay toàn bộ nội dung cũ, nên copy phần bạn muốn giữ trước khi bấm.",
+    "Soạn sẵn tiêu đề, mô tả và hashtag riêng cho TikTok, YouTube, Facebook, kèm phụ đề .srt/.vtt để tải về. Mỗi phần có nút copy để dán thẳng lên nền tảng.\nNếu project cũ chưa có transcript, bấm Tạo transcript riêng: hệ thống chỉ bóc lời từ video final, không sửa scene, Brief hay dựng lại video.\nSoạn lại sẽ thay toàn bộ nội dung cũ, nên copy phần bạn muốn giữ trước khi bấm.",
   "help.review.title": "Duyệt bản draft",
   "help.review.body":
     "Xem bản draft rồi ghim ghi chú ngay tại giây đang xem, kiểu \"chữ ở 00:12 bị cụt dấu\".\nBấm gửi thì AI nhận cả loạt ghi chú kèm mốc thời gian và chỉ sửa đúng những chỗ đó thay vì dựng lại cả video - nhanh hơn và tốn ít token hơn nhiều.\nKhông gửi được khi phiên AI của project đang chạy; chờ phiên hiện tại xong đã.",
   "help.clips.title": "Cắt short từ video dài",
   "help.clips.body":
-    "AI đọc transcript, chấm điểm rồi đề xuất những đoạn đáng cắt thành short. Bạn tick đoạn nào, hệ thống đẻ ra một project riêng cho đoạn đó.\nCần transcript nên video phải qua edit bằng AI trước. Lượt phân tích gọi AI, mất 1-3 phút và tốn token.\nProject gốc không bị đụng tới - short là project mới, không thích thì xóa riêng.",
+    "AI đọc transcript, chấm điểm rồi đề xuất những đoạn đáng cắt thành short. Bạn tick đoạn nào, hệ thống đẻ ra một project riêng cho đoạn đó.\nNếu project chưa có transcript, tạo riêng ở mục Gói xuất bản mà không cần dựng lại. Lượt phân tích gọi AI, mất 1-3 phút và tốn token.\nProject gốc không bị đụng tới - short là project mới, không thích thì xóa riêng.",
   "help.repurpose.title": "Tái chế tỉ lệ khung",
   "help.repurpose.body":
     "Tạo project mới cùng nội dung nhưng khác khung hình, ví dụ lấy bản dọc TikTok làm thêm bản ngang cho YouTube.\nHệ thống chỉ chép video nguồn và brief sang project con; vẫn phải edit lại cho bố cục hợp khung mới - tick \"AI tự edit\" để nó chạy luôn sau khi tạo.\nTỉ lệ trùng với project hiện tại sẽ bị khóa.",

@@ -1696,6 +1696,7 @@ export default function ProjectDetailPage() {
           <ProjectPublishCard
             projectId={projectId}
             version={project?.updatedAt}
+            jobs={jobs}
           />
         </WorkspaceColumn>
       </Workspace>

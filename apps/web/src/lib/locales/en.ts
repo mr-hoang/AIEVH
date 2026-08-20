@@ -222,6 +222,7 @@ export const en: Record<string, string> = {
   "dash.job.image-gen": "Image generation",
   "dash.job.auto-cut": "Auto cut",
   "dash.job.auto-trim": "Auto-trim",
+  "dash.job.project-transcript": "Create transcript",
   "dash.job.text-to-video": "Text to video",
   "dash.job.translate-video": "Translate video",
   "dash.health.ffmpeg": "FFmpeg is not on PATH - renders will fail.",
@@ -279,6 +280,7 @@ export const en: Record<string, string> = {
   "queue.type.image-gen": "Image generation",
   "queue.type.auto-cut": "Auto cut",
   "queue.type.auto-trim": "Auto-trim",
+  "queue.type.project-transcript": "Create transcript",
   "queue.type.text-to-video": "Text to video",
   "queue.type.translate-video": "Translate video",
   "queue.log-title": "Log - {id}",
@@ -1138,7 +1140,13 @@ export const en: Record<string, string> = {
   "publish.empty":
     "Generates .srt/.vtt subtitles and writes a title, description and hashtags for TikTok, YouTube and Facebook following the project Style Design.",
   "publish.no-transcript":
-    "This project has no transcript yet - run the AI edit first to create one, then come back to build the publish pack.",
+    "This project has no transcript. Create one from the finished video without changing scenes, the Brief or the final video.",
+  "publish.transcribe": "Create transcript only",
+  "publish.transcribing": "Transcribing…",
+  "publish.transcript-queued": "Added to the Render Queue",
+  "publish.transcript-progress": "Creating transcript: {progress}% - {step}",
+  "publish.transcript-done": "Transcript created. The publish pack is now ready to generate.",
+  "publish.transcript-error": "Could not create the transcript.",
   "publish.load-error": "Could not load the publish pack.",
   "publish.error": "Building the publish pack failed.",
   "publish.generated-at": "Written {time}",
@@ -1406,13 +1414,13 @@ export const en: Record<string, string> = {
     "Builds a cover image for the video: the system grabs a frame from the video, asks Gemini to paint a background in your Style Design, then composites the title and logo on top.\nThe background step calls Gemini, so it costs money on the API key set in Connections. Without a key you still get a thumbnail, just a simple gradient background from the style.\nIt takes about a minute and you have to wait for the dialog to finish. Running it again overwrites the previous cover.",
   "help.publish.title": "Publishing pack",
   "help.publish.body":
-    "Writes ready to use titles, descriptions and hashtags for TikTok, YouTube and Facebook, plus .srt/.vtt subtitles to download. Every block has its own copy button so you can paste straight into the platform.\nIt needs the video transcript, so run an AI edit first; without a transcript the system tells you and generates nothing.\nRegenerating replaces the previous text entirely, so copy anything you want to keep first.",
+    "Writes ready to use titles, descriptions and hashtags for TikTok, YouTube and Facebook, plus .srt/.vtt subtitles to download. Every block has its own copy button so you can paste straight into the platform.\nFor an older project without a transcript, use Create transcript only: it reads the final video without changing scenes, the Brief or rendering again.\nRegenerating replaces the previous text entirely, so copy anything you want to keep first.",
   "help.review.title": "Review the draft",
   "help.review.body":
     "Watch the draft and pin a note at the exact second you are looking at, like \"text at 00:12 loses its diacritics\".\nWhen you send them, the AI gets the whole batch with timecodes and fixes only those spots instead of rebuilding the video - much faster and far fewer tokens.\nSending is disabled while an AI session for this project is running; wait for the current one to finish.",
   "help.clips.title": "Cut shorts from a long video",
   "help.clips.body":
-    "The AI reads the transcript, scores it and proposes the segments worth turning into shorts. Tick the ones you want and the system spins up a separate project for each.\nIt needs a transcript, so the video must go through an AI edit first. Each analysis run calls the AI, takes 1-3 minutes and costs tokens.\nThe source project is untouched - each short is a new project you can delete on its own.",
+    "The AI reads the transcript, scores it and proposes the segments worth turning into shorts. Tick the ones you want and the system spins up a separate project for each.\nIf the project has no transcript, create one in the Publish pack without rebuilding the video. Each analysis run calls the AI, takes 1-3 minutes and costs tokens.\nThe source project is untouched - each short is a new project you can delete on its own.",
   "help.repurpose.title": "Repurpose the aspect ratio",
   "help.repurpose.body":
     "Creates a new project with the same content in a different frame, for example turning the vertical TikTok cut into a landscape version for YouTube.\nOnly the source video and the brief are copied over; the layout still has to be re-edited for the new frame - tick \"AI edits automatically\" to start that right away.\nThe ratio the project already uses is disabled.",

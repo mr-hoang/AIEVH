@@ -7,10 +7,11 @@
  * COPY đi dán lên TikTok/YouTube/Facebook nên mỗi phần có nút copy riêng.
  */
 
-import { Download, Loader2, Megaphone, Sparkles } from "lucide-react";
+import { Download, FileText, Loader2, Megaphone, Sparkles } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import {
   ApiError,
+  createJob,
   createPublishPack,
   createSubtitles,
   getPublishPack,
@@ -18,6 +19,7 @@ import {
   type PublishItem,
   type PublishPack,
   type PublishPlatform,
+  type Job,
 } from "@/lib/api";
 import { Badge } from "@/components/Badge";
 import { Banner } from "@/components/Banner";
@@ -90,15 +92,19 @@ function PlatformBlock({ item }: { item: PublishItem }) {
 export function ProjectPublishCard({
   projectId,
   version,
+  jobs,
 }: {
   projectId: string;
   /** updatedAt của project - cache-bust link tải phụ đề sau khi soạn lại. */
   version?: string;
+  /** Jobs của project cập nhật sống qua SSE ở trang cha. */
+  jobs: Job[];
 }) {
   const { t, tf } = useT();
   const [pack, setPack] = useState<PublishPack | null>(null);
   const [cues, setCues] = useState<number | null>(null);
   const [busy, setBusy] = useState(false);
+  const [createdTranscriptJob, setCreatedTranscriptJob] = useState<Job | null>(null);
   // Thiếu transcript KHÔNG phải lỗi hệ thống - hiện hướng dẫn nhẹ nhàng
   const [noTranscript, setNoTranscript] = useState(false);
   const [error, setError] = useState<{ message: string; detail?: string } | null>(
@@ -109,6 +115,7 @@ export function ProjectPublishCard({
     try {
       const res = await getPublishPack(projectId);
       setPack(res.pack);
+      if (res.hasTranscript !== undefined) setNoTranscript(!res.hasTranscript);
     } catch (e) {
       setError({
         message: t("publish.load-error"),
@@ -122,6 +129,34 @@ export function ProjectPublishCard({
   useEffect(() => {
     load();
   }, [load]);
+
+  const transcriptJob =
+    (createdTranscriptJob
+      ? jobs.find((job) => job.id === createdTranscriptJob.id) ?? createdTranscriptJob
+      : null) ?? jobs.find((job) => job.type === "project-transcript") ?? null;
+  const transcriptBusy =
+    transcriptJob?.status === "queued" || transcriptJob?.status === "running";
+
+  // Khi job hoàn tất, hỏi lại backend thay vì tự đoán file đã được ghi chưa.
+  useEffect(() => {
+    if (transcriptJob?.status === "done") {
+      void load();
+    }
+  }, [load, transcriptJob?.id, transcriptJob?.status]);
+
+  async function onTranscribe() {
+    if (transcriptBusy) return;
+    setError(null);
+    try {
+      const job = await createJob({ projectId, type: "project-transcript" });
+      setCreatedTranscriptJob(job);
+    } catch (e) {
+      setError({
+        message: t("publish.transcript-error"),
+        detail: e instanceof Error ? e.message : String(e),
+      });
+    }
+  }
 
   async function onGenerate() {
     if (busy) return;
@@ -156,7 +191,7 @@ export function ProjectPublishCard({
   const transcriptName = pack?.transcriptRel.split(/[\\/]/).pop() ?? null;
 
   const generateButton = (
-    <Button small onClick={onGenerate} disabled={busy}>
+    <Button small onClick={onGenerate} disabled={busy || noTranscript || transcriptBusy}>
       {busy ? (
         <>
           <Loader2 size={14} strokeWidth={2} className="animate-spin" />
@@ -182,8 +217,45 @@ export function ProjectPublishCard({
       {/* Chưa có transcript là trạng thái BÌNH THƯỜNG của project mới - chỉ
           hướng dẫn bước tiếp theo, không dựng banner lỗi đỏ */}
       {noTranscript && (
-        <div className="mb-3">
+        <div className="mb-3 flex flex-col items-start gap-2">
           <Banner tone="muted" message={t("publish.no-transcript")} />
+          <Button
+            variant="secondary"
+            small
+            disabled={transcriptBusy}
+            onClick={onTranscribe}
+          >
+            {transcriptBusy ? (
+              <Loader2 size={14} strokeWidth={2} className="animate-spin" />
+            ) : (
+              <FileText size={14} strokeWidth={2} />
+            )}
+            {transcriptBusy ? t("publish.transcribing") : t("publish.transcribe")}
+          </Button>
+          {transcriptJob?.status === "queued" && (
+            <Banner tone="muted" message={t("publish.transcript-queued")} />
+          )}
+          {transcriptJob?.status === "running" && (
+            <Banner
+              tone="muted"
+              message={tf("publish.transcript-progress", {
+                progress: transcriptJob.progress ?? 0,
+                step: transcriptJob.step || t("publish.transcribing"),
+              })}
+            />
+          )}
+          {transcriptJob?.status === "failed" && (
+            <ErrorBanner
+              message={t("publish.transcript-error")}
+              detail={transcriptJob.step}
+            />
+          )}
+        </div>
+      )}
+
+      {!noTranscript && transcriptJob?.status === "done" && !pack && (
+        <div className="mb-3">
+          <Banner tone="success" message={t("publish.transcript-done")} />
         </div>
       )}
 

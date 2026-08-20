@@ -32,6 +32,7 @@ const TYPE_LABEL: Record<Job["type"], string> = {
   "image-gen": "queue.type.image-gen",
   "auto-cut": "queue.type.auto-cut",
   "auto-trim": "queue.type.auto-trim",
+  "project-transcript": "queue.type.project-transcript",
   "text-to-video": "queue.type.text-to-video",
   "translate-video": "queue.type.translate-video",
 };

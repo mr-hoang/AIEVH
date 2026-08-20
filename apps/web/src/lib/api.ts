@@ -334,6 +334,8 @@ export type JobType =
   | "auto-cut"
   /** Cắt khoảng lặng + mỡ thừa ĐÃ DUYỆT của một video project - `sceneId` = mức mạnh tay. */
   | "auto-trim"
+  /** Bóc transcript riêng cho project cũ, không edit/render lại. */
+  | "project-transcript"
   /** Phiên dựng video từ bài viết - `projectId` = id phiên. */
   | "text-to-video"
   /** Phiên dịch video (bóc lời + đóng phụ đề) - `projectId` = id phiên. */
@@ -1994,7 +1996,7 @@ export interface PublishPack {
 }
 
 export const getPublishPack = (projectId: string) =>
-  request<{ pack: PublishPack | null }>(
+  request<{ pack: PublishPack | null; hasTranscript?: boolean }>(
     `/api/projects/${encodeURIComponent(projectId)}/publish`
   );
 
