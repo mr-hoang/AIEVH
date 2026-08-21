@@ -4,6 +4,8 @@ import type { StyleDesign } from "./styles.js";
 import { addTokenUsage } from "./db.js";
 import type { ImageAspect, ImageKind, ImageTextPosition } from "./imageMeta.js";
 import type { VideoStyle } from "./videoStyles.js";
+import { hasAntigravityCli } from "./config.js";
+import { generateSubscriptionImage } from "./subscriptionImage.js";
 import { ensureDir } from "./util.js";
 
 /**
@@ -252,8 +254,8 @@ interface GeminiResponse {
 }
 
 /**
- * Gọi Gemini tạo ảnh nền → ghi PNG vào `outFile` (image-projects/<id>/background.png).
- * Lỗi API → throw message rõ (status + body ngắn) để job hiển thị được cho người dùng.
+ * Tạo ảnh nền → ghi PNG vào `outFile` (image-projects/<id>/background.png).
+ * Ưu tiên Antigravity Subscription; Gemini API key chỉ là fallback.
  */
 export async function generateBackground(input: {
   prompt: string;
@@ -262,7 +264,7 @@ export async function generateBackground(input: {
   design: StyleDesign;
   /** Đường dẫn tuyệt đối file PNG output */
   outFile: string;
-  /** Id image project - để ghi token usage (provider gemini) cho biểu đồ Dashboard */
+  /** Id image project - để ghi token usage khi phải dùng Gemini API fallback */
   usageProjectId?: string;
   /** Model tạo ảnh người dùng chọn (IMAGE_MODELS) - mặc định Nano Banana 2 */
   model?: string;
@@ -275,19 +277,37 @@ export async function generateBackground(input: {
   /** Vị trí chủ thể người dùng chọn - xem buildImagePrompt */
   subjectPosition?: ImageTextPosition;
 }): Promise<{ file: string; promptUsed: string }> {
-  const key = geminiApiKey();
-  if (!key) {
-    throw new Error(
-      "Chưa có GEMINI_API_KEY. Thêm GEMINI_API_KEY vào .env - lấy tại aistudio.google.com/apikey; hoặc tự upload nền rồi chạy bước Hoàn thiện.",
-    );
-  }
-
   // Nhận cả model mới từ danh sách live của Google - chỉ cần id hợp lệ có "image"
   const model =
     input.model && /^[a-z0-9][a-z0-9.-]{2,80}$/i.test(input.model) && input.model.includes("image")
       ? input.model
       : DEFAULT_IMAGE_MODEL;
   const promptUsed = buildImagePrompt(input);
+  const key = geminiApiKey();
+
+  // Ưu tiên gói Google/Antigravity đã đăng nhập. Nếu CLI chưa cài, phiên hết hạn
+  // hoặc tool tạo ảnh bị từ chối thì mới dùng key dự phòng (nếu người dùng có).
+  let subscriptionError: string | null = null;
+  if (hasAntigravityCli()) {
+    try {
+      await generateSubscriptionImage({
+        provider: "gemini",
+        prompt: promptUsed,
+        outFile: input.outFile,
+      });
+      return { file: input.outFile, promptUsed };
+    } catch (err) {
+      subscriptionError = err instanceof Error ? err.message : String(err);
+    }
+  }
+  if (!key) {
+    throw new Error(
+      subscriptionError
+        ? `Antigravity Subscription không tạo được ảnh: ${subscriptionError}. Không có GEMINI_API_KEY dự phòng.`
+        : "Chưa gọi được Antigravity CLI (`agy`) và chưa có GEMINI_API_KEY dự phòng. Cài/đăng nhập Antigravity CLI hoặc thêm key ở trang Kết nối.",
+    );
+  }
+
   const body = {
     contents: [{ parts: [{ text: promptUsed }] }],
     generationConfig: {

@@ -444,7 +444,7 @@ function ThumbnailBody({
             onChange={(e) => setImageProvider(e.target.value as "openai" | "gemini")}
           >
             <option value="gemini">Gemini</option>
-            <option value="openai">ChatGPT / OpenAI (GPT Image 2)</option>
+            <option value="openai">ChatGPT Subscription / OpenAI API dự phòng</option>
           </select>
         </Field>
         {/* Câu mô tả cách chạy làm gợi ý của chính ô prompt nền - nó nói về việc

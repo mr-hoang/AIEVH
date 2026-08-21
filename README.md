@@ -91,8 +91,9 @@ belonging to the **same project** never run at the same time.
 - **Node.js 22+** (HyperFrames requires `>=22`)
 - **FFmpeg** on PATH (macOS: `brew install ffmpeg`)
 - **Google Chrome** (HyperFrames and Remotion render through headless Chromium)
+- **ChatGPT/Codex**: install Codex CLI, run `codex login`; image generation prefers the signed-in ChatGPT subscription, with `OPENAI_API_KEY` as fallback
 - **Claude**: sign in to [Claude Code](https://claude.com/claude-code) on this machine (uses subscription OAuth - recommended) *or* put `ANTHROPIC_API_KEY` in `.env`
-- **Gemini** (only needed for image generation): `GEMINI_API_KEY` in `.env` - get one at [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
+- **Gemini/Antigravity**: install and sign in to Antigravity CLI (`agy`) for subscription image generation; `GEMINI_API_KEY` is an optional fallback (API-only media features may still require it)
 - Optional: an NVIDIA GPU (NVENC) or Apple Silicon Mac (VideoToolbox) for faster rendering; Python + `faster-whisper` for subtitles
 
 You do not have to install these by hand. The start script checks every item above and offers to

@@ -209,7 +209,7 @@ export function AiModelBlock({
       {active && !active.connected && (
         <p className="flex items-start gap-2 text-sm font-medium text-[var(--danger)]">
           <AlertTriangle size={14} strokeWidth={2} className="mt-0.5 shrink-0" />
-          {isCodexModel(model) ? t("model.codex-warning") : isGeminiModel(model) ? "Chưa kết nối Gemini CLI. Mở trang Kết nối để đăng nhập Google hoặc nhập API key." : t("model.claude-warning")}
+          {isCodexModel(model) ? t("model.codex-warning") : isGeminiModel(model) ? "Chưa kết nối Antigravity CLI. Mở trang Kết nối để đăng nhập Google Subscription hoặc nhập API key dự phòng." : t("model.claude-warning")}
         </p>
       )}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -342,7 +342,7 @@ export function AiModelInlineRow({
       {active && !active.connected && (
         <span
           className="inline-flex items-center gap-1 text-meta font-medium text-[var(--danger)]"
-          title={isCodexModel(model) ? t("model.codex-warning-short") : isGeminiModel(model) ? "Chưa kết nối Gemini CLI" : t("model.claude-warning-short")}
+          title={isCodexModel(model) ? t("model.codex-warning-short") : isGeminiModel(model) ? "Chưa kết nối Antigravity CLI" : t("model.claude-warning-short")}
         >
           <AlertTriangle size={13} strokeWidth={2} className="shrink-0" />
           {isCodexModel(model) ? t("model.codex-not-connected") : isGeminiModel(model) ? "Gemini chưa kết nối" : t("model.claude-not-connected")}

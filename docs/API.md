@@ -239,11 +239,13 @@ Provider = { id: "claude"|"openai"|"gemini", label, connected: boolean,
   `POST /api/chat { ..., model? }` và `POST /api/projects/:id/edit { ..., model? }` —
   lưu vào chat_sessions.model, mọi lượt chạy sau của session dùng model đó.
 - openai: connected khi gọi được Codex CLI VÀ có phiên `codex login` trong `~/.codex/auth.json`
-  hoặc API key dự phòng. roles = ["edit", "chat"]. Đổi giữa OpenAI/Claude sẽ xóa provider session
+  hoặc API key dự phòng. roles = ["edit", "chat", "image"]. Tạo ảnh ưu tiên ChatGPT
+  Subscription qua Codex; OPENAI_API_KEY chỉ là fallback. Đổi giữa OpenAI/Claude sẽ xóa provider session
   id cũ để lượt mới không resume nhầm thread của hãng kia.
-- gemini: connected khi có GEMINI_API_KEY/GOOGLE_API_KEY (GOOGLE_API_KEY thắng nếu có cả hai).
-  Antigravity/gemini-cli chỉ được ghi nhận ở note (auth nội bộ IDE, không gọi API media được).
-  roles = ["image", "video"].
+- gemini: connected khi gọi được Antigravity CLI (`agy`) hoặc có
+  GEMINI_API_KEY/GOOGLE_API_KEY dự phòng (GOOGLE_API_KEY thắng nếu có cả hai).
+  Tạo ảnh ưu tiên Google Subscription qua tool `generate_image` của Antigravity; chỉ khi
+  Subscription lỗi mới gọi API key. roles = ["edit", "chat", "image", "video"].
 - `GET /api/providers/gemini/image-models` → [{ id, label }] — danh sách model tạo ảnh Gemini khả dụng.
 - `GET /api/providers/claude/models` → { source: "anthropic"|"static", models: [{ id, label }] } — danh sách model Claude live từ Anthropic Models API (cần ANTHROPIC_API_KEY, cache 10'); OAuth-only/lỗi → danh sách tĩnh đầy đủ.
 
@@ -958,9 +960,10 @@ GET    /api/images/:id/junk       → { items: [{ relPath, size }], totalBytes }
 POST   /api/images/:id/junk/clean → { freedBytes, deleted } — xóa các mục trên; job running/queued → 409 JOB_RUNNING
 ```
 
-Pipeline generate: (1) `background` — gọi Gemini tạo ảnh nền theo prompt + kind + aspect,
-prompt được TRỘN với Design System (màu brand, tone) để đồng bộ; không có GEMINI_API_KEY → job fail
-với hướng dẫn (hoặc dùng bước upload nền thủ công rồi chạy `compose`). (2) `compose` — Remotion
+Pipeline generate: (1) `background` — gọi Antigravity Subscription (ưu tiên) hoặc Gemini API key
+(dự phòng) để tạo ảnh nền theo prompt + kind + aspect. Prompt được TRỘN với Design System
+(màu brand, tone) để đồng bộ; thiếu cả hai kết nối → job fail với hướng dẫn (hoặc dùng bước upload
+nền thủ công rồi chạy `compose`). (2) `compose` — Remotion
 render still composition `Poster`: nền + tiêu đề tiếng Việt + logo + số liệu + CTA theo đúng
 màu/typography của Design System → `final.png`. Job.projectId = id image project; UI phân biệt
 qua job.type = "image-gen". /media phục vụ thêm thư mục `image-projects/`.

@@ -1,8 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { Router } from "express";
-import { paths, repoRoot } from "../config.js";
-import { geminiApiKey, generateBackground } from "../gemini.js";
+import { hasCodexCli, hasCodexSubscription, paths, repoRoot } from "../config.js";
+import { generateBackground } from "../gemini.js";
+import { generateSubscriptionImage } from "../subscriptionImage.js";
 import {
   briefOf,
   listProjectAssets,
@@ -21,8 +22,8 @@ import type { ImageAspect } from "../imageMeta.js";
  * Tạo THUMBNAIL cho video project - chạy ĐỒNG BỘ (~1 phút), pipeline:
  * 1) ffmpeg cắt một frame từ video (mặc định output final của meta,
  *    fallback video asset đầu tiên) tại giây `frameAt`
- * 2) Gemini vẽ nền theo Style Design (lỗi/thiếu key → bỏ qua, composition
- *    tự dựng nền gradient từ style - như Poster)
+ * 2) Codex hoặc Antigravity Subscription vẽ nền theo Style Design; API key
+ *    chỉ được gọi dự phòng
  * 3) stage nền + frame + logo + font bằng hardlink → props.json →
  *    `npx remotion still Thumbnail` → video-projects/<id>/thumbnail.png
  * Style resolve: body.styleId → brief.styleId → default (như /api/illustrations).
@@ -36,9 +37,29 @@ async function generateOpenAiBackground(input: {
   aspect: ImageAspect;
   outFile: string;
 }): Promise<void> {
-  const key = (process.env.OPENAI_API_KEY ?? "").trim();
+  const prompt = `${input.prompt}. Create in ${input.aspect} aspect ratio. Clean video thumbnail background, no text, no logo, strong subject separation.`;
+  let subscriptionError: string | null = null;
+  if (hasCodexSubscription() && hasCodexCli()) {
+    try {
+      await generateSubscriptionImage({
+        provider: "openai",
+        prompt,
+        outFile: input.outFile,
+      });
+      return;
+    } catch (err) {
+      subscriptionError = err instanceof Error ? err.message : String(err);
+    }
+  }
+  const key = (process.env.OPENAI_API_KEY || process.env.CODEX_API_KEY || "").trim();
   if (!key) {
-    throw new HttpError(400, "OPENAI_KEY_REQUIRED", "Tạo thumbnail bằng ChatGPT/OpenAI cần OPENAI_API_KEY ở trang Kết nối");
+    throw new HttpError(
+      400,
+      "OPENAI_CONNECTION_REQUIRED",
+      subscriptionError
+        ? `ChatGPT Subscription không tạo được ảnh: ${subscriptionError}. Không có OPENAI_API_KEY dự phòng.`
+        : "Chưa có phiên ChatGPT Subscription dùng được qua Codex CLI và chưa có OPENAI_API_KEY dự phòng.",
+    );
   }
   const size = input.aspect === "9:16" ? "1024x1536" : "1536x1024";
   const response = await fetch("https://api.openai.com/v1/images/generations", {
@@ -46,7 +67,7 @@ async function generateOpenAiBackground(input: {
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       model: "gpt-image-2",
-      prompt: `${input.prompt}. Clean video thumbnail background, no text, no logo, strong subject separation.`,
+      prompt,
       size,
       quality: "medium",
       output_format: "png",
@@ -167,9 +188,6 @@ router.post("/:id/thumbnail", async (req, res) => {
       });
       hasBg = true;
     } else {
-      if (!geminiApiKey()) {
-        throw new HttpError(400, "GEMINI_KEY_REQUIRED", "Tạo thumbnail bằng Gemini cần GEMINI_API_KEY ở trang Kết nối");
-      }
       await generateBackground({
         prompt: bgPrompt || `background for a video thumbnail about: ${title}`,
         kind: "concept",

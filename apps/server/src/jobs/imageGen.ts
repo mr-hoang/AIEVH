@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { paths, repoRoot } from "../config.js";
 import { updateJob } from "../db.js";
-import { geminiApiKey, generateBackground } from "../gemini.js";
+import { generateBackground } from "../gemini.js";
 import {
   IMAGE_GEN_STEPS,
   imageDirOf,
@@ -62,11 +62,6 @@ export async function runImageGen(ctx: JobCtx): Promise<void> {
 // ---- step background: Gemini tạo ảnh nền -------------------------------
 
 async function stepBackground(ctx: JobCtx, id: string): Promise<void> {
-  if (!geminiApiKey()) {
-    throw new Error(
-      "Chưa có GEMINI_API_KEY. Thêm GEMINI_API_KEY vào .env - lấy tại aistudio.google.com/apikey; hoặc tự upload nền rồi chạy bước Hoàn thiện.",
-    );
-  }
   const meta = readImageMeta(id);
   const design = getStyle(meta.styleId); // style đã chọn hoặc default
 

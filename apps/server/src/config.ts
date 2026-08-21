@@ -153,6 +153,11 @@ export function hasClaudeAuth(): boolean {
 /** Codex dùng subscription ChatGPT đã login hoặc API key dự phòng. */
 export function hasCodexAuth(): boolean {
   if (process.env.OPENAI_API_KEY || process.env.CODEX_API_KEY) return true;
+  return hasCodexSubscription();
+}
+
+/** Có phiên ChatGPT Subscription thật (không tính API key dự phòng). */
+export function hasCodexSubscription(): boolean {
   if (!userHome) return false;
   return fs.existsSync(path.join(userHome, ".codex", "auth.json"));
 }
@@ -208,6 +213,43 @@ export function hasGeminiCli(): boolean {
   }
   geminiCliCache = { at: Date.now(), ok };
   return ok;
+}
+
+let antigravityCliCache: { at: number; ok: boolean } | null = null;
+/**
+ * Antigravity CLI (`agy`) dùng lại phiên Google đã đăng nhập trên máy và có
+ * tool `generate_image`. Đây là đường Subscription mới; Gemini CLI cũ chỉ còn
+ * được giữ cho các luồng agent tương thích ngược.
+ */
+export function hasAntigravityCli(): boolean {
+  if (antigravityCliCache && Date.now() - antigravityCliCache.at < 30_000) {
+    return antigravityCliCache.ok;
+  }
+  let ok = false;
+  try {
+    execFileSync(process.env.AGY_BIN || "agy", ["--version"], {
+      stdio: "ignore",
+      timeout: 3000,
+      windowsHide: true,
+    });
+    ok = true;
+  } catch {
+    // Chưa cài Antigravity CLI hoặc chưa nằm trong PATH.
+  }
+  antigravityCliCache = { at: Date.now(), ok };
+  return ok;
+}
+
+/** Có dấu vết Antigravity/Gemini trên máy; auth thật sẽ được `agy` xác minh khi chạy. */
+export function hasAntigravityInstall(): boolean {
+  if (hasAntigravityCli()) return true;
+  if (!userHome) return false;
+  const localAppData = process.env.LOCALAPPDATA || "";
+  return [
+    path.join(userHome, ".gemini"),
+    path.join(userHome, ".antigravity"),
+    localAppData && path.join(localAppData, "Programs", "Antigravity"),
+  ].some((candidate) => Boolean(candidate) && fs.existsSync(candidate));
 }
 
 // Cache kết quả tra Keychain 60s - health poll mỗi 30s, không spawn security liên tục

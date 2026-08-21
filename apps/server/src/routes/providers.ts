@@ -1,7 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import { Router } from "express";
-import { hasClaudeAuth, hasCodexAuth, hasCodexCli, hasGeminiAuth, hasGeminiCli } from "../config.js";
+import {
+  hasAntigravityCli,
+  hasAntigravityInstall,
+  hasClaudeAuth,
+  hasCodexAuth,
+  hasCodexCli,
+  hasCodexSubscription,
+} from "../config.js";
 import { geminiApiKey } from "../gemini.js";
 import { HttpError } from "../util.js";
 
@@ -235,18 +242,6 @@ function claudeSource(): "oauth" | "api-key" | null {
   return null;
 }
 
-/** Có cài Antigravity/gemini-cli trên máy không - auth IDE không dùng được cho API tạo ảnh */
-function hasAntigravityInstall(): boolean {
-  const home = homeDir();
-  const localAppData = process.env.LOCALAPPDATA || "";
-  const candidates = [
-    home && path.join(home, ".gemini"),
-    home && path.join(home, ".antigravity"),
-    localAppData && path.join(localAppData, "Programs", "Antigravity"),
-  ].filter((p): p is string => Boolean(p));
-  return candidates.some((p) => fs.existsSync(p));
-}
-
 const router = Router();
 
 // GET /api/providers → { providers: Provider[] }
@@ -261,12 +256,12 @@ router.get("/", (_req, res) => {
   };
 
   const gKey = geminiApiKey();
-  const geminiSubscription = hasGeminiAuth() && hasGeminiCli() && !gKey;
+  const geminiSubscription = hasAntigravityCli();
   const gemini: Provider = {
     id: "gemini",
     label: "Gemini (Google)",
     connected: Boolean(gKey) || geminiSubscription,
-    source: gKey ? "api-key" : geminiSubscription ? "oauth" : null,
+    source: geminiSubscription ? "oauth" : gKey ? "api-key" : null,
     roles: ["edit", "chat", "image", "video"],
     models: [...GEMINI_AGENT_MODELS, ...GEMINI_MODELS],
   };
@@ -276,12 +271,13 @@ router.get("/", (_req, res) => {
   }
 
   const openaiKey = Boolean(process.env.OPENAI_API_KEY || process.env.CODEX_API_KEY);
+  const openaiSubscription = hasCodexSubscription() && hasCodexCli();
   const openai: Provider = {
     id: "openai",
     label: "ChatGPT / Codex (OpenAI)",
     connected: hasCodexAuth() && hasCodexCli(),
-    source: openaiKey ? "api-key" : hasCodexAuth() ? "oauth" : null,
-    roles: ["edit", "chat"],
+    source: openaiSubscription ? "oauth" : openaiKey ? "api-key" : null,
+    roles: ["edit", "chat", "image"],
     models: CODEX_MODELS,
   };
   if (hasCodexAuth() && !hasCodexCli()) {

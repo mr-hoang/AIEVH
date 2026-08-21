@@ -2,7 +2,15 @@ import fs from "node:fs";
 import path from "node:path";
 import { spawn } from "node:child_process";
 import { Router } from "express";
-import { hasClaudeAuth, hasCodexAuth, hasCodexCli, hasGeminiAuth, hasGeminiCli, upsertSecretVar } from "../config.js";
+import {
+  hasAntigravityCli,
+  hasAntigravityInstall,
+  hasClaudeAuth,
+  hasCodexAuth,
+  hasCodexCli,
+  hasCodexSubscription,
+  upsertSecretVar,
+} from "../config.js";
 import { HttpError, isLocalRequest } from "../util.js";
 
 /**
@@ -36,23 +44,14 @@ function claudeOauthPresent(): boolean {
   return fs.existsSync(path.join(configDir, ".credentials.json"));
 }
 
-function antigravityDetected(): boolean {
-  const home = process.env.USERPROFILE || process.env.HOME || "";
-  return (
-    fs.existsSync(path.join(home, ".gemini")) ||
-    fs.existsSync(path.join(home, ".antigravity")) ||
-    fs.existsSync(path.join(process.env.LOCALAPPDATA || "", "Programs", "Antigravity"))
-  );
-}
-
 function listConnections(): ConnectionInfo[] {
   const anthropicKey = process.env.ANTHROPIC_API_KEY || "";
   const geminiKey = process.env.GOOGLE_API_KEY || process.env.GEMINI_API_KEY || "";
   const openaiKey = process.env.OPENAI_API_KEY || "";
   const sonioxKey = process.env.SONIOX_API_KEY || "";
   const oauth = claudeOauthPresent();
-  const codexOauth = !openaiKey && hasCodexAuth();
-  const geminiOauth = !geminiKey && hasGeminiAuth() && hasGeminiCli();
+  const codexOauth = hasCodexSubscription() && hasCodexCli();
+  const geminiOauth = hasAntigravityCli();
 
   return [
     {
@@ -78,14 +77,16 @@ function listConnections(): ConnectionInfo[] {
       label: "Gemini (Google)",
       roles: ["edit", "chat", "image", "video"],
       connected: !!geminiKey || geminiOauth,
-      source: geminiKey ? "api-key" : geminiOauth ? "oauth" : null,
+      source: geminiOauth ? "oauth" : geminiKey ? "api-key" : null,
       note: geminiKey
-        ? "Đã kết nối bằng API key - dùng cho đạo diễn Gemini và tạo ảnh/video."
+        ? geminiOauth
+          ? "Ưu tiên Google Subscription qua Antigravity; API key đã lưu chỉ dùng dự phòng."
+          : "Đã kết nối bằng API key dự phòng - dùng cho tạo ảnh/video."
         : geminiOauth
-          ? "Đã đăng nhập Google qua Gemini CLI - có thể chọn Gemini làm đạo diễn bằng Subscription. Tạo ảnh/video API vẫn cần key nếu gói không hỗ trợ."
-        : antigravityDetected()
-          ? "Đã phát hiện Gemini/Antigravity. Bấm Mở đăng nhập để kết nối Subscription, hoặc nhập API key."
-          : "Chưa kết nối - dùng Subscription qua Gemini CLI hoặc nhập GEMINI_API_KEY.",
+          ? "Đã phát hiện Antigravity CLI - AIEV sẽ tạo ảnh bằng Google Subscription và tự dùng key dự phòng nếu cần."
+        : hasAntigravityInstall()
+          ? "Đã phát hiện ứng dụng Antigravity nhưng chưa gọi được lệnh `agy`. Cài/bật Antigravity CLI, hoặc nhập API key dự phòng."
+          : "Chưa kết nối - cài và đăng nhập Antigravity CLI (`agy`), hoặc nhập GEMINI_API_KEY dự phòng.",
       key: {
         envVar: "GEMINI_API_KEY",
         present: !!geminiKey,
@@ -96,13 +97,15 @@ function listConnections(): ConnectionInfo[] {
     {
       id: "openai",
       label: "ChatGPT / Codex (OpenAI)",
-      roles: ["edit", "chat"],
+      roles: ["edit", "chat", "image"],
       connected: hasCodexAuth() && hasCodexCli(),
       source: codexOauth ? "oauth" : openaiKey ? "api-key" : null,
       note: openaiKey
-        ? "Codex dùng API key dự phòng và tính phí theo usage."
+        ? codexOauth
+          ? "Ưu tiên ChatGPT Subscription qua Codex CLI; API key đã lưu chỉ dùng dự phòng."
+          : "Codex dùng API key dự phòng và tính phí theo usage."
         : codexOauth && hasCodexCli()
-          ? "Đã tự nhận phiên ChatGPT của Codex CLI trên máy - dùng quyền lợi subscription."
+          ? "Đã tự nhận phiên ChatGPT của Codex CLI - dùng Subscription cho edit, chat và tạo ảnh."
           : codexOauth
             ? "Đã có phiên ChatGPT nhưng chưa gọi được Codex CLI. Cài `npm install -g @openai/codex` hoặc cấu hình CODEX_BIN."
           : "Chưa kết nối - cài Codex CLI rồi chạy `codex login`, hoặc nhập OPENAI_API_KEY dự phòng.",
@@ -149,7 +152,7 @@ router.post("/:provider/login", (req, res) => {
   const commands: Record<string, string> = {
     openai: `${process.env.CODEX_BIN || "codex"} login`,
     claude: process.env.CLAUDE_BIN || "claude",
-    gemini: process.env.GEMINI_BIN || "gemini",
+    gemini: process.env.AGY_BIN || "agy",
   };
   const command = commands[provider];
   if (!command) throw new HttpError(400, "LOGIN_NOT_SUPPORTED", "Provider này chỉ hỗ trợ API key");
@@ -221,10 +224,10 @@ router.post("/:provider/test", async (req, res) => {
     const key = process.env.GOOGLE_API_KEY || process.env.GEMINI_API_KEY;
     if (!key) {
       res.json({
-        ok: hasGeminiAuth() && hasGeminiCli(),
-        message: hasGeminiAuth() && hasGeminiCli()
-          ? "Đã đăng nhập Google qua Gemini CLI - sẵn sàng dùng Gemini làm đạo diễn."
-          : "Chưa đăng nhập Gemini CLI và chưa có GEMINI_API_KEY.",
+        ok: hasAntigravityCli(),
+        message: hasAntigravityCli()
+          ? "Đã gọi được Antigravity CLI - sẽ dùng Google Subscription để tạo ảnh; lần tạo đầu sẽ xác minh phiên đăng nhập."
+          : "Chưa gọi được Antigravity CLI (`agy`) và chưa có GEMINI_API_KEY dự phòng.",
       });
       return;
     }

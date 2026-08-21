@@ -15,7 +15,7 @@
 |---|---|
 | 🎬 **Edit video bằng AI** | Chọn ChatGPT/Codex hoặc Claude cho từng phiên: phân tích source → dựng scene HyperFrames → lắp ráp Remotion → MP4. Không giới hạn số lượt chỉnh ở tầng ứng dụng; quota/chính sách của nhà cung cấp vẫn áp dụng. |
 | 🎨 **Style Design** | Nhiều bộ nhận diện (màu, font, logo, tone, hiệu ứng gradient/liquid glass) - sản phẩm tuân thủ 100% style đã chọn. Font chỉ cần gõ tên, tự tải từ Google Fonts (đủ dấu tiếng Việt). |
-| 🖼️ **Tạo ảnh AI** | Gemini vẽ nền (không chữ) → Remotion đặt tiêu đề/logo/số liệu theo Style Design - chữ tiếng Việt không bao giờ sai chính tả. |
+| 🖼️ **Tạo ảnh AI** | Ưu tiên ChatGPT/Codex hoặc Gemini/Antigravity Subscription để vẽ nền (không chữ), API key chỉ dự phòng → Remotion đặt tiêu đề/logo/số liệu theo Style Design. |
 | 🎞️ **Gemini Omni Video** | Tạo video từ prompt/ảnh tham chiếu, edit video nguồn và chỉnh tiếp bằng hội thoại; mỗi kết quả lưu MP4 trên máy. |
 | ✨ **Ảnh minh họa trong video** | Claude chọn ý chính, Gemini vẽ minh họa đồng bộ style rồi ghép đúng thời điểm (~$0.05/ảnh). |
 | 🔑 **Bố cục Key** | Key chính hiện vùng trên video, key liên quan hiện vùng dưới theo nội dung đang nói - AI tự đề xuất hoặc bạn chỉ định. |
@@ -93,7 +93,7 @@ frame Remotion dựng song song. Hai job của **cùng một project** không ba
 - **Google Chrome** (HyperFrames và Remotion render qua headless Chromium)
 - **ChatGPT/Codex**: cài Codex CLI, chạy `codex login` và đăng nhập tài khoản ChatGPT. Có thể nhập `OPENAI_API_KEY` dự phòng trong trang **Kết nối**.
 - **Claude**: đăng nhập [Claude Code](https://claude.com/claude-code) trên máy (subscription OAuth) hoặc nhập `ANTHROPIC_API_KEY` dự phòng trong trang **Kết nối**.
-- **Gemini**: cần `GEMINI_API_KEY` cho API tạo ảnh và Gemini Omni Video - lấy tại [Google AI Studio](https://aistudio.google.com/apikey). Phiên đăng nhập Gemini trên web/Antigravity không thay thế được API key này.
+- **Gemini/Antigravity**: cài Antigravity CLI (`agy`) và đăng nhập Google Subscription để tạo ảnh không cần API key. Có thể nhập `GEMINI_API_KEY` dự phòng tại trang **Kết nối**; các tính năng API-only như Omni Video vẫn có thể cần key riêng.
 - Tùy chọn: GPU NVIDIA (NVENC) hoặc Mac Apple Silicon (VideoToolbox) để render nhanh hơn; Python + `faster-whisper` cho phụ đề
 
 Không phải tự cài tay từng thứ. Script khởi động kiểm tra hết danh sách trên và cài giúp những thứ
@@ -147,11 +147,11 @@ Chỉ chạy thao tác này khi AIEV đã dừng. Không xóa thủ công các t
 
 1. Cài Codex CLI bằng `npm install -g @openai/codex`, sau đó chạy `codex login`. App tự nhận lại phiên Codex đã đăng nhập trên chính máy đó; không cần đăng nhập lại mỗi lần mở.
 2. Nếu dùng Claude, chạy `claude` và `/login`. App cũng tự nhận phiên Claude Code local.
-3. Mở **Kết nối** trong AIEV, nhập `GEMINI_API_KEY`; có thể nhập thêm OpenAI/Anthropic API key để dự phòng khi phiên subscription không dùng được.
+3. Cài/đăng nhập Antigravity CLI (`agy`) nếu dùng Gemini tạo ảnh. Mở **Kết nối** để kiểm tra; chỉ nhập Gemini/OpenAI/Anthropic API key khi muốn có phương án dự phòng.
 4. Key nhập trong giao diện nằm ở `~/.aiev/credentials.env`, ngoài thư mục dự án. API chỉ trả bản che, không trả lại key rõ. Không chia sẻ file credentials này.
 5. Bản ZIP sạch tạo bằng `npm run package:safe`. Script chỉ lấy source không bị ignore và loại `.env`, database, project người dùng, logo/voice tùy chỉnh, output và credentials.
 
-Lưu ý: “tự đăng nhập” ở đây là **tự phát hiện và tái sử dụng phiên local đã được chủ máy đăng nhập**. Ứng dụng không lưu mật khẩu, không tự điền cookie trình duyệt và không thể dùng thuê bao ChatGPT/Claude/Gemini như API nếu nhà cung cấp không cho phép. API key dự phòng có thể phát sinh phí riêng.
+Lưu ý: “tự đăng nhập” ở đây là **tự phát hiện và tái sử dụng phiên local đã được chủ máy đăng nhập**. Ứng dụng không lưu mật khẩu hay tự điền cookie trình duyệt. Tạo ảnh ưu tiên ChatGPT Subscription qua Codex hoặc Google Subscription qua Antigravity; API key dự phòng có thể phát sinh phí riêng.
 
 ## Hướng dẫn sử dụng
 

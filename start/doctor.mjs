@@ -622,20 +622,26 @@ export function runDoctor() {
       : null,
   });
 
-  // --- Gemini API key (tạo ảnh) ---
-  const gemini = !!envVar("GEMINI_API_KEY");
+  // --- Antigravity Subscription hoặc Gemini API key dự phòng (tạo ảnh) ---
+  const agyBin = envVar("AGY_BIN") || "agy";
+  const antigravity = run(agyBin, ["--version"], 5000).ok;
+  const geminiKey = !!(envVar("GOOGLE_API_KEY") || envVar("GEMINI_API_KEY"));
   checks.push({
     id: "gemini",
-    label: "Gemini API key",
+    label: "Antigravity / Gemini",
     level: "optional",
-    status: gemini ? "ok" : "missing",
-    detail: "",
+    status: antigravity || geminiKey ? "ok" : "missing",
+    detail: antigravity
+      ? "Subscription (agy)"
+      : geminiKey
+        ? "API key dự phòng"
+        : "",
     // Dán key ngay trong trang Kết nối - không cần mở file .env
     fix: {
       auto: false,
-      manual: "GEMINI_API_KEY (aistudio.google.com/apikey)",
+      manual: "đăng nhập Antigravity CLI (agy), hoặc GEMINI_API_KEY dự phòng",
       link: "/connections",
-      url: "https://aistudio.google.com/apikey",
+      url: "https://antigravity.google/docs/cli/install",
     },
   });
 

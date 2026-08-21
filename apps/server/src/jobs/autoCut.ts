@@ -400,11 +400,6 @@ async function prepareBackground(
     ctx.log("[cut] Layout crop nên không cần nền - bỏ qua tạo nền Gemini.");
     return null;
   }
-  if (!geminiApiKey()) {
-    ctx.log("[warn] Chưa có GEMINI_API_KEY - dùng nền mờ từ chính video thay cho nền Gemini.");
-    return null;
-  }
-
   const outFile = path.join(autoCutDirOf(meta.id), "background.png");
   if (fs.existsSync(outFile) && fs.statSync(outFile).size > 0) {
     ctx.log("[cut] Dùng lại background.png đã tạo ở lần chạy trước.");
